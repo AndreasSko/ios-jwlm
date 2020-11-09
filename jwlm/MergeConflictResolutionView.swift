@@ -13,23 +13,23 @@ struct MergeConflictResolutionView: View {
     @Environment(\.presentationMode) var presentationMode
     @Binding private var cancelMerge: Bool
     @State private var conflictIndex: Int!
-    @State private var selectedSide: mergeSide?
-    
+    @State private var selectedSide: MergeSide?
+
     init (jwlmController: JWLMController, cancelMerge: Binding<Bool>) {
         self.jwlmController = jwlmController
         self._cancelMerge = cancelMerge
         _conflictIndex = State(initialValue: jwlmController.nextConflictID())
     }
-    
+
     var body: some View {
         VStack {
             HStack(alignment: .top) {
                 Button(action: {
                     cancelMerge = true
                     presentationMode.wrappedValue.dismiss()
-                }) {
+                }, label: {
                     Text("Cancel")
-                }
+                })
                 Spacer()
                 Button(action: {
                     do {
@@ -40,36 +40,35 @@ struct MergeConflictResolutionView: View {
                         } else {
                             presentationMode.wrappedValue.dismiss()
                         }
-                    }
-                    catch {
+                    } catch {
                         return
                     }
-                }) {
+                }, label: {
                     Text("Continue")
-                }
+                })
             }.padding([.leading, .trailing])
-            
+
             Divider()
-            
+
             HStack {
                 Text("A conflict has happened while merging.")
                 Spacer()
             }.padding()
-            
+
             Spacer()
-            
+
             HStack {
                 MergeConflictView(conflict: getConflict(), side: .leftSide)
-                    .if((selectedSide == mergeSide.leftSide)) { view in
+                    .if((selectedSide == MergeSide.leftSide)) { view in
                         view.border(Color.blue)
                     }
                     .padding()
                     .onTapGesture(count: 1, perform: {
                         selectedSide = .leftSide
                     })
-                
+
                 MergeConflictView(conflict: getConflict(), side: .rightSide)
-                    .if((selectedSide == mergeSide.rightSide)) { view in
+                    .if((selectedSide == MergeSide.rightSide)) { view in
                         view.border(Color.blue)
                     }
                     .padding()
@@ -77,11 +76,11 @@ struct MergeConflictResolutionView: View {
                         selectedSide = .rightSide
                     })
             }
-                        
+
             Spacer()
         }
     }
-    
+
     func getConflict() -> Gomobile.GomobileMergeConflict {
         var conflict: Gomobile.GomobileMergeConflict
         do {
@@ -89,7 +88,7 @@ struct MergeConflictResolutionView: View {
         } catch {
             return Gomobile.GomobileMergeConflict()
         }
-        
+
         return conflict
     }
 }
@@ -107,8 +106,7 @@ extension View {
     func `if`<Content: View>(_ condition: Bool, content: (Self) -> Content) -> some View {
         if condition {
             content(self)
-        }
-        else {
+        } else {
             self
         }
     }

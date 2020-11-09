@@ -23,14 +23,14 @@ struct BackupFile: FileDocument {
     init(url: URL) {
         self.url = url
     }
-    
+
     init(configuration: ReadConfiguration) {
         url = URL(string: "")!
     }
 
     func fileWrapper(configuration: WriteConfiguration) throws -> FileWrapper {
-        let file = try! FileWrapper(url: url, options: .immediate)
-        
+        let file = try FileWrapper(url: url, options: .immediate)
+
         return file
     }
 }

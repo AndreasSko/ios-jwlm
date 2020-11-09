@@ -10,8 +10,8 @@ import Gomobile
 
 struct MergeConflictView: View {
     var conflict: Gomobile.GomobileMergeConflict
-    var side: mergeSide
-    
+    var side: MergeSide
+
     var body: some View {
         VStack {
             Text(selectConflict())
@@ -21,7 +21,7 @@ struct MergeConflictView: View {
         .background(Rectangle().fill(Color.gray.opacity(0.2)).shadow(radius: 10, x: 10, y: 10))
         .cornerRadius(5)
     }
-    
+
     func selectConflict() -> String {
         if side == .leftSide {
             return conflict.left

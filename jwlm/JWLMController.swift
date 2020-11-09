@@ -9,22 +9,22 @@
 import Foundation
 import Gomobile
 
-enum mergeSide: String {
-    case leftSide = "leftSide"
-    case rightSide = "rightSide"
+enum MergeSide: String {
+    case leftSide
+    case rightSide
 }
 
-enum conflictSolver: String {
+enum ConflictSolver: String {
     case disabled = ""
     case chooseLeft = "chooseLeft"
     case chooseRight = "chooseRight"
     case chooseNewest = "chooseNewest"
 }
 
-struct mergeSettings {
-    var bookmarkResolver: conflictSolver
-    var markingResolver: conflictSolver
-    var noteResolver: conflictSolver
+struct MergeSettings {
+    var bookmarkResolver: ConflictSolver
+    var markingResolver: ConflictSolver
+    var noteResolver: ConflictSolver
 }
 
 class MergeProgress: ObservableObject {
@@ -41,49 +41,49 @@ enum MergeError: Error {
 class JWLMController: ObservableObject {
     var dbWrapper: GomobileDatabaseWrapper
     var mergeConflicts: GomobileMergeConflictsWrapper
-    var settings: mergeSettings
-    
+    var settings: MergeSettings
+
     private var solvedConflicts = 0
-    
+
     init() {
         self.dbWrapper = GomobileDatabaseWrapper()
         self.mergeConflicts = GomobileMergeConflictsWrapper()
         self.mergeConflicts.initDBWrapper(dbWrapper)
-        self.settings = mergeSettings(bookmarkResolver: .disabled, markingResolver: .disabled, noteResolver: .disabled)
+        self.settings = MergeSettings(bookmarkResolver: .disabled, markingResolver: .disabled, noteResolver: .disabled)
     }
-    
-    func importBackup(url: URL, side: mergeSide) throws {
+
+    func importBackup(url: URL, side: MergeSide) throws {
         _ = url.startAccessingSecurityScopedResource()
         try dbWrapper.importJWLBackup(url.path, side: side.rawValue)
         url.stopAccessingSecurityScopedResource()
     }
-    
+
     func exportBackup() throws -> String {
         if !self.dbWrapper.dbIsLoaded("mergeSide") {
             throw MergeError.notInitialized(message: "There is no merged backup yet")
         }
-        
+
         let dir = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first
         let filename = "merged" + String(Int(NSDate().timeIntervalSince1970)) + ".jwlibrary"
         let path = dir?.appendingPathComponent(filename).path
-        
+
         try dbWrapper.exportMerged(path)
-        
+
         return path!
     }
-    
+
     func merge(reset: Bool = true, progress: MergeProgress) throws {
-        if !self.dbWrapper.dbIsLoaded(mergeSide.leftSide.rawValue)
-           || !self.dbWrapper.dbIsLoaded(mergeSide.rightSide.rawValue){
+        if !self.dbWrapper.dbIsLoaded(MergeSide.leftSide.rawValue)
+           || !self.dbWrapper.dbIsLoaded(MergeSide.rightSide.rawValue) {
             throw MergeError.notInitialized(message: "At least one backup has not been imported yet")
         }
         if reset {
             mergeConflicts = GomobileMergeConflictsWrapper()
             mergeConflicts.initDBWrapper(dbWrapper)
         }
-        
+
         dbWrapper.init_()
-        
+
         do {
             progress.percent = 16
             progress.status = "Merging Locations"
@@ -111,17 +111,15 @@ class JWLMController: ObservableObject {
 
             progress.percent = 100
             progress.status = "Done"
-        }
-        catch {
+        } catch {
             if error.localizedDescription.starts(with: "There were conflicts while trying to merge") {
                 throw MergeError.mergeConflict
             }
             throw MergeError.error(message: error.localizedDescription)
         }
     }
-    
+
     func nextConflictID() -> Int {
         return mergeConflicts.getNextConflictIndex()
     }
 }
-
