@@ -24,9 +24,9 @@ struct BackupView: View {
             if !fileSelected {
                 Button(action: {
                     isImporting.toggle()
-                }) {
+                }, label: {
                     Image(systemName: "square.and.arrow.down")
-                }
+                })
                     .font(.title)
                     .padding()
                 Text("Select Backup")

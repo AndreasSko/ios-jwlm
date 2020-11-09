@@ -30,9 +30,9 @@ struct MergeView: View {
 
                     doneMerging = merge()
                     isMerging = false
-                }) {
+                }, label: {
                     Text("Merge")
-                }
+                })
             }
             .font(.title2)
             .padding()

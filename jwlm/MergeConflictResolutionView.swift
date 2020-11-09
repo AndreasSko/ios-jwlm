@@ -27,9 +27,9 @@ struct MergeConflictResolutionView: View {
                 Button(action: {
                     cancelMerge = true
                     presentationMode.wrappedValue.dismiss()
-                }) {
+                }, label: {
                     Text("Cancel")
-                }
+                })
                 Spacer()
                 Button(action: {
                     do {
@@ -43,9 +43,9 @@ struct MergeConflictResolutionView: View {
                     } catch {
                         return
                     }
-                }) {
+                }, label: {
                     Text("Continue")
-                }
+                })
             }.padding([.leading, .trailing])
 
             Divider()

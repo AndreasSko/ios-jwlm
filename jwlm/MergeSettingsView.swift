@@ -29,24 +29,24 @@ struct MergeSettingsView: View {
                         Button(action: {
                             jwlmController.settings.bookmarkResolver = ConflictSolver.disabled
                             bookmarkSolverIcon = confSolverToIcon(solver: jwlmController.settings.bookmarkResolver)
-                        }) {
+                        }, label: {
                             Text("Manual")
                             Image(systemName: "minus.circle")
-                        }
+                        })
                         Button(action: {
                             jwlmController.settings.bookmarkResolver = ConflictSolver.chooseLeft
                             bookmarkSolverIcon = confSolverToIcon(solver: jwlmController.settings.bookmarkResolver)
-                        }) {
+                        }, label: {
                             Text("Left")
                             Image(systemName: "arrow.left")
-                        }
+                        })
                         Button(action: {
                             jwlmController.settings.bookmarkResolver = ConflictSolver.chooseRight
                             bookmarkSolverIcon = confSolverToIcon(solver: jwlmController.settings.bookmarkResolver)
-                        }) {
+                        }, label: {
                             Text("Right")
                             Image(systemName: "arrow.right")
-                        }
+                        })
                     } label: {
                         Image(systemName: "bookmark")
                     }
@@ -61,24 +61,24 @@ struct MergeSettingsView: View {
                         Button(action: {
                             jwlmController.settings.markingResolver = ConflictSolver.disabled
                             markingSolverIcon = confSolverToIcon(solver: jwlmController.settings.markingResolver)
-                        }) {
+                        }, label: {
                             Text("Manual")
                             Image(systemName: "minus.circle")
-                        }
+                        })
                         Button(action: {
                             jwlmController.settings.markingResolver = ConflictSolver.chooseLeft
                             markingSolverIcon = confSolverToIcon(solver: jwlmController.settings.markingResolver)
-                        }) {
+                        }, label: {
                             Text("Left")
                             Image(systemName: "arrow.left")
-                        }
+                        })
                         Button(action: {
                             jwlmController.settings.markingResolver = ConflictSolver.chooseRight
                             markingSolverIcon = confSolverToIcon(solver: jwlmController.settings.markingResolver)
-                        }) {
+                        }, label: {
                             Text("Right")
                             Image(systemName: "arrow.right")
-                        }
+                        })
                     } label: {
                         Image(systemName: "pencil.tip")
                     }
@@ -93,31 +93,31 @@ struct MergeSettingsView: View {
                         Button(action: {
                             jwlmController.settings.noteResolver = ConflictSolver.disabled
                             noteSolverIcon = confSolverToIcon(solver: jwlmController.settings.noteResolver)
-                        }) {
+                        }, label: {
                             Text("Manual")
                             Image(systemName: "minus.circle")
-                        }
+                        })
                         Button(action: {
                             jwlmController.settings.noteResolver = ConflictSolver.chooseNewest
                             noteSolverIcon = confSolverToIcon(solver: jwlmController.settings.noteResolver)
-                        }) {
+                        }, label: {
                             Text("Newest")
                             Image(systemName: "sparkles")
-                        }
+                        })
                         Button(action: {
                             jwlmController.settings.noteResolver = ConflictSolver.chooseLeft
                             noteSolverIcon = confSolverToIcon(solver: jwlmController.settings.noteResolver)
-                        }) {
+                        }, label: {
                             Text("Left")
                             Image(systemName: "arrow.left")
-                        }
+                        })
                         Button(action: {
                             jwlmController.settings.noteResolver = ConflictSolver.chooseRight
                             noteSolverIcon = confSolverToIcon(solver: jwlmController.settings.noteResolver)
-                        }) {
+                        }, label: {
                             Text("Right")
                             Image(systemName: "arrow.right")
-                        }
+                        })
                     } label: {
                         Image(systemName: "note.text")
                     }
