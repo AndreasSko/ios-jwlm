@@ -29,7 +29,7 @@ struct BackupFile: FileDocument {
     }
 
     func fileWrapper(configuration: WriteConfiguration) throws -> FileWrapper {
-        let file = try! FileWrapper(url: url, options: .immediate)
+        let file = try FileWrapper(url: url, options: .immediate)
         
         return file
     }
