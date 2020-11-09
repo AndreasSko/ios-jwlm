@@ -9,12 +9,12 @@ import SwiftUI
 
 struct ExportView: View {
     @ObservedObject var jwlmController: JWLMController
-        
+
     @State private var isExporting: Bool = false
     @State private var exportedURL: URL!
     @State private var showAlert: Bool = false
     @State private var alertMessage: String = ""
-    
+
     var body: some View {
         VStack {
             Button("Export") {
@@ -25,23 +25,23 @@ struct ExportView: View {
                 } catch {
                     alertMessage = error.localizedDescription
                     showAlert = true
-                    
                 }
             }
         }
         .alert(isPresented: $showAlert) {
-            Alert(title: Text("Error while merging"), message: Text(self.alertMessage), dismissButton: .default(Text("Ok")))
+            Alert(title: Text("Error while merging"),
+                  message: Text(self.alertMessage),
+                  dismissButton: .default(Text("Ok")))
         }
         .sheet(isPresented: $isExporting, content: {
             ShareView(url: self.$exportedURL)
         })
-        
     }
 }
 
 struct ShareView: UIViewControllerRepresentable {
     @Binding var url: URL!
-    
+
     func makeUIViewController(context: UIViewControllerRepresentableContext<ShareView>) -> UIActivityViewController {
         return UIActivityViewController(activityItems: [url!],
                                         applicationActivities: nil)

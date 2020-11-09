@@ -10,7 +10,7 @@ import Gomobile
 
 struct MergeView: View {
     @ObservedObject var jwlmController: JWLMController
-    
+
     @State private var isMerging: Bool = false
     @State private var doneMerging: Bool = false
     @ObservedObject private var mergeProgress: MergeProgress = MergeProgress()
@@ -21,13 +21,13 @@ struct MergeView: View {
 
     var body: some View {
         VStack {
-            HStack{
+            HStack {
                 Button(action: {
                     cancelMerge = false
                     isMerging = true
                     mergeProgress.percent = 1
                     mergeProgress.status = "Merging.."
-                    
+
                     doneMerging = merge()
                     isMerging = false
                 }) {
@@ -37,7 +37,9 @@ struct MergeView: View {
             .font(.title2)
             .padding()
             .alert(isPresented: $showAlert) {
-                Alert(title: Text("Error while merging"), message: Text(self.alertMessage), dismissButton: .default(Text("Ok")))
+                Alert(title: Text("Error while merging"),
+                      message: Text(self.alertMessage),
+                      dismissButton: .default(Text("Ok")))
             }
             .fullScreenCover(isPresented: $showMergeConflictSheet, onDismiss: {
                 if cancelMerge {
@@ -49,31 +51,28 @@ struct MergeView: View {
             }, content: {
                 MergeConflictResolutionView(jwlmController: jwlmController, cancelMerge: $cancelMerge)
             })
-            
 
-            if mergeProgress.percent > 0 && mergeProgress.percent < 100  {
+            if mergeProgress.percent > 0 && mergeProgress.percent < 100 {
                 ProgressView(mergeProgress.status, value: mergeProgress.percent, total: 100)
                     .padding()
             }
-            
+
             if doneMerging {
                 ExportView(jwlmController: jwlmController)
             }
         }
     }
-    
+
     func merge(reset: Bool = true) -> Bool {
         do {
             try jwlmController.merge(reset: reset, progress: mergeProgress)
-        }
-        catch MergeError.mergeConflict {
+        } catch MergeError.mergeConflict {
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
                 showMergeConflictSheet.toggle()
             }
-            
+
             return false
-        }
-        catch {
+        } catch {
             alertMessage = error.localizedDescription
             showAlert = true
             return false

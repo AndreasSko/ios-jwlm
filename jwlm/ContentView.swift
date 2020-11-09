@@ -9,10 +9,10 @@ import SwiftUI
 
 struct ContentView: View {
     @ObservedObject var jwlmController: JWLMController
-    
+
     var body: some View {
         VStack {
-            HStack(alignment: .top){
+            HStack(alignment: .top) {
                 Text("JW Library Merger")
                     .font(.title)
                     .fontWeight(.bold)
@@ -20,8 +20,8 @@ struct ContentView: View {
                 Spacer()
             }
             .padding()
-            VStack() {
-                HStack(){
+            VStack {
+                HStack {
                     BackupView(side: MergeSide.leftSide,
                                jwlmController: jwlmController)
                     Spacer().frame(width: 10.0)
@@ -30,13 +30,13 @@ struct ContentView: View {
                 }
                 .padding()
             }
-            
+
             MergeSettingsView(jwlmController: jwlmController)
                 .border(Color.gray)
                 .padding()
-            
+
             MergeView(jwlmController: jwlmController)
-            
+
             Spacer()
         }
     }

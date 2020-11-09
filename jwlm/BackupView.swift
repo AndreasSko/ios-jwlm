@@ -12,15 +12,15 @@ import Gomobile
 struct BackupView: View {
     var side: MergeSide
     @ObservedObject var jwlmController: JWLMController
-    
+
     @State private var fileSelected: Bool = false
     @State private var isImporting: Bool = false
     @State private var showAlert: Bool = false
     @State private var alertMessage: String = ""
     @State private var dbStats: GomobileDatabaseStats = GomobileDatabaseStats()
-    
+
     var body: some View {
-        VStack() {
+        VStack {
             if !fileSelected {
                 Button(action: {
                     isImporting.toggle()
@@ -42,7 +42,7 @@ struct BackupView: View {
                     Text("UserMarks: " + String(dbStats.userMark))
                 }
                 .padding()
-                
+
                 Image(systemName: "checkmark.circle")
                 .font(.title)
                 .foregroundColor(.green)
@@ -57,11 +57,12 @@ struct BackupView: View {
             isImporting.toggle()
         }
         .alert(isPresented: $showAlert) {
-            Alert(title: Text("Error while importing backup"), message: Text(self.alertMessage), dismissButton: .default(Text("Ok")))
+            Alert(title: Text("Error while importing backup"),
+                  message: Text(self.alertMessage),
+                  dismissButton: .default(Text("Ok")))
         }
         .fileImporter(isPresented: $isImporting,
-                      allowedContentTypes: [.jwlibrary]) {
-            (result) in
+                      allowedContentTypes: [.jwlibrary]) { (result) in
             do {
                 let url = try result.get()
                 try jwlmController.importBackup(url: url, side: side)
@@ -72,7 +73,7 @@ struct BackupView: View {
                 showAlert = true
             }
         }
-        
+
     }
 }
 

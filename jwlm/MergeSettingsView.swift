@@ -9,7 +9,7 @@ import SwiftUI
 
 struct MergeSettingsView: View {
     @ObservedObject var jwlmController: JWLMController
-    
+
     // @State private var expanded: Bool = true
     @State private var bookmarkSolverIcon = "minus.circle"
     @State private var markingSolverIcon = "minus.circle"
