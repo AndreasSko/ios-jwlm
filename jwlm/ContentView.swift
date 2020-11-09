@@ -22,10 +22,10 @@ struct ContentView: View {
             .padding()
             VStack() {
                 HStack(){
-                    BackupView(side: mergeSide.leftSide,
+                    BackupView(side: MergeSide.leftSide,
                                jwlmController: jwlmController)
                     Spacer().frame(width: 10.0)
-                    BackupView(side: mergeSide.rightSide,
+                    BackupView(side: MergeSide.rightSide,
                                jwlmController: jwlmController)
                 }
                 .padding()

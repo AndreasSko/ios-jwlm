@@ -13,7 +13,7 @@ struct MergeConflictResolutionView: View {
     @Environment(\.presentationMode) var presentationMode
     @Binding private var cancelMerge: Bool
     @State private var conflictIndex: Int!
-    @State private var selectedSide: mergeSide?
+    @State private var selectedSide: MergeSide?
     
     init (jwlmController: JWLMController, cancelMerge: Binding<Bool>) {
         self.jwlmController = jwlmController
@@ -60,7 +60,7 @@ struct MergeConflictResolutionView: View {
             
             HStack {
                 MergeConflictView(conflict: getConflict(), side: .leftSide)
-                    .if((selectedSide == mergeSide.leftSide)) { view in
+                    .if((selectedSide == MergeSide.leftSide)) { view in
                         view.border(Color.blue)
                     }
                     .padding()
@@ -69,7 +69,7 @@ struct MergeConflictResolutionView: View {
                     })
                 
                 MergeConflictView(conflict: getConflict(), side: .rightSide)
-                    .if((selectedSide == mergeSide.rightSide)) { view in
+                    .if((selectedSide == MergeSide.rightSide)) { view in
                         view.border(Color.blue)
                     }
                     .padding()

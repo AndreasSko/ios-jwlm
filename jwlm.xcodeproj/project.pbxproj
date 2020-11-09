@@ -7,12 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		F43574B72533411900EC55D4 /* jwlmApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F43574B62533411900EC55D4 /* jwlmApp.swift */; };
+		F43574B72533411900EC55D4 /* JwlmApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F43574B62533411900EC55D4 /* JwlmApp.swift */; };
 		F43574B92533411900EC55D4 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F43574B82533411900EC55D4 /* ContentView.swift */; };
 		F43574BB2533411B00EC55D4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F43574BA2533411B00EC55D4 /* Assets.xcassets */; };
 		F43574BE2533411B00EC55D4 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F43574BD2533411B00EC55D4 /* Preview Assets.xcassets */; };
-		F43574C92533411B00EC55D4 /* jwlmTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F43574C82533411B00EC55D4 /* jwlmTests.swift */; };
-		F43574D42533411B00EC55D4 /* jwlmUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F43574D32533411B00EC55D4 /* jwlmUITests.swift */; };
+		F43574C92533411B00EC55D4 /* JwlmTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F43574C82533411B00EC55D4 /* JwlmTests.swift */; };
+		F43574D42533411B00EC55D4 /* JwlmUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F43574D32533411B00EC55D4 /* JwlmUITests.swift */; };
 		F43574E92533418300EC55D4 /* Gomobile.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F43574E82533418300EC55D4 /* Gomobile.framework */; };
 		F43574F0253341CB00EC55D4 /* BackupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F43574EF253341CB00EC55D4 /* BackupView.swift */; };
 		F43B4A1E253346DD005BF9E8 /* JWLMController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F43B4A1D253346DC005BF9E8 /* JWLMController.swift */; };
@@ -43,16 +43,16 @@
 
 /* Begin PBXFileReference section */
 		F43574B32533411900EC55D4 /* jwlm.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = jwlm.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		F43574B62533411900EC55D4 /* jwlmApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = jwlmApp.swift; sourceTree = "<group>"; };
+		F43574B62533411900EC55D4 /* JwlmApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JwlmApp.swift; sourceTree = "<group>"; };
 		F43574B82533411900EC55D4 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		F43574BA2533411B00EC55D4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F43574BD2533411B00EC55D4 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		F43574BF2533411B00EC55D4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F43574C42533411B00EC55D4 /* jwlmTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = jwlmTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		F43574C82533411B00EC55D4 /* jwlmTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = jwlmTests.swift; sourceTree = "<group>"; };
+		F43574C82533411B00EC55D4 /* JwlmTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JwlmTests.swift; sourceTree = "<group>"; };
 		F43574CA2533411B00EC55D4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F43574CF2533411B00EC55D4 /* jwlmUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = jwlmUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		F43574D32533411B00EC55D4 /* jwlmUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = jwlmUITests.swift; sourceTree = "<group>"; };
+		F43574D32533411B00EC55D4 /* JwlmUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JwlmUITests.swift; sourceTree = "<group>"; };
 		F43574D52533411B00EC55D4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F43574E82533418300EC55D4 /* Gomobile.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Gomobile.framework; sourceTree = "<group>"; };
 		F43574EF253341CB00EC55D4 /* BackupView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BackupView.swift; sourceTree = "<group>"; };
@@ -115,7 +115,7 @@
 		F43574B52533411900EC55D4 /* jwlm */ = {
 			isa = PBXGroup;
 			children = (
-				F43574B62533411900EC55D4 /* jwlmApp.swift */,
+				F43574B62533411900EC55D4 /* JwlmApp.swift */,
 				F43574B82533411900EC55D4 /* ContentView.swift */,
 				F43574EF253341CB00EC55D4 /* BackupView.swift */,
 				F44BF82F253376B10057B980 /* MergeSettingsView.swift */,
@@ -143,7 +143,7 @@
 		F43574C72533411B00EC55D4 /* jwlmTests */ = {
 			isa = PBXGroup;
 			children = (
-				F43574C82533411B00EC55D4 /* jwlmTests.swift */,
+				F43574C82533411B00EC55D4 /* JwlmTests.swift */,
 				F43574CA2533411B00EC55D4 /* Info.plist */,
 			);
 			path = jwlmTests;
@@ -152,7 +152,7 @@
 		F43574D22533411B00EC55D4 /* jwlmUITests */ = {
 			isa = PBXGroup;
 			children = (
-				F43574D32533411B00EC55D4 /* jwlmUITests.swift */,
+				F43574D32533411B00EC55D4 /* JwlmUITests.swift */,
 				F43574D52533411B00EC55D4 /* Info.plist */,
 			);
 			path = jwlmUITests;
@@ -311,7 +311,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "if which swiftlint >/dev/null; then\n  # swiftlint\n  echo \"Turn on swiftlint\"\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
+			shellScript = "if which swiftlint >/dev/null; then\n  swiftlint\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -324,7 +324,7 @@
 				F441B1502549AE4900B0409B /* MergeView.swift in Sources */,
 				F43B4A1E253346DD005BF9E8 /* JWLMController.swift in Sources */,
 				F44BF82B2533602B0057B980 /* FileType.swift in Sources */,
-				F43574B72533411900EC55D4 /* jwlmApp.swift in Sources */,
+				F43574B72533411900EC55D4 /* JwlmApp.swift in Sources */,
 				F441B1622549CEB100B0409B /* MergeConflictView.swift in Sources */,
 				F44BF830253376B10057B980 /* MergeSettingsView.swift in Sources */,
 				F43574F0253341CB00EC55D4 /* BackupView.swift in Sources */,
@@ -337,7 +337,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F43574C92533411B00EC55D4 /* jwlmTests.swift in Sources */,
+				F43574C92533411B00EC55D4 /* JwlmTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -345,7 +345,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F43574D42533411B00EC55D4 /* jwlmUITests.swift in Sources */,
+				F43574D42533411B00EC55D4 /* JwlmUITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

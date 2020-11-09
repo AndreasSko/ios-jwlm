@@ -10,7 +10,7 @@ import Gomobile
 
 struct MergeConflictView: View {
     var conflict: Gomobile.GomobileMergeConflict
-    var side: mergeSide
+    var side: MergeSide
     
     var body: some View {
         VStack {

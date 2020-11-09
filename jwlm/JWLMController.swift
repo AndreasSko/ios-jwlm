@@ -9,22 +9,22 @@
 import Foundation
 import Gomobile
 
-enum mergeSide: String {
+enum MergeSide: String {
     case leftSide = "leftSide"
     case rightSide = "rightSide"
 }
 
-enum conflictSolver: String {
+enum ConflictSolver: String {
     case disabled = ""
     case chooseLeft = "chooseLeft"
     case chooseRight = "chooseRight"
     case chooseNewest = "chooseNewest"
 }
 
-struct mergeSettings {
-    var bookmarkResolver: conflictSolver
-    var markingResolver: conflictSolver
-    var noteResolver: conflictSolver
+struct MergeSettings {
+    var bookmarkResolver: ConflictSolver
+    var markingResolver: ConflictSolver
+    var noteResolver: ConflictSolver
 }
 
 class MergeProgress: ObservableObject {
@@ -41,7 +41,7 @@ enum MergeError: Error {
 class JWLMController: ObservableObject {
     var dbWrapper: GomobileDatabaseWrapper
     var mergeConflicts: GomobileMergeConflictsWrapper
-    var settings: mergeSettings
+    var settings: MergeSettings
     
     private var solvedConflicts = 0
     
@@ -49,10 +49,10 @@ class JWLMController: ObservableObject {
         self.dbWrapper = GomobileDatabaseWrapper()
         self.mergeConflicts = GomobileMergeConflictsWrapper()
         self.mergeConflicts.initDBWrapper(dbWrapper)
-        self.settings = mergeSettings(bookmarkResolver: .disabled, markingResolver: .disabled, noteResolver: .disabled)
+        self.settings = MergeSettings(bookmarkResolver: .disabled, markingResolver: .disabled, noteResolver: .disabled)
     }
     
-    func importBackup(url: URL, side: mergeSide) throws {
+    func importBackup(url: URL, side: MergeSide) throws {
         _ = url.startAccessingSecurityScopedResource()
         try dbWrapper.importJWLBackup(url.path, side: side.rawValue)
         url.stopAccessingSecurityScopedResource()
@@ -73,8 +73,8 @@ class JWLMController: ObservableObject {
     }
     
     func merge(reset: Bool = true, progress: MergeProgress) throws {
-        if !self.dbWrapper.dbIsLoaded(mergeSide.leftSide.rawValue)
-           || !self.dbWrapper.dbIsLoaded(mergeSide.rightSide.rawValue){
+        if !self.dbWrapper.dbIsLoaded(MergeSide.leftSide.rawValue)
+           || !self.dbWrapper.dbIsLoaded(MergeSide.rightSide.rawValue){
             throw MergeError.notInitialized(message: "At least one backup has not been imported yet")
         }
         if reset {

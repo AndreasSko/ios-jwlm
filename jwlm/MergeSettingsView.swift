@@ -27,21 +27,21 @@ struct MergeSettingsView: View {
                 VStack {
                     Menu {
                         Button(action: {
-                            jwlmController.settings.bookmarkResolver = conflictSolver.disabled
+                            jwlmController.settings.bookmarkResolver = ConflictSolver.disabled
                             bookmarkSolverIcon = confSolverToIcon(solver: jwlmController.settings.bookmarkResolver)
                         }) {
                             Text("Manual")
                             Image(systemName: "minus.circle")
                         }
                         Button(action: {
-                            jwlmController.settings.bookmarkResolver = conflictSolver.chooseLeft
+                            jwlmController.settings.bookmarkResolver = ConflictSolver.chooseLeft
                             bookmarkSolverIcon = confSolverToIcon(solver: jwlmController.settings.bookmarkResolver)
                         }) {
                             Text("Left")
                             Image(systemName: "arrow.left")
                         }
                         Button(action: {
-                            jwlmController.settings.bookmarkResolver = conflictSolver.chooseRight
+                            jwlmController.settings.bookmarkResolver = ConflictSolver.chooseRight
                             bookmarkSolverIcon = confSolverToIcon(solver: jwlmController.settings.bookmarkResolver)
                         }) {
                             Text("Right")
@@ -59,21 +59,21 @@ struct MergeSettingsView: View {
                 VStack {
                     Menu {
                         Button(action: {
-                            jwlmController.settings.markingResolver = conflictSolver.disabled
+                            jwlmController.settings.markingResolver = ConflictSolver.disabled
                             markingSolverIcon = confSolverToIcon(solver: jwlmController.settings.markingResolver)
                         }) {
                             Text("Manual")
                             Image(systemName: "minus.circle")
                         }
                         Button(action: {
-                            jwlmController.settings.markingResolver = conflictSolver.chooseLeft
+                            jwlmController.settings.markingResolver = ConflictSolver.chooseLeft
                             markingSolverIcon = confSolverToIcon(solver: jwlmController.settings.markingResolver)
                         }) {
                             Text("Left")
                             Image(systemName: "arrow.left")
                         }
                         Button(action: {
-                            jwlmController.settings.markingResolver = conflictSolver.chooseRight
+                            jwlmController.settings.markingResolver = ConflictSolver.chooseRight
                             markingSolverIcon = confSolverToIcon(solver: jwlmController.settings.markingResolver)
                         }) {
                             Text("Right")
@@ -91,28 +91,28 @@ struct MergeSettingsView: View {
                 VStack {
                     Menu {
                         Button(action: {
-                            jwlmController.settings.noteResolver = conflictSolver.disabled
+                            jwlmController.settings.noteResolver = ConflictSolver.disabled
                             noteSolverIcon = confSolverToIcon(solver: jwlmController.settings.noteResolver)
                         }) {
                             Text("Manual")
                             Image(systemName: "minus.circle")
                         }
                         Button(action: {
-                            jwlmController.settings.noteResolver = conflictSolver.chooseNewest
+                            jwlmController.settings.noteResolver = ConflictSolver.chooseNewest
                             noteSolverIcon = confSolverToIcon(solver: jwlmController.settings.noteResolver)
                         }) {
                             Text("Newest")
                             Image(systemName: "sparkles")
                         }
                         Button(action: {
-                            jwlmController.settings.noteResolver = conflictSolver.chooseLeft
+                            jwlmController.settings.noteResolver = ConflictSolver.chooseLeft
                             noteSolverIcon = confSolverToIcon(solver: jwlmController.settings.noteResolver)
                         }) {
                             Text("Left")
                             Image(systemName: "arrow.left")
                         }
                         Button(action: {
-                            jwlmController.settings.noteResolver = conflictSolver.chooseRight
+                            jwlmController.settings.noteResolver = ConflictSolver.chooseRight
                             noteSolverIcon = confSolverToIcon(solver: jwlmController.settings.noteResolver)
                         }) {
                             Text("Right")
@@ -140,7 +140,7 @@ struct MergeSettingsView_Previews: PreviewProvider {
     }
 }
 
-func confSolverToIcon(solver: conflictSolver) -> String {
+func confSolverToIcon(solver: ConflictSolver) -> String {
     switch solver {
     case .disabled:
         return "minus.circle"

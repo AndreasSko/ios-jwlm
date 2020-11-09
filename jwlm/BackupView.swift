@@ -10,7 +10,7 @@ import SwiftUI
 import Gomobile
 
 struct BackupView: View {
-    var side: mergeSide
+    var side: MergeSide
     @ObservedObject var jwlmController: JWLMController
     
     @State private var fileSelected: Bool = false
@@ -79,6 +79,6 @@ struct BackupView: View {
 struct JWLBackupView_Previews: PreviewProvider {
     static var previews: some View {
         let jwlmController = JWLMController()
-        BackupView(side: mergeSide.leftSide, jwlmController: jwlmController)
+        BackupView(side: MergeSide.leftSide, jwlmController: jwlmController)
     }
 }
