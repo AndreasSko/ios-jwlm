@@ -129,6 +129,21 @@ class JWLMController: ObservableObject {
         }
     }
 
+    func getConflict(index: Int) -> MergeConflict {
+        do {
+            let goConflict = try self.mergeConflicts.getConflict(index)
+            let left: ModelRelatedTuple = try JSONDecoder().decode(ModelRelatedTuple.self,
+                                                                   from: goConflict.left.data(using: .utf8)!)
+            let right: ModelRelatedTuple = try JSONDecoder().decode(ModelRelatedTuple.self,
+                                                                    from: goConflict.right.data(using: .utf8)!)
+
+            return MergeConflict(left: left, right: right)
+        } catch {
+            print(error)
+            return MergeConflict(left: nil, right: nil)
+        }
+    }
+
     func nextConflictID() -> Int {
         return mergeConflicts.getNextConflictIndex()
     }

@@ -51,45 +51,48 @@ struct MergeConflictResolutionView: View {
             Divider()
 
             HStack {
-                Text("A conflict has happened while merging.")
-                Spacer()
+                let left = jwlmController.getConflict(index: conflictIndex).left?.model
+                switch left {
+                case .bookmark:
+                    Text("A conflict happened while merging") + Text(" bookmarks.").bold()
+                case .note:
+                    Text("A conflict happened while merging") + Text(" notes.").bold()
+                case .userMarkBlockRange:
+                    Text("A conflict happened while merging") + Text(" markings.").bold()
+                default:
+                    Text("A conflict has happened while merging.")
+                }
             }.padding()
 
-            Spacer()
+            MergeConflictOverview(mrt: jwlmController.getConflict(index: conflictIndex).left).padding()
 
-            HStack {
-                MergeConflictView(conflict: getConflict(), side: .leftSide)
-                    .if((selectedSide == MergeSide.leftSide)) { view in
-                        view.border(Color.blue)
-                    }
-                    .padding()
-                    .onTapGesture(count: 1, perform: {
-                        selectedSide = .leftSide
-                    })
+            ScrollView {
+                VStack {
+                    MergeConflictDetailsView(conflict: jwlmController.getConflict(index: conflictIndex),
+                                             side: .leftSide)
+                        .if((selectedSide == MergeSide.leftSide)) { view in
+                            view.border(Color.blue)
+                        }
+                        .padding()
+                        .onTapGesture(count: 1, perform: {
+                            selectedSide = .leftSide
+                        })
 
-                MergeConflictView(conflict: getConflict(), side: .rightSide)
-                    .if((selectedSide == MergeSide.rightSide)) { view in
-                        view.border(Color.blue)
-                    }
-                    .padding()
-                    .onTapGesture(count: 1, perform: {
-                        selectedSide = .rightSide
-                    })
+                    MergeConflictDetailsView(conflict: jwlmController.getConflict(index: conflictIndex),
+                                             side: .rightSide)
+                        .if((selectedSide == MergeSide.rightSide)) { view in
+                            view.border(Color.blue)
+                        }
+                        .padding()
+                        .onTapGesture(count: 1, perform: {
+                            selectedSide = .rightSide
+                        })
+                }
+                Spacer()
             }
-
-            Spacer()
+            .frame(maxWidth: .infinity)
+            .padding(.horizontal)
         }
-    }
-
-    func getConflict() -> Gomobile.GomobileMergeConflict {
-        var conflict: Gomobile.GomobileMergeConflict
-        do {
-            try conflict = jwlmController.mergeConflicts.getConflict(conflictIndex)
-        } catch {
-            return Gomobile.GomobileMergeConflict()
-        }
-
-        return conflict
     }
 }
 
