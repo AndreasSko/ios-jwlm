@@ -26,11 +26,13 @@ struct MergeConflictDetailsView: View {
                 Text("Error! Can not generate preview")
             }
         }
+        .background(Color.white)
         .cornerRadius(10)
         .overlay(
             RoundedRectangle(cornerRadius: 10)
                 .stroke(Color(.sRGB, red: 150/255, green: 150/255, blue: 150/255, opacity: 0.1), lineWidth: 1)
         )
+        .shadow(color: Color.gray.opacity(0.2), radius: 20)
         .contentShape(Rectangle())
     }
 

@@ -88,6 +88,7 @@ struct MergeConflictResolutionView: View {
                             selectedSide = .rightSide
                         })
                 }
+                .frame(maxWidth: .infinity)
                 Spacer()
             }
             .frame(maxWidth: .infinity)

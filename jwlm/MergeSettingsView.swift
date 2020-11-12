@@ -18,7 +18,7 @@ struct MergeSettingsView: View {
     var body: some View {
         VStack {
             HStack {
-                Text("Conflict Autoresolution").font(.title3)
+                Text("Conflict Autoresolution").font(.headline)
                 Spacer()
                 Button(action: {
 
@@ -27,7 +27,7 @@ struct MergeSettingsView: View {
                     Image(systemName: "questionmark.circle")
                 })
             }
-            .padding(.top, 7.0)
+            .padding(.top, 10.0)
             .padding([.leading, .trailing])
 
             Divider()
