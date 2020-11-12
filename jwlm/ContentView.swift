@@ -10,6 +10,8 @@ import SwiftUI
 struct ContentView: View {
     @ObservedObject var jwlmController: JWLMController
 
+    @State private var sharedUrl: URL?
+
     var body: some View {
         VStack {
             HStack(alignment: .top) {
@@ -23,9 +25,11 @@ struct ContentView: View {
             VStack {
                 HStack {
                     BackupView(side: MergeSide.leftSide,
-                               jwlmController: jwlmController)
+                               jwlmController: jwlmController,
+                               sharedUrl: $sharedUrl)
                     BackupView(side: MergeSide.rightSide,
-                               jwlmController: jwlmController)
+                               jwlmController: jwlmController,
+                               sharedUrl: $sharedUrl)
                 }.padding(.horizontal)
             }
 
@@ -42,6 +46,8 @@ struct ContentView: View {
             MergeView(jwlmController: jwlmController)
 
             Spacer()
+        }.onOpenURL { url in
+            sharedUrl = url
         }
     }
 }

@@ -13,6 +13,8 @@ struct BackupView: View {
     var side: MergeSide
     @ObservedObject var jwlmController: JWLMController
 
+    @Binding var sharedUrl: URL?
+
     @State private var fileSelected: Bool = false
     @State private var isImporting: Bool = false
     @State private var showAlert: Bool = false
@@ -22,15 +24,27 @@ struct BackupView: View {
     var body: some View {
         VStack {
             if !fileSelected {
-                Button(action: {
-                    isImporting.toggle()
-                }, label: {
-                    Image(systemName: "square.and.arrow.down")
-                })
-                    .font(.title)
-                    .padding()
-                Text("Select Backup")
-                    .foregroundColor(.black)
+                if sharedUrl != nil {
+                    Button(action: {
+                        wasPressed()
+                    }, label: {
+                        Image(systemName: "plus.circle")
+                    })
+                        .font(.title)
+                        .padding()
+                    Text("Import")
+                        .foregroundColor(.black)
+                } else {
+                    Button(action: {
+                        wasPressed()
+                    }, label: {
+                        Image(systemName: "square.and.arrow.down")
+                    })
+                        .font(.title)
+                        .padding()
+                    Text("Select Backup")
+                        .foregroundColor(.black)
+                }
             } else {
                 VStack(alignment: .custom) {
 
@@ -82,7 +96,7 @@ struct BackupView: View {
         .shadow(color: Color.gray.opacity(0.2), radius: 20)
         .contentShape(Rectangle())
         .onTapGesture {
-            isImporting.toggle()
+            wasPressed()
         }
         .alert(isPresented: $showAlert) {
             Alert(title: Text("Error while importing backup"),
@@ -93,21 +107,38 @@ struct BackupView: View {
                       allowedContentTypes: [.jwlibrary]) { (result) in
             do {
                 let url = try result.get()
-                try jwlmController.importBackup(url: url, side: side)
-                fileSelected = true
-                dbStats = jwlmController.dbWrapper.stats(side.rawValue)!
+                importBackup(url: url)
             } catch {
                 alertMessage = error.localizedDescription
                 showAlert = true
             }
         }
+    }
 
+    func wasPressed() {
+        if sharedUrl != nil {
+            importBackup(url: sharedUrl!)
+            sharedUrl = nil
+        } else {
+            isImporting.toggle()
+        }
+    }
+
+    func importBackup(url: URL) {
+        do {
+            try jwlmController.importBackup(url: url, side: side)
+            fileSelected = true
+            dbStats = jwlmController.dbWrapper.stats(side.rawValue)!
+        } catch {
+            alertMessage = error.localizedDescription
+            showAlert = true
+        }
     }
 }
 
 struct JWLBackupView_Previews: PreviewProvider {
     static var previews: some View {
         let jwlmController = JWLMController()
-        BackupView(side: MergeSide.leftSide, jwlmController: jwlmController)
+        BackupView(side: MergeSide.leftSide, jwlmController: jwlmController, sharedUrl: .constant(nil))
     }
 }
