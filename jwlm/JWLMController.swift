@@ -14,6 +14,16 @@ enum MergeSide: String {
     case rightSide
 }
 
+struct ModelRelatedTuple: Decodable {
+    let model: Model
+    let related: Related
+}
+
+struct MergeConflict {
+    let left: ModelRelatedTuple?
+    let right: ModelRelatedTuple?
+}
+
 enum ConflictSolver: String {
     case disabled = ""
     case chooseLeft = "chooseLeft"

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F420DFC2255C0C6900CEB66B /* BackupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F43574EF253341CB00EC55D4 /* BackupView.swift */; };
 		F43574B72533411900EC55D4 /* JwlmApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F43574B62533411900EC55D4 /* JwlmApp.swift */; };
 		F43574B92533411900EC55D4 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F43574B82533411900EC55D4 /* ContentView.swift */; };
 		F43574BB2533411B00EC55D4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F43574BA2533411B00EC55D4 /* Assets.xcassets */; };
@@ -15,9 +16,12 @@
 		F43574D42533411B00EC55D4 /* JwlmUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F43574D32533411B00EC55D4 /* JwlmUITests.swift */; };
 		F43574E92533418300EC55D4 /* Gomobile.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F43574E82533418300EC55D4 /* Gomobile.framework */; };
 		F43574F0253341CB00EC55D4 /* BackupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F43574EF253341CB00EC55D4 /* BackupView.swift */; };
+		F43ACC8F255AE45C00B6E970 /* Playground.swift in Sources */ = {isa = PBXBuildFile; fileRef = F43ACC8E255AE45C00B6E970 /* Playground.swift */; };
 		F43B4A1E253346DD005BF9E8 /* JWLMController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F43B4A1D253346DC005BF9E8 /* JWLMController.swift */; };
 		F441B1502549AE4900B0409B /* MergeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F441B14F2549AE4900B0409B /* MergeView.swift */; };
-		F441B1622549CEB100B0409B /* MergeConflictView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F441B1612549CEB100B0409B /* MergeConflictView.swift */; };
+		F441B1622549CEB100B0409B /* MergeConflictDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F441B1612549CEB100B0409B /* MergeConflictDetailsView.swift */; };
+		F447E5AF255997BA00C3DA35 /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = F447E5AE255997BA00C3DA35 /* Models.swift */; };
+		F447E5BD255A7BC000C3DA35 /* MergeConflictOverview.swift in Sources */ = {isa = PBXBuildFile; fileRef = F447E5BC255A7BC000C3DA35 /* MergeConflictOverview.swift */; };
 		F44BF82B2533602B0057B980 /* FileType.swift in Sources */ = {isa = PBXBuildFile; fileRef = F44BF82A2533602B0057B980 /* FileType.swift */; };
 		F44BF830253376B10057B980 /* MergeSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F44BF82F253376B10057B980 /* MergeSettingsView.swift */; };
 		F44BF838253476110057B980 /* ExportView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F44BF837253476110057B980 /* ExportView.swift */; };
@@ -42,6 +46,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		F420DF9B255B34E800CEB66B /* jwlm.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = jwlm.entitlements; sourceTree = "<group>"; };
 		F43574B32533411900EC55D4 /* jwlm.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = jwlm.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F43574B62533411900EC55D4 /* JwlmApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JwlmApp.swift; sourceTree = "<group>"; };
 		F43574B82533411900EC55D4 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -56,9 +61,12 @@
 		F43574D52533411B00EC55D4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F43574E82533418300EC55D4 /* Gomobile.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Gomobile.framework; sourceTree = "<group>"; };
 		F43574EF253341CB00EC55D4 /* BackupView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BackupView.swift; sourceTree = "<group>"; };
+		F43ACC8E255AE45C00B6E970 /* Playground.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Playground.swift; sourceTree = "<group>"; };
 		F43B4A1D253346DC005BF9E8 /* JWLMController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JWLMController.swift; sourceTree = "<group>"; };
 		F441B14F2549AE4900B0409B /* MergeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MergeView.swift; sourceTree = "<group>"; };
-		F441B1612549CEB100B0409B /* MergeConflictView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MergeConflictView.swift; sourceTree = "<group>"; };
+		F441B1612549CEB100B0409B /* MergeConflictDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MergeConflictDetailsView.swift; sourceTree = "<group>"; };
+		F447E5AE255997BA00C3DA35 /* Models.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Models.swift; sourceTree = "<group>"; };
+		F447E5BC255A7BC000C3DA35 /* MergeConflictOverview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MergeConflictOverview.swift; sourceTree = "<group>"; };
 		F44BF82A2533602B0057B980 /* FileType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileType.swift; sourceTree = "<group>"; };
 		F44BF82F253376B10057B980 /* MergeSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MergeSettingsView.swift; sourceTree = "<group>"; };
 		F44BF837253476110057B980 /* ExportView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExportView.swift; sourceTree = "<group>"; };
@@ -115,15 +123,19 @@
 		F43574B52533411900EC55D4 /* jwlm */ = {
 			isa = PBXGroup;
 			children = (
+				F420DF9B255B34E800CEB66B /* jwlm.entitlements */,
 				F43574B62533411900EC55D4 /* JwlmApp.swift */,
 				F43574B82533411900EC55D4 /* ContentView.swift */,
 				F43574EF253341CB00EC55D4 /* BackupView.swift */,
 				F44BF82F253376B10057B980 /* MergeSettingsView.swift */,
 				F441B14F2549AE4900B0409B /* MergeView.swift */,
+				F447E5AE255997BA00C3DA35 /* Models.swift */,
 				F44BF837253476110057B980 /* ExportView.swift */,
 				F44BF8502534D5070057B980 /* MergeConflictResolutionView.swift */,
-				F441B1612549CEB100B0409B /* MergeConflictView.swift */,
+				F447E5BC255A7BC000C3DA35 /* MergeConflictOverview.swift */,
+				F441B1612549CEB100B0409B /* MergeConflictDetailsView.swift */,
 				F43B4A1D253346DC005BF9E8 /* JWLMController.swift */,
+				F43ACC8E255AE45C00B6E970 /* Playground.swift */,
 				F43574BA2533411B00EC55D4 /* Assets.xcassets */,
 				F43574BF2533411B00EC55D4 /* Info.plist */,
 				F43574BC2533411B00EC55D4 /* Preview Content */,
@@ -311,7 +323,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "if which swiftlint >/dev/null; then\n  swiftlint\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
+			shellScript = "if which swiftlint >/dev/null; then\n  swiftlint autocorrect && swiftlint\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -320,16 +332,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F447E5AF255997BA00C3DA35 /* Models.swift in Sources */,
 				F43574B92533411900EC55D4 /* ContentView.swift in Sources */,
 				F441B1502549AE4900B0409B /* MergeView.swift in Sources */,
 				F43B4A1E253346DD005BF9E8 /* JWLMController.swift in Sources */,
 				F44BF82B2533602B0057B980 /* FileType.swift in Sources */,
 				F43574B72533411900EC55D4 /* JwlmApp.swift in Sources */,
-				F441B1622549CEB100B0409B /* MergeConflictView.swift in Sources */,
+				F43ACC8F255AE45C00B6E970 /* Playground.swift in Sources */,
+				F441B1622549CEB100B0409B /* MergeConflictDetailsView.swift in Sources */,
 				F44BF830253376B10057B980 /* MergeSettingsView.swift in Sources */,
 				F43574F0253341CB00EC55D4 /* BackupView.swift in Sources */,
 				F44BF838253476110057B980 /* ExportView.swift in Sources */,
 				F44BF8512534D5070057B980 /* MergeConflictResolutionView.swift in Sources */,
+				F447E5BD255A7BC000C3DA35 /* MergeConflictOverview.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -345,6 +360,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F420DFC2255C0C6900CEB66B /* BackupView.swift in Sources */,
 				F43574D42533411B00EC55D4 /* JwlmUITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -486,9 +502,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = jwlm/jwlm.entitlements;
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_ASSET_PATHS = "\"jwlm/Preview Content\"";
-				DEVELOPMENT_TEAM = 95P96TD862;
+				DEVELOPMENT_TEAM = 9YFM7J3EH3;
 				ENABLE_PREVIEWS = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -500,7 +518,8 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "andreas-sk";
+				MARKETING_VERSION = 0.2.2;
+				PRODUCT_BUNDLE_IDENTIFIER = "de.andreas-sk.jwlm";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -512,9 +531,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = jwlm/jwlm.entitlements;
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_ASSET_PATHS = "\"jwlm/Preview Content\"";
-				DEVELOPMENT_TEAM = 95P96TD862;
+				DEVELOPMENT_TEAM = 9YFM7J3EH3;
 				ENABLE_PREVIEWS = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -526,7 +547,8 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "andreas-sk";
+				MARKETING_VERSION = 0.2.2;
+				PRODUCT_BUNDLE_IDENTIFIER = "de.andreas-sk.jwlm";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
