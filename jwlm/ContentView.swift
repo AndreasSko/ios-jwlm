@@ -24,16 +24,18 @@ struct ContentView: View {
                 HStack {
                     BackupView(side: MergeSide.leftSide,
                                jwlmController: jwlmController)
-                    Spacer().frame(width: 10.0)
                     BackupView(side: MergeSide.rightSide,
                                jwlmController: jwlmController)
-                }
-                .padding()
+                }.padding(.horizontal)
             }
 
             MergeSettingsView(jwlmController: jwlmController)
-                .border(Color.gray)
-                .padding()
+                .cornerRadius(10)
+                .overlay(
+                    RoundedRectangle(cornerRadius: 10)
+                        .stroke(Color(.sRGB, red: 150/255, green: 150/255, blue: 150/255, opacity: 0.1), lineWidth: 1)
+                )
+                .padding([.top, .horizontal])
 
             MergeView(jwlmController: jwlmController)
 

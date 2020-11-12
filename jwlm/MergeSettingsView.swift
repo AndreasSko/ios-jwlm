@@ -18,11 +18,22 @@ struct MergeSettingsView: View {
     var body: some View {
         VStack {
             HStack {
-                Text("Conflict Autoresolution")
-                    .underline()
+                Text("Conflict Autoresolution").font(.title3)
                 Spacer()
+                Button(action: {
+
+                },
+                    label: {
+                    Image(systemName: "questionmark.circle")
+                })
             }
-            .padding([.top, .leading, .trailing])
+            .padding(.top, 7.0)
+            .padding([.leading, .trailing])
+
+            Divider()
+                .padding(.top, -1)
+                .background(Color(.sRGB, red: 150/255, green: 150/255, blue: 150/255, opacity: 0.1))
+
             HStack {
                 VStack {
                     Menu {

@@ -14,6 +14,16 @@ enum MergeSide: String {
     case rightSide
 }
 
+struct ModelRelatedTuple: Decodable {
+    let model: Model
+    let related: Related
+}
+
+struct MergeConflict {
+    let left: ModelRelatedTuple?
+    let right: ModelRelatedTuple?
+}
+
 enum ConflictSolver: String {
     case disabled = ""
     case chooseLeft = "chooseLeft"
@@ -116,6 +126,21 @@ class JWLMController: ObservableObject {
                 throw MergeError.mergeConflict
             }
             throw MergeError.error(message: error.localizedDescription)
+        }
+    }
+
+    func getConflict(index: Int) -> MergeConflict {
+        do {
+            let goConflict = try self.mergeConflicts.getConflict(index)
+            let left: ModelRelatedTuple = try JSONDecoder().decode(ModelRelatedTuple.self,
+                                                                   from: goConflict.left.data(using: .utf8)!)
+            let right: ModelRelatedTuple = try JSONDecoder().decode(ModelRelatedTuple.self,
+                                                                    from: goConflict.right.data(using: .utf8)!)
+
+            return MergeConflict(left: left, right: right)
+        } catch {
+            print(error)
+            return MergeConflict(left: nil, right: nil)
         }
     }
 
