@@ -71,7 +71,9 @@ struct MergeConflictResolutionView: View {
                     MergeConflictDetailsView(conflict: jwlmController.getConflict(index: conflictIndex),
                                              side: .leftSide)
                         .if((selectedSide == MergeSide.leftSide)) { view in
-                            view.border(Color.blue)
+                            view.overlay(
+                                RoundedRectangle(cornerRadius: 10)
+                                    .stroke(Color.blue, lineWidth: 1))
                         }
                         .padding()
                         .onTapGesture(count: 1, perform: {
@@ -81,7 +83,9 @@ struct MergeConflictResolutionView: View {
                     MergeConflictDetailsView(conflict: jwlmController.getConflict(index: conflictIndex),
                                              side: .rightSide)
                         .if((selectedSide == MergeSide.rightSide)) { view in
-                            view.border(Color.blue)
+                            view.overlay(
+                                RoundedRectangle(cornerRadius: 10)
+                                    .stroke(Color.blue, lineWidth: 1))
                         }
                         .padding()
                         .onTapGesture(count: 1, perform: {
