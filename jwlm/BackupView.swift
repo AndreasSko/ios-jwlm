@@ -32,14 +32,37 @@ struct BackupView: View {
                 Text("Select Backup")
                     .foregroundColor(.black)
             } else {
-                VStack(alignment: .leading) {
-                    Text("BlockRanges: " + String(dbStats.blockRange))
-                    Text("Bookmarks: " + String(dbStats.bookmark))
-                    Text("Locations: " + String(dbStats.location))
-                    Text("Notes: " + String(dbStats.note))
-                    Text("Tags: " + String(dbStats.tag))
-                    Text("TagMaps: " + String(dbStats.tagMap))
-                    Text("UserMarks: " + String(dbStats.userMark))
+                VStack(alignment: .custom) {
+
+                    HStack {
+                        Text("Bookmarks:").bold()
+                        Text(String(dbStats.bookmark))
+                            .alignmentGuide(.custom) { $0[.leading] }
+                    }
+
+                    HStack {
+                        Text("Notes:").bold()
+                        Text(String(dbStats.note))
+                            .alignmentGuide(.custom) { $0[.leading] }
+                    }
+
+                    HStack {
+                        Text("Tags:").bold()
+                        Text(String(dbStats.tag))
+                            .alignmentGuide(.custom) { $0[.leading] }
+                    }
+
+                    HStack {
+                        Text("Taggings:").bold()
+                        Text(String(dbStats.tagMap))
+                            .alignmentGuide(.custom) { $0[.leading] }
+                    }
+
+                    HStack {
+                        Text("Markings:").bold()
+                        Text(String(dbStats.userMark))
+                            .alignmentGuide(.custom) { $0[.leading] }
+                    }
                 }
                 .padding()
 
@@ -49,9 +72,12 @@ struct BackupView: View {
                     .padding(.bottom)
             }
         }
-        .frame(maxWidth: .infinity, minHeight: 250)
-        .background(Rectangle().fill(Color.gray.opacity(0.2)).shadow(radius: 10, x: 10, y: 10))
-        .cornerRadius(5)
+        .frame(maxWidth: .infinity, minHeight: 200)
+        .cornerRadius(10)
+        .overlay(
+            RoundedRectangle(cornerRadius: 10)
+                .stroke(Color(.sRGB, red: 150/255, green: 150/255, blue: 150/255, opacity: 0.1), lineWidth: 1)
+        )
         .contentShape(Rectangle())
         .onTapGesture {
             isImporting.toggle()
