@@ -14,6 +14,7 @@ struct MergeConflictResolutionView: View {
     @Binding private var cancelMerge: Bool
     @State private var conflictIndex: Int!
     @State private var selectedSide: MergeSide?
+    @State private var helpOpened = false
 
     init (jwlmController: JWLMController, cancelMerge: Binding<Bool>) {
         self.jwlmController = jwlmController
@@ -50,19 +51,28 @@ struct MergeConflictResolutionView: View {
 
             Divider()
 
-            HStack {
-                let left = jwlmController.getConflict(index: conflictIndex).left?.model
-                switch left {
-                case .bookmark:
-                    Text("A conflict happened while merging") + Text(" bookmarks.").bold()
-                case .note:
-                    Text("A conflict happened while merging") + Text(" notes.").bold()
-                case .userMarkBlockRange:
-                    Text("A conflict happened while merging") + Text(" markings.").bold()
-                default:
-                    Text("A conflict has happened while merging.")
+            VStack(alignment: .leading) {
+                HStack {
+                    Text("Conflict while merging") + Text(" \(getConflictType()).").bold()
+
+                    Spacer()
+
+                    Button(action: {
+                        helpOpened.toggle()
+                    }, label: {
+                        Image(systemName: "questionmark.circle")
+                    })
+                    .sheet(isPresented: $helpOpened) {
+                        HelpView(isPresented: $helpOpened,
+                                 title: NSLocalizedString("help.conflict.\(getConflictType()).title",
+                                                          comment: "Title for specific conflict help text"),
+                                 helpText: NSLocalizedString("help.conflict.\(getConflictType()).text",
+                                                          comment: "Help text for specific conflict"))
+                    }
                 }
-            }.padding()
+                Text("Which one should be included?")
+            }
+            .padding()
 
             MergeConflictOverview(mrt: jwlmController.getConflict(index: conflictIndex).left).padding()
 
@@ -97,6 +107,20 @@ struct MergeConflictResolutionView: View {
             }
             .frame(maxWidth: .infinity)
             .padding(.horizontal)
+        }
+    }
+
+    func getConflictType() -> String {
+        let left = jwlmController.getConflict(index: conflictIndex).left?.model
+        switch left {
+        case .bookmark:
+            return "bookmarks"
+        case .userMarkBlockRange:
+            return "markings"
+        case .note:
+            return "notes"
+        default:
+            return "error"
         }
     }
 }
