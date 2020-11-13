@@ -10,10 +10,10 @@ import SwiftUI
 struct MergeSettingsView: View {
     @ObservedObject var jwlmController: JWLMController
 
-    // @State private var expanded: Bool = true
     @State private var bookmarkSolverIcon = "minus.circle"
     @State private var markingSolverIcon = "minus.circle"
     @State private var noteSolverIcon = "minus.circle"
+    @State private var helpOpened = false
 
     var body: some View {
         VStack {
@@ -21,11 +21,18 @@ struct MergeSettingsView: View {
                 Text("Conflict Autoresolution").font(.headline)
                 Spacer()
                 Button(action: {
-
+                    helpOpened.toggle()
                 },
                     label: {
                     Image(systemName: "questionmark.circle")
                 })
+                .sheet(isPresented: $helpOpened) {
+                    HelpView(isPresented: $helpOpened,
+                             title: NSLocalizedString("help.conflictAutoresolution.title",
+                                                      comment: "Title for conflictAutoresolution help text"),
+                             helpText: NSLocalizedString("help.conflictAutoresolution.text",
+                                                      comment: "Help text for conflictAutoresolution"))
+                }
             }
             .padding(.top, 10.0)
             .padding([.leading, .trailing])

@@ -26,6 +26,8 @@
 		F44BF830253376B10057B980 /* MergeSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F44BF82F253376B10057B980 /* MergeSettingsView.swift */; };
 		F44BF838253476110057B980 /* ExportView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F44BF837253476110057B980 /* ExportView.swift */; };
 		F44BF8512534D5070057B980 /* MergeConflictResolutionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F44BF8502534D5070057B980 /* MergeConflictResolutionView.swift */; };
+		F48F44B6255E808B0050C564 /* HelpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F48F44B5255E808B0050C564 /* HelpView.swift */; };
+		F48F44D2255EC4DC0050C564 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = F48F44D4255EC4DC0050C564 /* Localizable.strings */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -71,6 +73,9 @@
 		F44BF82F253376B10057B980 /* MergeSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MergeSettingsView.swift; sourceTree = "<group>"; };
 		F44BF837253476110057B980 /* ExportView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExportView.swift; sourceTree = "<group>"; };
 		F44BF8502534D5070057B980 /* MergeConflictResolutionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MergeConflictResolutionView.swift; sourceTree = "<group>"; };
+		F48F44B5255E808B0050C564 /* HelpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpView.swift; sourceTree = "<group>"; };
+		F48F44D3255EC4DC0050C564 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		F48F44D8255EC5090050C564 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -134,12 +139,14 @@
 				F44BF8502534D5070057B980 /* MergeConflictResolutionView.swift */,
 				F447E5BC255A7BC000C3DA35 /* MergeConflictOverview.swift */,
 				F441B1612549CEB100B0409B /* MergeConflictDetailsView.swift */,
+				F48F44B5255E808B0050C564 /* HelpView.swift */,
 				F43B4A1D253346DC005BF9E8 /* JWLMController.swift */,
 				F43ACC8E255AE45C00B6E970 /* Playground.swift */,
 				F43574BA2533411B00EC55D4 /* Assets.xcassets */,
 				F43574BF2533411B00EC55D4 /* Info.plist */,
 				F43574BC2533411B00EC55D4 /* Preview Content */,
 				F44BF82A2533602B0057B980 /* FileType.swift */,
+				F48F44D4255EC4DC0050C564 /* Localizable.strings */,
 			);
 			path = jwlm;
 			sourceTree = "<group>";
@@ -265,6 +272,7 @@
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
+				de,
 				Base,
 			);
 			mainGroup = F43574AA2533411800EC55D4;
@@ -287,6 +295,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F43574BE2533411B00EC55D4 /* Preview Assets.xcassets in Resources */,
+				F48F44D2255EC4DC0050C564 /* Localizable.strings in Resources */,
 				F43574BB2533411B00EC55D4 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -332,6 +341,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F48F44B6255E808B0050C564 /* HelpView.swift in Sources */,
 				F447E5AF255997BA00C3DA35 /* Models.swift in Sources */,
 				F43574B92533411900EC55D4 /* ContentView.swift in Sources */,
 				F441B1502549AE4900B0409B /* MergeView.swift in Sources */,
@@ -380,11 +390,24 @@
 		};
 /* End PBXTargetDependency section */
 
+/* Begin PBXVariantGroup section */
+		F48F44D4255EC4DC0050C564 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F48F44D3255EC4DC0050C564 /* en */,
+				F48F44D8255EC5090050C564 /* de */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
 /* Begin XCBuildConfiguration section */
 		F43574D62533411B00EC55D4 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -446,6 +469,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -518,7 +542,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 0.2.3;
+				MARKETING_VERSION = 0.2.4;
 				PRODUCT_BUNDLE_IDENTIFIER = "de.andreas-sk.jwlm";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -547,7 +571,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 0.2.3;
+				MARKETING_VERSION = 0.2.4;
 				PRODUCT_BUNDLE_IDENTIFIER = "de.andreas-sk.jwlm";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;

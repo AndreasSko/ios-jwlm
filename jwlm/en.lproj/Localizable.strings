@@ -1,0 +1,22 @@
+/* 
+  Localizable.strings
+  jwlm
+
+  Created by Andreas Skorczyk on 13.11.20.
+  
+*/
+
+"help.conflictAutoresolution.title" = "What is Conflict Autoresolution?";
+"help.conflictAutoresolution.text" = "When you are merging your backups, it might happen that two entries collide. Instead of asking you how to continue, you can decide to always choose one side instead of the other one. For Notes it's also possible to always choose the newer one. This might come in handy, if you are SURE that one side is always the one to include.\n\nThe safest path - especially when merging for the first time - is to leave it at `manual` and decide for each case, which entry should be included into the final backup.";
+
+"help.conflict.bookmarks.title" = "Bookmark conflict";
+"help.conflict.bookmarks.text" = "Bookmarks are set for each publication (i.e. a Watchtower issue or a Bible translation) and can be placed at ten different „slots“ (the colors you see in the app). A collision happens, if two bookmarks are placed at the same slot for the same publication.\n\n
+To figure out, to which publication this Bookmark belongs to, look at the additional information: „BookNumber“ and „ChapterNumber“ generally relate to a Bible book, while „DocumentID“ might be a Watchtower issue or a different publication.";
+
+"help.conflict.markings.title" = "Marking conflict";
+"help.conflict.markings.text" = "Markings conflict if they overlap at at least one point. A marking is defined by a Paragraph, a StartToken and EndToken. The two latter ones represent the beginning and the end of a marking, where words and punctuation marks are counted as tokens (e.g. the sentence “You are my witnesses,” contains eight
+tokens, as three words, three whitespaces and one comma are counted). Note that a marking can span multiple Paragraphs.\n\n
+To figure out where the marking is located, look at the additional information: „BookNumber“ and „ChapterNumber“ generally relate to a Bible book, while „DocumentID“ might be a Watchtower issue or a different publication.";
+
+"help.conflict.notes.title" = "Note conflict";
+"help.conflict.notes.text" = "A note collides if it exists on both sides (so it must have been synced at least once) and it differers in the title or content. It generally makes sense to choose the note with the newest date.";
