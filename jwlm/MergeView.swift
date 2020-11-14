@@ -63,7 +63,10 @@ struct MergeView: View {
             }
 
             if doneMerging {
-                ExportView(jwlmController: jwlmController)
+                VStack {
+                    Text("🎉").font(.title)
+                    ExportView(jwlmController: jwlmController)
+                }
             }
         }
     }
