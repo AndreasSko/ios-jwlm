@@ -11,8 +11,10 @@ import Gomobile
 struct MergeView: View {
     @ObservedObject var jwlmController: JWLMController
 
+    var enabled: Bool
+    @Binding var doneMerging: Bool
+
     @State private var isMerging: Bool = false
-    @State private var doneMerging: Bool = false
     @ObservedObject private var mergeProgress: MergeProgress = MergeProgress()
     @State private var showAlert: Bool = false
     @State private var alertMessage: String = ""
@@ -30,9 +32,11 @@ struct MergeView: View {
 
                     doneMerging = merge()
                     isMerging = false
+                    mergeProgress.percent = 0
                 }, label: {
                     Text("Merge")
                 })
+                .disabled(!enabled)
             }
             .font(.title2)
             .padding()
@@ -45,6 +49,7 @@ struct MergeView: View {
                 if cancelMerge {
                     doneMerging = false
                     isMerging = false
+                    mergeProgress.percent = 0
                 } else {
                     doneMerging = merge(reset: false)
                 }
@@ -58,7 +63,10 @@ struct MergeView: View {
             }
 
             if doneMerging {
-                ExportView(jwlmController: jwlmController)
+                VStack {
+                    Text("🎉").font(.title)
+                    ExportView(jwlmController: jwlmController)
+                }
             }
         }
     }
@@ -67,7 +75,7 @@ struct MergeView: View {
         do {
             try jwlmController.merge(reset: reset, progress: mergeProgress)
         } catch MergeError.mergeConflict {
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
                 showMergeConflictSheet.toggle()
             }
 
@@ -84,6 +92,8 @@ struct MergeView: View {
 struct MergeView_Previews: PreviewProvider {
     static var previews: some View {
         let jwlmController = JWLMController()
-        MergeView(jwlmController: jwlmController)
+        MergeView(jwlmController: jwlmController,
+                  enabled: true,
+                  doneMerging: .constant(false))
     }
 }

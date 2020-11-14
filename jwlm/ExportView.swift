@@ -29,7 +29,7 @@ struct ExportView: View {
             }
         }
         .alert(isPresented: $showAlert) {
-            Alert(title: Text("Error while merging"),
+            Alert(title: Text("Error while exporting"),
                   message: Text(self.alertMessage),
                   dismissButton: .default(Text("Ok")))
         }

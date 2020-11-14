@@ -23,15 +23,75 @@ struct MergeConflictResolutionView: View {
     }
 
     var body: some View {
-        VStack {
-            HStack(alignment: .top) {
+        NavigationView {
+            VStack {
+                VStack(alignment: .leading) {
+                    HStack {
+                        Text("Conflict while merging")
+                            + Text(" \(NSLocalizedString(getConflictType(), comment: "Name of the conflict")).").bold()
+
+                        Spacer()
+
+                        Button(action: {
+                            helpOpened.toggle()
+                        }, label: {
+                            Image(systemName: "questionmark.circle")
+                        })
+                        .sheet(isPresented: $helpOpened) {
+                            HelpView(isPresented: $helpOpened,
+                                     title: NSLocalizedString("help.conflict.\(getConflictType()).title",
+                                                              comment: "Title for specific conflict help text"),
+                                     helpText: NSLocalizedString("help.conflict.\(getConflictType()).text",
+                                                              comment: "Help text for specific conflict"))
+                        }
+                    }
+                    Text("Which one should be included?")
+                }
+                .padding()
+
+                MergeConflictOverview(mrt: jwlmController.getConflict(index: conflictIndex).left).padding()
+
+                ScrollView {
+                    VStack {
+                        MergeConflictDetailsView(conflict: jwlmController.getConflict(index: conflictIndex),
+                                                 side: .leftSide)
+                            .if((selectedSide == MergeSide.leftSide)) { view in
+                                view.overlay(
+                                    RoundedRectangle(cornerRadius: 10)
+                                        .stroke(Color.blue, lineWidth: 1))
+                            }
+                            .padding()
+                            .onTapGesture(count: 1, perform: {
+                                selectedSide = .leftSide
+                            })
+
+                        MergeConflictDetailsView(conflict: jwlmController.getConflict(index: conflictIndex),
+                                                 side: .rightSide)
+                            .if((selectedSide == MergeSide.rightSide)) { view in
+                                view.overlay(
+                                    RoundedRectangle(cornerRadius: 10)
+                                        .stroke(Color.blue, lineWidth: 1))
+                            }
+                            .padding()
+                            .onTapGesture(count: 1, perform: {
+                                selectedSide = .rightSide
+                            })
+                    }
+                    .frame(maxWidth: .infinity)
+                    Spacer()
+                }
+                .frame(maxWidth: .infinity)
+                .padding(.horizontal)
+            }
+            .navigationTitle("")
+            .navigationBarTitleDisplayMode(.inline)
+            .navigationBarItems(leading: (
                 Button(action: {
                     cancelMerge = true
                     presentationMode.wrappedValue.dismiss()
                 }, label: {
                     Text("Cancel")
-                })
-                Spacer()
+                })), trailing: (
                 Button(action: {
                     do {
                         try jwlmController.mergeConflicts.solveConflict(conflictIndex, side: selectedSide?.rawValue)
@@ -46,68 +106,8 @@ struct MergeConflictResolutionView: View {
                     }
                 }, label: {
                     Text("Continue")
-                })
-            }.padding([.leading, .trailing])
-
-            Divider()
-
-            VStack(alignment: .leading) {
-                HStack {
-                    Text("Conflict while merging")
-                        + Text(" \(NSLocalizedString(getConflictType(), comment: "Name of the conflict")).").bold()
-
-                    Spacer()
-
-                    Button(action: {
-                        helpOpened.toggle()
-                    }, label: {
-                        Image(systemName: "questionmark.circle")
-                    })
-                    .sheet(isPresented: $helpOpened) {
-                        HelpView(isPresented: $helpOpened,
-                                 title: NSLocalizedString("help.conflict.\(getConflictType()).title",
-                                                          comment: "Title for specific conflict help text"),
-                                 helpText: NSLocalizedString("help.conflict.\(getConflictType()).text",
-                                                          comment: "Help text for specific conflict"))
-                    }
-                }
-                Text("Which one should be included?")
-            }
-            .padding()
-
-            MergeConflictOverview(mrt: jwlmController.getConflict(index: conflictIndex).left).padding()
-
-            ScrollView {
-                VStack {
-                    MergeConflictDetailsView(conflict: jwlmController.getConflict(index: conflictIndex),
-                                             side: .leftSide)
-                        .if((selectedSide == MergeSide.leftSide)) { view in
-                            view.overlay(
-                                RoundedRectangle(cornerRadius: 10)
-                                    .stroke(Color.blue, lineWidth: 1))
-                        }
-                        .padding()
-                        .onTapGesture(count: 1, perform: {
-                            selectedSide = .leftSide
-                        })
-
-                    MergeConflictDetailsView(conflict: jwlmController.getConflict(index: conflictIndex),
-                                             side: .rightSide)
-                        .if((selectedSide == MergeSide.rightSide)) { view in
-                            view.overlay(
-                                RoundedRectangle(cornerRadius: 10)
-                                    .stroke(Color.blue, lineWidth: 1))
-                        }
-                        .padding()
-                        .onTapGesture(count: 1, perform: {
-                            selectedSide = .rightSide
-                        })
-                }
-                .frame(maxWidth: .infinity)
-                Spacer()
-            }
-            .frame(maxWidth: .infinity)
-            .padding(.horizontal)
+                }))
+            )
         }
     }
 
@@ -130,17 +130,5 @@ struct MergeConflictViewResolution_Previews: PreviewProvider {
     static var previews: some View {
         let jwlmController = JWLMController()
         MergeConflictResolutionView(jwlmController: jwlmController, cancelMerge: .constant(false))
-    }
-}
-
-// https://blog.kaltoun.cz/conditionally-applying-view-modifiers-in-swiftui/
-extension View {
-    @ViewBuilder
-    func `if`<Content: View>(_ condition: Bool, content: (Self) -> Content) -> some View {
-        if condition {
-            content(self)
-        } else {
-            self
-        }
     }
 }

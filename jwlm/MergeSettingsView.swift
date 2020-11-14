@@ -66,12 +66,16 @@ struct MergeSettingsView: View {
                             Image(systemName: "arrow.right")
                         })
                     } label: {
-                        Image(systemName: "bookmark")
+                        Spacer()
+                        Spacer()
+                        VStack {
+                            Image(systemName: "bookmark")
+                            Image(systemName: bookmarkSolverIcon)
+                                .font(.footnote)
+                                .foregroundColor(.gray)
+                                .padding(.top, 0.3)
+                        }.frame(width: 100, height: 60, alignment: .leading)
                     }
-                    Image(systemName: bookmarkSolverIcon)
-                        .font(.footnote)
-                        .foregroundColor(.gray)
-                        .padding(.top, 0.3)
                 }
                 Spacer()
                 VStack {
@@ -98,12 +102,15 @@ struct MergeSettingsView: View {
                             Image(systemName: "arrow.right")
                         })
                     } label: {
-                        Image(systemName: "pencil.tip")
+                        VStack {
+                            Image(systemName: "pencil.tip")
+                            Image(systemName: markingSolverIcon)
+                                .font(.footnote)
+                                .foregroundColor(.gray)
+                                .padding(.top, 0.3)
+
+                        }.frame(width: 100, height: 60, alignment: .center)
                     }
-                    Image(systemName: markingSolverIcon)
-                        .font(.footnote)
-                        .foregroundColor(.gray)
-                        .padding(.top, 0.3)
                 }
                 Spacer()
                 VStack {
@@ -137,16 +144,20 @@ struct MergeSettingsView: View {
                             Image(systemName: "arrow.right")
                         })
                     } label: {
-                        Image(systemName: "note.text")
+                        VStack {
+                            Image(systemName: "note.text")
+                            Image(systemName: noteSolverIcon)
+                                .font(.footnote)
+                                .foregroundColor(.gray)
+                                .padding(.top, 0.3)
+                        }.frame(width: 100, height: 60, alignment: .trailing)
+                        Spacer()
+                        Spacer()
                     }
-                    Image(systemName: noteSolverIcon)
-                        .font(.footnote)
-                        .foregroundColor(.gray)
-                        .padding(.top, 0.3)
                 }
             }
             .font(.title2)
-            .padding()
+            .padding(.bottom, 4)
         }
     }
 }

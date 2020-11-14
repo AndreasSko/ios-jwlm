@@ -11,6 +11,9 @@ struct ContentView: View {
     @ObservedObject var jwlmController: JWLMController
 
     @State private var sharedUrl: URL?
+    @State private var leftSelected: Bool = false
+    @State private var rightSelected: Bool = false
+    @State private var doneMerging: Bool = false
 
     var body: some View {
         VStack {
@@ -26,10 +29,14 @@ struct ContentView: View {
                 HStack {
                     BackupView(side: MergeSide.leftSide,
                                jwlmController: jwlmController,
-                               sharedUrl: $sharedUrl)
+                               sharedUrl: $sharedUrl,
+                               fileSelected: $leftSelected,
+                               doneMerging: $doneMerging)
                     BackupView(side: MergeSide.rightSide,
                                jwlmController: jwlmController,
-                               sharedUrl: $sharedUrl)
+                               sharedUrl: $sharedUrl,
+                               fileSelected: $rightSelected,
+                               doneMerging: $doneMerging)
                 }.padding(.horizontal)
             }
 
@@ -43,7 +50,9 @@ struct ContentView: View {
                 .shadow(color: Color.gray.opacity(0.2), radius: 20)
                 .padding([.top, .horizontal])
 
-            MergeView(jwlmController: jwlmController)
+            MergeView(jwlmController: jwlmController,
+                      enabled: leftSelected && rightSelected,
+                      doneMerging: $doneMerging)
 
             Spacer()
         }.onOpenURL { url in

@@ -53,6 +53,7 @@
 
 // ExportView
 "Export" = "Exportieren";
+"Error while exporting" = "Beim exportieren ist ein Fehler aufgetreten";
 
 // Help
 "help.conflictAutoresolution.title" = "Was bedeutet automatische Konfliktlösung?";
