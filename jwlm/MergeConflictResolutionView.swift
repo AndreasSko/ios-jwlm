@@ -132,15 +132,3 @@ struct MergeConflictViewResolution_Previews: PreviewProvider {
         MergeConflictResolutionView(jwlmController: jwlmController, cancelMerge: .constant(false))
     }
 }
-
-// https://blog.kaltoun.cz/conditionally-applying-view-modifiers-in-swiftui/
-extension View {
-    @ViewBuilder
-    func `if`<Content: View>(_ condition: Bool, content: (Self) -> Content) -> some View {
-        if condition {
-            content(self)
-        } else {
-            self
-        }
-    }
-}
