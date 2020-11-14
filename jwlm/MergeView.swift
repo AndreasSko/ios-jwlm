@@ -11,6 +11,8 @@ import Gomobile
 struct MergeView: View {
     @ObservedObject var jwlmController: JWLMController
 
+    var enabled: Bool
+
     @State private var isMerging: Bool = false
     @State private var doneMerging: Bool = false
     @ObservedObject private var mergeProgress: MergeProgress = MergeProgress()
@@ -34,6 +36,7 @@ struct MergeView: View {
                 }, label: {
                     Text("Merge")
                 })
+                .disabled(!enabled)
             }
             .font(.title2)
             .padding()
@@ -86,6 +89,7 @@ struct MergeView: View {
 struct MergeView_Previews: PreviewProvider {
     static var previews: some View {
         let jwlmController = JWLMController()
-        MergeView(jwlmController: jwlmController)
+        MergeView(jwlmController: jwlmController,
+                  enabled: true)
     }
 }

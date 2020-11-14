@@ -14,8 +14,8 @@ struct BackupView: View {
     @ObservedObject var jwlmController: JWLMController
 
     @Binding var sharedUrl: URL?
+    @Binding var fileSelected: Bool
 
-    @State private var fileSelected: Bool = false
     @State private var isImporting: Bool = false
     @State private var showAlert: Bool = false
     @State private var alertMessage: String = ""
@@ -139,6 +139,8 @@ struct BackupView: View {
 struct JWLBackupView_Previews: PreviewProvider {
     static var previews: some View {
         let jwlmController = JWLMController()
-        BackupView(side: MergeSide.leftSide, jwlmController: jwlmController, sharedUrl: .constant(nil))
+        BackupView(side: MergeSide.leftSide, jwlmController: jwlmController,
+                   sharedUrl: .constant(nil),
+                   fileSelected: .constant(true))
     }
 }
