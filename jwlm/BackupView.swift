@@ -24,67 +24,78 @@ struct BackupView: View {
 
     var body: some View {
         VStack {
-            if !fileSelected {
+            ZStack {
+                VStack {
+                    if !fileSelected {
+                        Button(action: {
+                            wasPressed()
+                        }, label: {
+                            Image(systemName: "square.and.arrow.down")
+                        })
+                            .font(.title)
+                            .padding()
+                        Text("Select Backup")
+                            .foregroundColor(.black)
+                    } else {
+                        VStack(alignment: .custom) {
+
+                            HStack {
+                                Text("Bookmarks:").bold()
+                                Text(String(dbStats.bookmark))
+                                    .alignmentGuide(.custom) { $0[.leading] }
+                            }
+
+                            HStack {
+                                Text("Notes:").bold()
+                                Text(String(dbStats.note))
+                                    .alignmentGuide(.custom) { $0[.leading] }
+                            }
+
+                            HStack {
+                                Text("Tags:").bold()
+                                Text(String(dbStats.tag))
+                                    .alignmentGuide(.custom) { $0[.leading] }
+                            }
+
+                            HStack {
+                                Text("Taggings:").bold()
+                                Text(String(dbStats.tagMap))
+                                    .alignmentGuide(.custom) { $0[.leading] }
+                            }
+
+                            HStack {
+                                Text("Markings:").bold()
+                                Text(String(dbStats.userMark))
+                                    .alignmentGuide(.custom) { $0[.leading] }
+                            }
+                        }
+                        .padding()
+
+                        Image(systemName: "checkmark.circle")
+                        .font(.title)
+                        .foregroundColor(.green)
+                            .padding(.bottom)
+                    }
+                }
+                .if(sharedUrl != nil) { view in
+                    view.blur(radius: 10.0)
+                }
+
                 if sharedUrl != nil {
-                    Button(action: {
-                        wasPressed()
-                    }, label: {
-                        Image(systemName: "plus.circle")
-                    })
-                        .font(.title)
-                        .padding()
-                    Text("Import")
-                        .foregroundColor(.black)
-                } else {
-                    Button(action: {
-                        wasPressed()
-                    }, label: {
-                        Image(systemName: "square.and.arrow.down")
-                    })
-                        .font(.title)
-                        .padding()
-                    Text("Select Backup")
-                        .foregroundColor(.black)
+                    VStack {
+                        Button(action: {
+                            wasPressed()
+                        }, label: {
+                            Image(systemName: "plus.circle")
+                        })
+                            .font(.title)
+                            .padding()
+                        Text("Import")
+                            .foregroundColor(.black)
+                    }
+                    .frame(width: 200, height: 180)
+                    .background(Color.white.opacity(0.5))
                 }
-            } else {
-                VStack(alignment: .custom) {
-
-                    HStack {
-                        Text("Bookmarks:").bold()
-                        Text(String(dbStats.bookmark))
-                            .alignmentGuide(.custom) { $0[.leading] }
-                    }
-
-                    HStack {
-                        Text("Notes:").bold()
-                        Text(String(dbStats.note))
-                            .alignmentGuide(.custom) { $0[.leading] }
-                    }
-
-                    HStack {
-                        Text("Tags:").bold()
-                        Text(String(dbStats.tag))
-                            .alignmentGuide(.custom) { $0[.leading] }
-                    }
-
-                    HStack {
-                        Text("Taggings:").bold()
-                        Text(String(dbStats.tagMap))
-                            .alignmentGuide(.custom) { $0[.leading] }
-                    }
-
-                    HStack {
-                        Text("Markings:").bold()
-                        Text(String(dbStats.userMark))
-                            .alignmentGuide(.custom) { $0[.leading] }
-                    }
-                }
-                .padding()
-
-                Image(systemName: "checkmark.circle")
-                .font(.title)
-                .foregroundColor(.green)
-                    .padding(.bottom)
             }
         }
         .frame(maxWidth: .infinity, minHeight: 200)
