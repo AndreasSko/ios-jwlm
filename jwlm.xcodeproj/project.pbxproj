@@ -16,7 +16,6 @@
 		F43574D42533411B00EC55D4 /* JwlmUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F43574D32533411B00EC55D4 /* JwlmUITests.swift */; };
 		F43574E92533418300EC55D4 /* Gomobile.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F43574E82533418300EC55D4 /* Gomobile.framework */; };
 		F43574F0253341CB00EC55D4 /* BackupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F43574EF253341CB00EC55D4 /* BackupView.swift */; };
-		F43ACC8F255AE45C00B6E970 /* Playground.swift in Sources */ = {isa = PBXBuildFile; fileRef = F43ACC8E255AE45C00B6E970 /* Playground.swift */; };
 		F43B4A1E253346DD005BF9E8 /* JWLMController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F43B4A1D253346DC005BF9E8 /* JWLMController.swift */; };
 		F441B1502549AE4900B0409B /* MergeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F441B14F2549AE4900B0409B /* MergeView.swift */; };
 		F441B1622549CEB100B0409B /* MergeConflictDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F441B1612549CEB100B0409B /* MergeConflictDetailsView.swift */; };
@@ -63,7 +62,6 @@
 		F43574D52533411B00EC55D4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F43574E82533418300EC55D4 /* Gomobile.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Gomobile.framework; sourceTree = "<group>"; };
 		F43574EF253341CB00EC55D4 /* BackupView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BackupView.swift; sourceTree = "<group>"; };
-		F43ACC8E255AE45C00B6E970 /* Playground.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Playground.swift; sourceTree = "<group>"; };
 		F43B4A1D253346DC005BF9E8 /* JWLMController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JWLMController.swift; sourceTree = "<group>"; };
 		F441B14F2549AE4900B0409B /* MergeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MergeView.swift; sourceTree = "<group>"; };
 		F441B1612549CEB100B0409B /* MergeConflictDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MergeConflictDetailsView.swift; sourceTree = "<group>"; };
@@ -141,7 +139,6 @@
 				F441B1612549CEB100B0409B /* MergeConflictDetailsView.swift */,
 				F48F44B5255E808B0050C564 /* HelpView.swift */,
 				F43B4A1D253346DC005BF9E8 /* JWLMController.swift */,
-				F43ACC8E255AE45C00B6E970 /* Playground.swift */,
 				F43574BA2533411B00EC55D4 /* Assets.xcassets */,
 				F43574BF2533411B00EC55D4 /* Info.plist */,
 				F43574BC2533411B00EC55D4 /* Preview Content */,
@@ -348,7 +345,6 @@
 				F43B4A1E253346DD005BF9E8 /* JWLMController.swift in Sources */,
 				F44BF82B2533602B0057B980 /* FileType.swift in Sources */,
 				F43574B72533411900EC55D4 /* JwlmApp.swift in Sources */,
-				F43ACC8F255AE45C00B6E970 /* Playground.swift in Sources */,
 				F441B1622549CEB100B0409B /* MergeConflictDetailsView.swift in Sources */,
 				F44BF830253376B10057B980 /* MergeSettingsView.swift in Sources */,
 				F43574F0253341CB00EC55D4 /* BackupView.swift in Sources */,
