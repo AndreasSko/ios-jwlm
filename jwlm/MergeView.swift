@@ -75,7 +75,7 @@ struct MergeView: View {
         do {
             try jwlmController.merge(reset: reset, progress: mergeProgress)
         } catch MergeError.mergeConflict {
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
                 showMergeConflictSheet.toggle()
             }
 
