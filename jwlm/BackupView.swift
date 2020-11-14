@@ -15,6 +15,7 @@ struct BackupView: View {
 
     @Binding var sharedUrl: URL?
     @Binding var fileSelected: Bool
+    @Binding var doneMerging: Bool
 
     @State private var isImporting: Bool = false
     @State private var showAlert: Bool = false
@@ -116,6 +117,7 @@ struct BackupView: View {
     }
 
     func wasPressed() {
+        doneMerging = false
         if sharedUrl != nil {
             importBackup(url: sharedUrl!)
             sharedUrl = nil
@@ -141,6 +143,7 @@ struct JWLBackupView_Previews: PreviewProvider {
         let jwlmController = JWLMController()
         BackupView(side: MergeSide.leftSide, jwlmController: jwlmController,
                    sharedUrl: .constant(nil),
-                   fileSelected: .constant(true))
+                   fileSelected: .constant(true),
+                   doneMerging: .constant(false))
     }
 }

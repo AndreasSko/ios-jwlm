@@ -12,9 +12,9 @@ struct MergeView: View {
     @ObservedObject var jwlmController: JWLMController
 
     var enabled: Bool
+    @Binding var doneMerging: Bool
 
     @State private var isMerging: Bool = false
-    @State private var doneMerging: Bool = false
     @ObservedObject private var mergeProgress: MergeProgress = MergeProgress()
     @State private var showAlert: Bool = false
     @State private var alertMessage: String = ""
@@ -93,6 +93,7 @@ struct MergeView_Previews: PreviewProvider {
     static var previews: some View {
         let jwlmController = JWLMController()
         MergeView(jwlmController: jwlmController,
-                  enabled: true)
+                  enabled: true,
+                  doneMerging: .constant(false))
     }
 }
