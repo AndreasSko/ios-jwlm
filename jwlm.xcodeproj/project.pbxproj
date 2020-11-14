@@ -108,8 +108,8 @@
 			isa = PBXGroup;
 			children = (
 				F43574B52533411900EC55D4 /* jwlm */,
-				F43574C72533411B00EC55D4 /* jwlmTests */,
 				F43574D22533411B00EC55D4 /* jwlmUITests */,
+				F43574C72533411B00EC55D4 /* jwlmTests */,
 				F43574B42533411900EC55D4 /* Products */,
 				F43574E72533418300EC55D4 /* Frameworks */,
 			);
