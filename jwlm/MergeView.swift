@@ -30,6 +30,7 @@ struct MergeView: View {
 
                     doneMerging = merge()
                     isMerging = false
+                    mergeProgress.percent = 0
                 }, label: {
                     Text("Merge")
                 })
@@ -45,6 +46,7 @@ struct MergeView: View {
                 if cancelMerge {
                     doneMerging = false
                     isMerging = false
+                    mergeProgress.percent = 0
                 } else {
                     doneMerging = merge(reset: false)
                 }
