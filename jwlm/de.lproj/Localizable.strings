@@ -41,7 +41,7 @@
 "Color:" = "Farbe:";
 "Paragraph:" = "Absatz:";
 "Content:" = "Inhalt:";
-"Last Modified": "Zuletzt geändert:";
+"Last Modified" = "Zuletzt geändert:";
 
 
 // MergeConflictResolutionView
