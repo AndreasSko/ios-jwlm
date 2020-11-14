@@ -1,0 +1,16 @@
+name: Build
+
+on:
+  push:
+
+jobs:
+  Build:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: sersoft-gmbh/xcodebuild-action@v1
+        with:
+          project: jwlm.xcodeproj
+          scheme: jwlm
+          destination: platform=iOS Simulator,name=iPhone 11
+          action: build
