@@ -5,3 +5,66 @@
   Created by Andreas Skorczyk on 13.11.20.
   
 */
+// General
+"Cancel" = "Abbrechen";
+"Continue" = "Weiter";
+"Done" = "Fertig";
+
+// BackupView
+"Select Backup" = "Backup auswählen";
+"Import" = "Importieren";
+"Error while importing backup" = "Beim Importieren ist ein Fehler aufgetreten";
+"Bookmarks:" = "Lesezeichen:";
+"Notes:" = "Notizen:";
+"Markings:" = "Markierungen:";
+
+// MergeView
+"Merge" = "Mergen";
+//"Merging bookmarks.." = "Merge "
+
+// MergeSettingsView
+"Conflict Autoresolution" = "Automatische Konfliktlösung";
+"Manual" = "Manuell";
+"Left" = "Links";
+"Right" = "Rechts";
+"Newest" = "Neueste";
+
+// MergeConflictOverview
+"Publication:" = "Publikation";
+"Book number:" = "Buch Nummer:"; //?
+"Chapter number:" = "Kapitel:"; //??
+"Slot" = "Slot"; //??
+
+// MergeConflictDetailsView
+"Title:" = "Titel:";
+"Snippet:" = "Vorschau:";
+"Color:" = "Farbe:";
+"Paragraph:" = "Absatz:";
+"Content:" = "Inhalt:";
+"Last Modified": "Zuletzt geändert:";
+
+
+// MergeConflictResolutionView
+"Conflict while merging" = "Konflikt während Mergen von";
+"Which one should be included?" = "Welcher Eintrag soll behalten werden?";
+"bookmarks" = "Lesezeichen";
+"markings" = "Markierungen";
+"notes" = "Notizen";
+
+// ExportView
+"Export" = "Exportieren";
+
+// Help
+"help.conflictAutoresolution.title" = "Was bedeutet automatische Konfliktlösung?";
+"help.conflictAutoresolution.text" = "Es kann vorkommen, dass beim Mergen zwei Einträge kollidieren. Anstatt jedes mal gefragt zu werden, wie weitergemacht werden soll, kannst Du einstellen, dass für eine Kategorie immer die gleiche Seite verwendet wird. Bei Notizen besteht zusätzlich die Möglichkeit, immer die neueste auszuwählen. Das kann praktisch sein, wenn du dir sicher bist, dass du bei Konflikten immer die gleiche Seite verwenden möchtest. Am sichersten bist du - gerade wenn du zum ersten mal zwei Backups mergt - allerdings immer, wenn du die Einstellung bei „Manuell“ belässt und für jeden Fall einzeln entscheidest, welcher Eintrag im Backup enthalten sein soll.";
+
+"help.conflict.bookmarks.title" = "Lesezeichen-Konflikt";
+"help.conflict.bookmarks.text" = "Lesezeichen gelten pro Publikation (z.B. eine Wachtturm-Ausgabe oder Bibelübersetzung) und können an zehn verschiedenen Stellen - den sogenannten „Slots“ - platziert werden. Eine Kollision entsteht dann, wenn zwei Lesezeichen in der selben Publikation auf der gleichen Position liegen. Wähle das Lesezeichen aus, das im gemergten Backup enthalten sein soll.\n\n
+Um herauszufinden, zu welcher Publikation ein Lesezeichen gehört, kannst du dich an folgenden Informationen orientieren: „Buch Nummer“ und „Kapitel“ weisen in der Regel auf ein Bibelbuch hin, während „DocumentID“ zu einer Wachtturm-Ausgabe oder einer anderen Publikation gehört.";
+
+"help.conflict.markings.title" = "Markierungs-Konflikt";
+"help.conflict.markings.text" = "Markierungen kollidieren, wenn sie an mindestens einer Stelle überlappen. Eine Markierung ist durch einen Absatz, einen sog. „StartToken“ und „EndToken“ definiert. Die beiden letzteren beschreiben den Beginn bzw. Schluss einer Markierung, wobei Wörter, Leer- und Satzzeichen als Token zählen: Der Satz „Ihr seid meine Zeugen,“ besteht also aus 8 Token: Vier Wörter, drei Leerzeichen und ein Komma. Beachte, dass Markierungen über mehrere Absätze gehen können. Wähle die Markierung aus, die im gemergten Backup enthalten sein soll.\n\n
+Um herauszufinden, zu welcher Publikation eine Markierung gehört, kannst du dich an folgenden Informationen orientieren: „Buch Nummer“ und „Kapitel“ weisen in der Regel auf ein Bibelbuch hin, während „DocumentID“ zu einer Wachtturm-Ausgabe oder einer anderen Publikation gehört.";
+
+"help.conflict.notes.title" = "Notizen-Konflikt";
+"help.conflict.notes.text" = "Eine Notiz kollidiert, wenn sie auf beiden Seiten existiert (sie muss in der Vergangenheit also bereits mindestens einmal synchronisiert worden sein) und sie sich im Titel oder Inhalt unterscheidet. Im Allgemeinen macht es Sinn, die neuere Notiz zu wählen.";

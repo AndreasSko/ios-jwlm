@@ -53,7 +53,8 @@ struct MergeConflictResolutionView: View {
 
             VStack(alignment: .leading) {
                 HStack {
-                    Text("Conflict while merging") + Text(" \(getConflictType()).").bold()
+                    Text("Conflict while merging")
+                        + Text(" \(NSLocalizedString(getConflictType(), comment: "Name of the conflict")).").bold()
 
                     Spacer()
 
