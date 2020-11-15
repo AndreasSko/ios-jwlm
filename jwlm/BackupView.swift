@@ -42,34 +42,39 @@ struct BackupView: View {
                             HStack {
                                 Text("Bookmarks:").bold()
                                 Text(String(dbStats.bookmark))
+                                    .font(.callout)
                                     .alignmentGuide(.custom) { $0[.leading] }
                             }
 
                             HStack {
                                 Text("Notes:").bold()
                                 Text(String(dbStats.note))
+                                    .font(.callout)
                                     .alignmentGuide(.custom) { $0[.leading] }
                             }
 
                             HStack {
                                 Text("Tags:").bold()
                                 Text(String(dbStats.tag))
+                                    .font(.callout)
                                     .alignmentGuide(.custom) { $0[.leading] }
                             }
 
                             HStack {
                                 Text("Taggings:").bold()
                                 Text(String(dbStats.tagMap))
+                                    .font(.callout)
                                     .alignmentGuide(.custom) { $0[.leading] }
                             }
 
                             HStack {
                                 Text("Markings:").bold()
                                 Text(String(dbStats.userMark))
+                                    .font(.callout)
                                     .alignmentGuide(.custom) { $0[.leading] }
                             }
                         }
-                        .padding()
+                        .padding(.vertical)
 
                         Image(systemName: "checkmark.circle")
                         .font(.title)
