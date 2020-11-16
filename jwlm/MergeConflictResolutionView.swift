@@ -49,7 +49,8 @@ struct MergeConflictResolutionView: View {
                 }
                 .padding()
 
-                MergeConflictOverview(mrt: jwlmController.getConflict(index: conflictIndex).left).padding()
+                MergeConflictOverview(mrt: jwlmController.getConflict(index: conflictIndex).left)
+                    .padding(.top)
 
                 ScrollView {
                     VStack {
@@ -60,7 +61,9 @@ struct MergeConflictResolutionView: View {
                                     RoundedRectangle(cornerRadius: 10)
                                         .stroke(Color.blue, lineWidth: 1))
                             }
-                            .padding()
+                            .padding(.top, 40)
+                            .padding(.horizontal)
+                            .padding(.bottom, 10)
                             .onTapGesture(count: 1, perform: {
                                 selectedSide = .leftSide
                             })
@@ -72,7 +75,7 @@ struct MergeConflictResolutionView: View {
                                     RoundedRectangle(cornerRadius: 10)
                                         .stroke(Color.blue, lineWidth: 1))
                             }
-                            .padding()
+                            .padding(.horizontal)
                             .onTapGesture(count: 1, perform: {
                                 selectedSide = .rightSide
                             })
@@ -81,7 +84,6 @@ struct MergeConflictResolutionView: View {
                     Spacer()
                 }
                 .frame(maxWidth: .infinity)
-                .padding(.horizontal)
             }
             .navigationTitle("")
             .navigationBarTitleDisplayMode(.inline)

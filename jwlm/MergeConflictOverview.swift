@@ -62,6 +62,7 @@ struct NoteOverview: View {
                     Text("\(related?.location?.title.string ?? "")")
                         .alignmentGuide(.custom) { $0[.leading] }
                 }
+                .padding(.bottom, 0.5)
             }
 
             if related?.location?.keySymbol.valid ?? false {
