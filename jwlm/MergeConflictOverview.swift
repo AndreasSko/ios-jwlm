@@ -44,10 +44,29 @@ struct BookmarkOverview: View {
 
             HStack(alignment: .top) {
                 Text("Slot:").bold()
-                Text("\(bookmark.slot)").alignmentGuide(.custom) { $0[.leading] }
+                HStack {
+                    Text("\(bookmark.slot)")
+                    Image(systemName: "bookmark.fill")
+                        .foregroundColor(bookmarkColors[bookmark.slot])
+
+                }
+                .alignmentGuide(.custom) { $0[.leading] }
             }
         }
     }
+
+    let bookmarkColors: [Int: Color] = [
+        0: Color(red: 0.64, green: 0.24, blue: 0.40),
+        1: Color(red: 0.48, green: 0.40, blue: 0.60),
+        2: Color(red: 0.39, green: 0.51, blue: 0.69),
+        3: Color(red: 0.12, green: 0.74, blue: 0.73),
+        4: Color(red: 0.25, green: 0.57, blue: 0.38),
+        5: Color(red: 0.33, green: 0.78, blue: 0.46),
+        6: Color(red: 0.81, green: 0.83, blue: 0.52),
+        7: Color(red: 0.86, green: 0.52, blue: 0.33),
+        8: Color(red: 0.86, green: 0.39, blue: 0.30),
+        9: Color(red: 0.62, green: 0.40, blue: 0.26)
+    ]
 }
 
 struct NoteOverview: View {
