@@ -67,8 +67,9 @@ struct BookmarkDetail: View {
                     KeyValue(key: "Snippet:", value: bookmark.snippet.string)
                 }
 
-            if bookmark.blockIdentifier.valid {
-                    KeyValue(key: "Paragraph:", value: String(bookmark.blockIdentifier.int32))
+                if bookmark.blockIdentifier.valid {
+                    KeyValue(key: "Paragraph:",
+                             value: String(bookmark.blockIdentifier.int32))
                 }
             }
             Spacer()
@@ -80,7 +81,7 @@ struct NoteDetail: View {
     var note: Note
 
     var body: some View {
-                HStack {
+        HStack {
             VStack(alignment: .leading) {
                 if note.title.valid {
                     KeyValue(key: "Title:", value: note.title.string)
@@ -88,14 +89,27 @@ struct NoteDetail: View {
 
                 if note.content.valid {
                     KeyValue(key: "Content:", value: note.content.string)
-            }
-
-                KeyValue(key: "Last Modified:", value: note.lastModified)
                 }
+
+                KeyValue(key: "Last Modified:",
+                         value: formatDate(note.lastModified))
+            }
             Spacer()
-            }
-            }
         }
+    }
+
+    func formatDate(_ dateString: String) -> String {
+        let parser = DateFormatter()
+        parser.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZZZZZ"
+        let parsed = parser.date(from: dateString) ?? Date()
+
+        let formatter = DateFormatter()
+        formatter.dateStyle = .long
+        formatter.timeStyle = .short
+
+        return String(formatter.string(from: parsed))
+    }
+}
 
 struct UserMarkBlockRangeDetail: View {
     var umbr: UserMarkBlockRange
