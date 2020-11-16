@@ -21,7 +21,7 @@ struct ExportView: View {
                 do {
                     let path = try jwlmController.exportBackup()
                     exportedURL = NSURL.fileURL(withPath: path)
-                    isExporting = true
+                    isExporting.toggle()
                 } catch {
                     alertMessage = error.localizedDescription
                     showAlert = true

@@ -41,6 +41,7 @@ struct BackupView: View {
 
                             HStack {
                                 Text("Bookmarks:").bold()
+                                    .padding(.trailing, -7)
                                 Text(String(dbStats.bookmark))
                                     .font(.callout)
                                     .alignmentGuide(.custom) { $0[.leading] }
@@ -48,6 +49,7 @@ struct BackupView: View {
 
                             HStack {
                                 Text("Notes:").bold()
+                                    .padding(.trailing, -7)
                                 Text(String(dbStats.note))
                                     .font(.callout)
                                     .alignmentGuide(.custom) { $0[.leading] }
@@ -55,6 +57,7 @@ struct BackupView: View {
 
                             HStack {
                                 Text("Tags:").bold()
+                                    .padding(.trailing, -7)
                                 Text(String(dbStats.tag))
                                     .font(.callout)
                                     .alignmentGuide(.custom) { $0[.leading] }
@@ -62,6 +65,7 @@ struct BackupView: View {
 
                             HStack {
                                 Text("Taggings:").bold()
+                                    .padding(.trailing, -7)
                                 Text(String(dbStats.tagMap))
                                     .font(.callout)
                                     .alignmentGuide(.custom) { $0[.leading] }
@@ -69,6 +73,7 @@ struct BackupView: View {
 
                             HStack {
                                 Text("Markings:").bold()
+                                    .padding(.trailing, -7)
                                 Text(String(dbStats.userMark))
                                     .font(.callout)
                                     .alignmentGuide(.custom) { $0[.leading] }
