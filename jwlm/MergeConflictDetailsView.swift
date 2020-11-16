@@ -119,7 +119,7 @@ struct UserMarkBlockRangeDetail: View {
             HStack {
                 Text("Color:").bold()
                 Circle()
-                    .fill(translateColor(umbr.userMark.colorIndex))
+                    .fill(markingColors[umbr.userMark.colorIndex] ?? Color(red: 1.00, green: 1, blue: 1))
                     .frame(width: 20, height: 20)
                     .alignmentGuide(.custom) { $0[.leading] }
             }
@@ -151,28 +151,14 @@ struct UserMarkBlockRangeDetail: View {
         }
     }
 
-    func translateColor(_ index: Int) -> Color {
-        var color: Color
-        switch index {
-        case 1:
-            color = Color(red: 1.00, green: 0.93, blue: 0.23)
-        case 2:
-            color = Color(red: 0.62, green: 0.98, blue: 0.32)
-        case 3:
-            color = Color(red: 0.16, green: 0.71, blue: 0.96)
-        case 4:
-            color = Color(red: 1.00, green: 0.63, blue: 0.78)
-        case 5:
-            color = Color(red: 1.00, green: 0.73, blue: 0.46)
-        case 6:
-            color = Color(red: 0.68, green: 0.52, blue: 1.00)
-
-        default:
-            color = Color(red: 0, green: 0, blue: 0)
-        }
-
-        return color
-    }
+    let markingColors: [Int: Color] = [
+        1: Color(red: 1.00, green: 0.93, blue: 0.23),
+        2: Color(red: 0.62, green: 0.98, blue: 0.32),
+        3: Color(red: 0.16, green: 0.71, blue: 0.96),
+        4: Color(red: 1.00, green: 0.63, blue: 0.78),
+        5: Color(red: 1.00, green: 0.73, blue: 0.46),
+        6: Color(red: 0.68, green: 0.52, blue: 1.00)
+    ]
 }
 
 struct KeyValue: View {
