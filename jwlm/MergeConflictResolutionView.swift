@@ -108,7 +108,8 @@ struct MergeConflictResolutionView: View {
                     }
                 }, label: {
                     Text("Continue")
-                }))
+                }).disabled(selectedSide == nil)
+                )
             )
         }
     }
