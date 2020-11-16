@@ -13,15 +13,20 @@ struct MergeConflictDetailsView: View {
     var side: MergeSide
 
     var body: some View {
-
-        VStack {
+        VStack(alignment: .leading) {
             switch selectConflict().model {
             case .bookmark(let bookmark):
-                BookmarkDetail(bookmark: bookmark).padding()
+                BookmarkDetail(bookmark: bookmark)
+                    .frame(maxWidth: .infinity)
+                    .padding()
             case .userMarkBlockRange(let umbr):
-                UserMarkBlockRangeDetail(umbr: umbr).padding()
+                UserMarkBlockRangeDetail(umbr: umbr)
+                    .frame(maxWidth: .infinity)
+                    .padding()
             case .note(let note):
-                NoteDetail(note: note).padding()
+                NoteDetail(note: note)
+                    .frame(maxWidth: .infinity)
+                    .padding()
             default:
                 Text("Error! Can not generate preview")
             }
@@ -54,28 +59,19 @@ struct BookmarkDetail: View {
     var bookmark: Bookmark
 
     var body: some View {
-        VStack(alignment: .custom) {
             HStack {
-                Text("Title:").bold()
-                Text(bookmark.title).alignmentGuide(.custom) { $0[.leading] }
-            }
-            .padding(.bottom, 0.5)
+            VStack(alignment: .leading) {
+                KeyValue(key: "Title:", value: bookmark.title)
 
-            if bookmark.snippet.valid {
-                HStack(alignment: .top) {
-                    Text("Snippet:").font(Font.body.bold())
-                    Text(bookmark.snippet.string).alignmentGuide(.custom) { $0[.leading] }
+                if bookmark.snippet.valid && bookmark.snippet.string != "" {
+                    KeyValue(key: "Snippet:", value: bookmark.snippet.string)
                 }
-                .padding(.bottom, 0.5)
-            }
 
             if bookmark.blockIdentifier.valid {
-                HStack {
-                    Text("Paragraph:").font(Font.body.bold())
-                    Text("\(bookmark.blockIdentifier.int32)").alignmentGuide(.custom) { $0[.leading] }
-                    Spacer()
+                    KeyValue(key: "Paragraph:", value: String(bookmark.blockIdentifier.int32))
                 }
             }
+            Spacer()
         }
     }
 }
@@ -84,31 +80,22 @@ struct NoteDetail: View {
     var note: Note
 
     var body: some View {
-        VStack(alignment: .custom) {
-
-            if note.title.valid {
                 HStack {
-                    Text("Title:").bold()
-                    Text("\(note.title.string)").alignmentGuide(.custom) { $0[.leading] }
+            VStack(alignment: .leading) {
+                if note.title.valid {
+                    KeyValue(key: "Title:", value: note.title.string)
                 }
-                .padding(.bottom, 0.5)
+
+                if note.content.valid {
+                    KeyValue(key: "Content:", value: note.content.string)
             }
 
-            if note.content.valid {
-                HStack {
-                    Text("Content:").bold()
-                    Text("\(note.content.string)").alignmentGuide(.custom) { $0[.leading] }
+                KeyValue(key: "Last Modified:", value: note.lastModified)
                 }
-                .padding(.bottom, 0.5)
+            Spacer()
             }
-
-            HStack {
-                Text("Last Modified:").bold()
-                Text("\(note.lastModified)").alignmentGuide(.custom) { $0[.leading] }
             }
         }
-    }
-}
 
 struct UserMarkBlockRangeDetail: View {
     var umbr: UserMarkBlockRange
@@ -171,6 +158,17 @@ struct UserMarkBlockRangeDetail: View {
         }
 
         return color
+    }
+}
+
+struct KeyValue: View {
+    var key: String
+    var value: String
+
+    var body: some View {
+        Text(NSLocalizedString(key, comment: "String")).bold()
+        Text(value)
+            .padding(.bottom, 0.5)
     }
 }
 
