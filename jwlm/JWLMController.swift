@@ -20,6 +20,7 @@ struct ModelRelatedTuple: Decodable {
 }
 
 struct MergeConflict {
+    let key: String
     let left: ModelRelatedTuple?
     let right: ModelRelatedTuple?
 }
@@ -45,6 +46,7 @@ class MergeProgress: ObservableObject {
 enum MergeError: Error {
     case notInitialized(message: String)
     case mergeConflict
+    case noConflicts
     case error(message: String)
 }
 
@@ -129,22 +131,19 @@ class JWLMController: ObservableObject {
         }
     }
 
-    func getConflict(index: Int) -> MergeConflict {
+    func nextConflict() throws -> MergeConflict {
         do {
-            let goConflict = try self.mergeConflicts.getConflict(index)
-            let left: ModelRelatedTuple = try JSONDecoder().decode(ModelRelatedTuple.self,
-                                                                   from: goConflict.left.data(using: .utf8)!)
-            let right: ModelRelatedTuple = try JSONDecoder().decode(ModelRelatedTuple.self,
-                                                                    from: goConflict.right.data(using: .utf8)!)
-
-            return MergeConflict(left: left, right: right)
+            let conflict = try self.mergeConflicts.nextConflict()
+            let left = try JSONDecoder().decode(ModelRelatedTuple.self,
+                                                from: conflict.left.data(using: .utf8)!)
+            let right = try JSONDecoder().decode(ModelRelatedTuple.self,
+                                                 from: conflict.right.data(using: .utf8)!)
+            return MergeConflict(key: conflict.key, left: left, right: right)
         } catch {
-            print(error)
-            return MergeConflict(left: nil, right: nil)
+            if error.localizedDescription.starts(with: "There are no unsolved conflicts") {
+                throw MergeError.noConflicts
+            }
+            throw error
         }
-    }
-
-    func nextConflictID() -> Int {
-        return mergeConflicts.getNextConflictIndex()
     }
 }

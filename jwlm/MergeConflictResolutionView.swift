@@ -12,14 +12,20 @@ struct MergeConflictResolutionView: View {
     @ObservedObject var jwlmController: JWLMController
     @Environment(\.presentationMode) var presentationMode
     @Binding private var cancelMerge: Bool
-    @State private var conflictIndex: Int!
+    @State private var conflict: MergeConflict
     @State private var selectedSide: MergeSide?
     @State private var helpOpened = false
+    @State private var showAlert: Bool = false
+    @State private var alertMessage: String = ""
 
     init (jwlmController: JWLMController, cancelMerge: Binding<Bool>) {
         self.jwlmController = jwlmController
         self._cancelMerge = cancelMerge
-        _conflictIndex = State(initialValue: jwlmController.nextConflictID())
+        do {
+            try _conflict = State(initialValue: jwlmController.nextConflict())
+        } catch {
+            _conflict = State(initialValue: MergeConflict(key: "", left: nil, right: nil))
+        }
     }
 
     var body: some View {
@@ -49,12 +55,12 @@ struct MergeConflictResolutionView: View {
                 }
                 .padding()
 
-                MergeConflictOverview(mrt: jwlmController.getConflict(index: conflictIndex).left)
+                MergeConflictOverview(mrt: conflict.left)
                     .padding(.top)
 
                 ScrollView {
                     VStack {
-                        MergeConflictDetailsView(conflict: jwlmController.getConflict(index: conflictIndex),
+                        MergeConflictDetailsView(conflict: conflict,
                                                  side: .leftSide)
                             .if((selectedSide == MergeSide.leftSide)) { view in
                                 view.overlay(
@@ -68,7 +74,7 @@ struct MergeConflictResolutionView: View {
                                 selectedSide = .leftSide
                             })
 
-                        MergeConflictDetailsView(conflict: jwlmController.getConflict(index: conflictIndex),
+                        MergeConflictDetailsView(conflict: conflict,
                                                  side: .rightSide)
                             .if((selectedSide == MergeSide.rightSide)) { view in
                                 view.overlay(
@@ -96,15 +102,14 @@ struct MergeConflictResolutionView: View {
                 })), trailing: (
                 Button(action: {
                     do {
-                        try jwlmController.mergeConflicts.solveConflict(conflictIndex, side: selectedSide?.rawValue)
-                        if jwlmController.nextConflictID() >= 0 {
-                            conflictIndex = jwlmController.nextConflictID()
-                            selectedSide = nil
-                        } else {
-                            presentationMode.wrappedValue.dismiss()
-                        }
+                        try jwlmController.mergeConflicts.solveConflict(conflict.key, side: selectedSide?.rawValue)
+                        try conflict = jwlmController.nextConflict()
+                        selectedSide = nil
+                    } catch MergeError.noConflicts {
+                        presentationMode.wrappedValue.dismiss()
                     } catch {
-                        return
+                        alertMessage = error.localizedDescription
+                        showAlert.toggle()
                     }
                 }, label: {
                     Text("Continue")
@@ -112,10 +117,15 @@ struct MergeConflictResolutionView: View {
                 )
             )
         }
+        .alert(isPresented: $showAlert) {
+            Alert(title: Text("Error"),
+                  message: Text(self.alertMessage),
+                  dismissButton: .default(Text("Ok")))
+        }
     }
 
     func getConflictType() -> String {
-        let left = jwlmController.getConflict(index: conflictIndex).left?.model
+        let left = conflict.left?.model
         switch left {
         case .bookmark:
             return "bookmarks"

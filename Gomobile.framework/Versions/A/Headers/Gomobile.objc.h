@@ -106,6 +106,7 @@ to make it compatible with Gomobile.
 
 - (nonnull instancetype)initWithRef:(_Nonnull id)ref;
 - (nonnull instancetype)init;
+@property (nonatomic) NSString* _Nonnull key;
 @property (nonatomic) NSString* _Nonnull left;
 @property (nonatomic) NSString* _Nonnull right;
 @end
@@ -136,34 +137,19 @@ actual conflicts to make it compatible with Gomobile.
 - (nonnull instancetype)init;
 @property (nonatomic) GomobileDatabaseWrapper* _Nullable dbWrapper;
 /**
- * ConflictsLen returns the length of the conflicts map.
- */
-- (long)conflictsLen;
-/**
- * GetConflict returns the conflict at index
- */
-- (GomobileMergeConflict* _Nullable)getConflict:(long)index error:(NSError* _Nullable* _Nullable)error;
-/**
- * GetNextConflictIndex returns the next conflict index, for which
-the conflict is not solved yet. If there are none left, it returns
--1 indicating that all conflicts have been solved.
- */
-- (long)getNextConflictIndex;
-/**
  * InitDBWrapper initializes the DatabaseWrapper for the MergeConflictsWrapper
 so the DB is accessible for pretty printing.
  */
 - (void)initDBWrapper:(GomobileDatabaseWrapper* _Nullable)dbw;
 /**
- * SolutionsLen returns the length of the solutions slice
+ * NextConflict returns the next conflict that should be solved. If there
+are no left, it returns an error
  */
-- (long)solutionsLen;
+- (GomobileMergeConflict* _Nullable)nextConflict:(NSError* _Nullable* _Nullable)error;
 /**
- * SolveConflict solves a mergeConflict by choosing the given side at index.
-Index must be less or equal to GetNextConflictIndex(), to ensure that
-conflicts are solved in order and none are missed.
+ * SolveConflict solves a mergeConflict represented by key and chooses the given side
  */
-- (BOOL)solveConflict:(long)index side:(NSString* _Nullable)side error:(NSError* _Nullable* _Nullable)error;
+- (BOOL)solveConflict:(NSString* _Nullable)key side:(NSString* _Nullable)side error:(NSError* _Nullable* _Nullable)error;
 @end
 
 #endif
