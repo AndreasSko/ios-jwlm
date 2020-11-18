@@ -127,7 +127,7 @@ struct UserMarkBlockRangeDetail: View {
 
             ForEach(umbr.blockRanges, id: \.blockRangeId) { blockRange in
                 HStack {
-                    Text("Paragraph:").bold()
+                    Text("Identifier:").bold()
                     Text("\(blockRange.identifier)").alignmentGuide(.custom) { $0[.leading] }
                 }
                 .padding(.bottom, 0.5)

@@ -14,8 +14,7 @@
 To figure out, to which publication this Bookmark belongs to, look at the additional information: „BookNumber“ and „ChapterNumber“ generally relate to a Bible book, while „DocumentID“ might be a Watchtower issue or a different publication.";
 
 "help.conflict.markings.title" = "Marking conflict";
-"help.conflict.markings.text" = "Markings conflict if they overlap at at least one point. A marking is defined by a Paragraph, a StartToken and EndToken. The two latter ones represent the beginning and the end of a marking, where words and punctuation marks are counted as tokens (e.g. the sentence “You are my witnesses,” contains five
-tokens, as four words and one comma are counted). Note that a marking can span multiple Paragraphs. Choose the marking that should be included in the merged backup. The upper one belongs to the right backup, the lower one to the left.\n\n
+"help.conflict.markings.text" = "Markings conflict if they overlap at at least one point. A marking is defined by a Identifier, a StartToken and EndToken. You can think of identifier as paragraphs in a extended way: In bible books thery generally correlate to the verses, however in other publications, questions and captions are also counted towards identifiers. Start- and Endtoken represent the beginning and the end of a marking, where words and punctuation marks are counted as tokens (e.g. the sentence “You are my witnesses,” contains five tokens, as four words and one comma are counted). Note that a marking can span multiple Paragraphs. Choose the marking that should be included in the merged backup. The upper one belongs to the right backup, the lower one to the left.\n\n
 To figure out where the marking is located, look at the additional information: „BookNumber“ and „ChapterNumber“ generally relate to a Bible book, while „DocumentID“ might be a Watchtower issue or a different publication.";
 
 "help.conflict.notes.title" = "Note conflict";
