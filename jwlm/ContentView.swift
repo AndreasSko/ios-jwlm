@@ -14,6 +14,7 @@ struct ContentView: View {
     @State private var leftSelected: Bool = false
     @State private var rightSelected: Bool = false
     @State private var doneMerging: Bool = false
+    @State private var openSettings: Bool = false
 
     var body: some View {
         VStack {
@@ -55,7 +56,19 @@ struct ContentView: View {
                       doneMerging: $doneMerging)
 
             Spacer()
-        }.onOpenURL { url in
+
+            Button(action: {
+                openSettings.toggle()
+            }, label: {
+                Image(systemName: "gear")
+            })
+            .padding(.horizontal)
+            .frame(maxWidth: .infinity, alignment: .leading)
+            .sheet(isPresented: $openSettings, content: {
+                SettingsView()
+            })
+        }
+        .onOpenURL { url in
             sharedUrl = url
         }
     }

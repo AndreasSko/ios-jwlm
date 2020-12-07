@@ -100,3 +100,10 @@ Um herauszufinden, zu welcher Publikation eine Markierung gehört, kannst du dic
 
 "help.conflict.notes.title" = "Notizen-Konflikt";
 "help.conflict.notes.text" = "Eine Notiz kollidiert, wenn sie auf beiden Seiten existiert (sie muss in der Vergangenheit also bereits mindestens einmal synchronisiert worden sein) und sie sich im Titel oder Inhalt unterscheidet. Im Allgemeinen macht es Sinn, die neuere Notiz zu wählen. Die obere gehört zum linken Backup, die untere zum rechten.";
+
+// Settings
+"Settings" = "Einstellungen";
+"Show Tutorial again" = "Tutorial nochmal anzeigen";
+"Open Issue on GitHub" = "Issue auf GitHub erstellen";
+"Review Privacy Policy" = "Datenschutz-Bestimmungen";
+"Visit project on GitHub" = "Project auf GitHub besuchen";
