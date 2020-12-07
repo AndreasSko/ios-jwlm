@@ -56,6 +56,36 @@
 "Export" = "Exportieren";
 "Error while exporting" = "Beim exportieren ist ein Fehler aufgetreten";
 
+// Onboarding
+"onboarding.1" = "Mit JWLM kannst du zwei JW-Libraries zusammenführen";
+"onboarding.1.trademark" = "(JW Library ist eine eingetragene Marke der Watch Tower Bible and Tract Society of Pennsylvania.)";
+
+"onboarding.2.first" = "Wähle die beiden Backups aus";
+"Pro Tips:" = "Tipp:";
+"onboarding.2.proTip.first" = "Nutze AirDrop um Backups zwischen -Geräten zu senden";
+"onboarding.2.proTip.second" = "Mithile der Teilen-Funktion kannst du lokale Backups direkt an JWLM senden";
+"onboarding.2.proTip.third" = "Du kannst auch iCloud, Dropbox etc. nutzen, um Backups von anderen Geräten zu importieren";
+
+"onboarding.3.first" = "Entscheide, ob Konflikte automatisch gelöst werden sollen";
+"onboarding.3.second" = "Du kannst später mehr darüber erfahren. Fürs erste mal, kannst du es ignorieren.";
+"onboarding.3.third" = "..und leg los durch klicken von";
+
+"onboarding.4.first" = "JWLM prüft, ob Einträge kollidieren";
+"onboarding.4.second" = "Sollte es Konflikte geben, wähle einfach die Seite aus, die erhalten bleiben soll.";
+"onboarding.4.third" = "Nachdem das erledigt ist, kann du das gemergte Backup exportieren.";
+
+"onboarding.5.first" = "Bereit?";
+"onboarding.5.second" = "Die App ist noch in ihren Kinderschuhen. Es kann nicht schaden, ein Backup der Libraries zu behalten - sicher ist sicher.
+
+Wenn du einen Bug gefunden oder Verbesserungsvorschläge hast, melde dich gerne bei mir 😊
+Am einfachsten ist es, ein Issue auf GitHub zu erstellen oder mir einem Email zu schreiben: jwlm@andreas-sk.de";
+"onboarding.5.third" = "Diese App ist Open Source.";
+"onboarding.5.startButton" = "Los gehts!";
+
+"By the way:" = "Übrigens:";
+"Exodus" = "2. Mose";
+"Skip Tutorial" = "Tutorial überspringen";
+
 // Help
 "help.conflictAutoresolution.title" = "Was bedeutet automatische Konfliktlösung?";
 "help.conflictAutoresolution.text" = "Es kann vorkommen, dass beim Mergen zwei Einträge kollidieren. Anstatt jedes mal gefragt zu werden, wie weitergemacht werden soll, kannst Du einstellen, dass für eine Kategorie immer die gleiche Seite verwendet wird. Bei Notizen besteht zusätzlich die Möglichkeit, immer die neueste auszuwählen. Das kann praktisch sein, wenn du dir sicher bist, dass du bei Konflikten immer die gleiche Seite verwenden möchtest. Am sichersten bist du - gerade wenn du zum ersten mal zwei Backups mergt - allerdings immer, wenn du die Einstellung bei „Manuell“ belässt und für jeden Fall einzeln entscheidest, welcher Eintrag im Backup enthalten sein soll.";

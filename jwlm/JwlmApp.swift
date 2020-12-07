@@ -11,9 +11,15 @@ import Gomobile
 @main
 struct JwlmApp: App {
     @StateObject private var jwlmController = JWLMController()
+    @AppStorage("needsOnboarding") private var needsOnboarding: Bool = true
+
     var body: some Scene {
         WindowGroup {
-            ContentView(jwlmController: jwlmController)
+            if needsOnboarding {
+                OnboardingView(needsOnboarding: $needsOnboarding)
+            } else {
+                ContentView(jwlmController: jwlmController)
+            }
         }
     }
 }

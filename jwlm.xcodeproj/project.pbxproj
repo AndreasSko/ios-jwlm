@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		F420DFC2255C0C6900CEB66B /* BackupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F43574EF253341CB00EC55D4 /* BackupView.swift */; };
+		F433F8F12573C11B00258C29 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F433F8F02573C11B00258C29 /* OnboardingView.swift */; };
 		F43574B72533411900EC55D4 /* JwlmApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F43574B62533411900EC55D4 /* JwlmApp.swift */; };
 		F43574B92533411900EC55D4 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F43574B82533411900EC55D4 /* ContentView.swift */; };
 		F43574BB2533411B00EC55D4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F43574BA2533411B00EC55D4 /* Assets.xcassets */; };
@@ -49,6 +50,7 @@
 
 /* Begin PBXFileReference section */
 		F420DF9B255B34E800CEB66B /* jwlm.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = jwlm.entitlements; sourceTree = "<group>"; };
+		F433F8F02573C11B00258C29 /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
 		F43574B32533411900EC55D4 /* jwlm.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = jwlm.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F43574B62533411900EC55D4 /* JwlmApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JwlmApp.swift; sourceTree = "<group>"; };
 		F43574B82533411900EC55D4 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -131,6 +133,7 @@
 				F48F4524256073330050C564 /* Extensions */,
 				F420DF9B255B34E800CEB66B /* jwlm.entitlements */,
 				F43574B62533411900EC55D4 /* JwlmApp.swift */,
+				F433F8F02573C11B00258C29 /* OnboardingView.swift */,
 				F43574B82533411900EC55D4 /* ContentView.swift */,
 				F43574EF253341CB00EC55D4 /* BackupView.swift */,
 				F44BF82F253376B10057B980 /* MergeSettingsView.swift */,
@@ -352,6 +355,7 @@
 				F48F44B6255E808B0050C564 /* HelpView.swift in Sources */,
 				F447E5AF255997BA00C3DA35 /* Models.swift in Sources */,
 				F48F4526256073460050C564 /* If.swift in Sources */,
+				F433F8F12573C11B00258C29 /* OnboardingView.swift in Sources */,
 				F43574B92533411900EC55D4 /* ContentView.swift in Sources */,
 				F441B1502549AE4900B0409B /* MergeView.swift in Sources */,
 				F43B4A1E253346DD005BF9E8 /* JWLMController.swift in Sources */,
