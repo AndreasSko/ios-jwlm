@@ -21,7 +21,8 @@
 
 "onboarding.4.first" = "JWLM checks for conflicting entries";
 "onboarding.4.second" = "If a conflict happens, simply select the side that should be included.";
-"onboarding.4.third" = "When everything is finished, you can export the merged backup.";
+"onboarding.4.third" = "The first time, there might be a lot of conflicts. But don’t worry: All further ones should be pretty quick.";
+"onboarding.4.fourth" = "When everything is finished, you can export the merged backup.";
 
 "onboarding.5.first" = "Ready?";
 "onboarding.5.second" = "This app is still in its early stages, so it's always good to keep a backup of your JW Libraries - just in case.

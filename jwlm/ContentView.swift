@@ -62,7 +62,7 @@ struct ContentView: View {
             }, label: {
                 Image(systemName: "gear")
             })
-            .padding(.horizontal)
+            .padding()
             .frame(maxWidth: .infinity, alignment: .leading)
             .sheet(isPresented: $openSettings, content: {
                 SettingsView()

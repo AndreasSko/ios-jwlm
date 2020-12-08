@@ -67,18 +67,19 @@
 "onboarding.2.proTip.third" = "Du kannst auch iCloud, Dropbox etc. nutzen, um Backups von anderen Geräten zu importieren";
 
 "onboarding.3.first" = "Entscheide, ob Konflikte automatisch gelöst werden sollen";
-"onboarding.3.second" = "Du kannst später mehr darüber erfahren. Fürs erste mal, kannst du es ignorieren.";
+"onboarding.3.second" = "Darüber kannst du später mehr erfahren. Ignoriere es einfach fürs Erste.";
 "onboarding.3.third" = "..und leg los durch klicken von";
 
 "onboarding.4.first" = "JWLM prüft, ob Einträge kollidieren";
-"onboarding.4.second" = "Sollte es Konflikte geben, wähle einfach die Seite aus, die erhalten bleiben soll.";
-"onboarding.4.third" = "Nachdem das erledigt ist, kann du das gemergte Backup exportieren.";
+"onboarding.4.second" = "Sollte es Konflikte geben, wähle einfach die Seite aus, die du behalten möchtest.";
+"onboarding.4.third" = "Beim ersten Merge kann es einige Konflikte geben. Aber keine Angst: Die nächsten Male sollten dann recht schnell gehen.";
+"onboarding.4.fourth" = "Nachdem alles erledigt ist, kann du das gemergte Backup exportieren.";
 
 "onboarding.5.first" = "Bereit?";
-"onboarding.5.second" = "Die App ist noch in ihren Kinderschuhen. Es kann nicht schaden, ein Backup der Libraries zu behalten - sicher ist sicher.
+"onboarding.5.second" = "Die App ist noch in ihren Kinderschuhen. Es kann deshalb nie schaden, ein Backup der Libraries zu behalten - sicher ist sicher.
 
 Wenn du einen Bug gefunden oder Verbesserungsvorschläge hast, melde dich gerne bei mir 😊
-Am einfachsten ist es, ein Issue auf GitHub zu erstellen oder mir einem Email zu schreiben: jwlm@andreas-sk.de";
+Am einfachsten ist es, ein Issue auf GitHub zu erstellen oder mir eine Email zu schreiben: jwlm@andreas-sk.de";
 "onboarding.5.third" = "Diese App ist Open Source.";
 "onboarding.5.startButton" = "Los gehts!";
 
