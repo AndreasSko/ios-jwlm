@@ -23,7 +23,7 @@ struct OnboardingView: View {
                         Onboarding5(needsOnboarding: $needsOnboarding).tag(5)
                     }
                     .frame(width: UIScreen.main.bounds.width,
-                           height: UIScreen.main.bounds.height - 100)
+                           height: UIScreen.main.bounds.height - 120)
                     .tabViewStyle(PageTabViewStyle())
                     .indexViewStyle(PageIndexViewStyle(backgroundDisplayMode: .always))
                 }
@@ -34,6 +34,7 @@ struct OnboardingView: View {
                 }, label: {
                     Text("Skip Tutorial")
                 })
+                .padding(.bottom)
             }
         }
     }
@@ -56,7 +57,8 @@ struct Onboarding1: View {
                 Image("merge-illustration")
                     .resizable()
                     .scaledToFit()
-                    .frame(maxHeight: 400)
+                    .frame(maxWidth: UIScreen.main.bounds.width - 20,
+                           maxHeight: 400)
                 Spacer()
             }
             Spacer()
