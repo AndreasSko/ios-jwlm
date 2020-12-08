@@ -74,7 +74,9 @@ struct MergeSettingsView: View {
                                 .font(.footnote)
                                 .foregroundColor(.gray)
                                 .padding(.top, 0.3)
-                        }.frame(width: 100, height: 60, alignment: .leading)
+                        }
+                        .frame(height: 60)
+                        .frame(maxWidth: .infinity, alignment: .leading)
                     }
                 }
                 Spacer()
@@ -109,7 +111,9 @@ struct MergeSettingsView: View {
                                 .foregroundColor(.gray)
                                 .padding(.top, 0.3)
 
-                        }.frame(width: 100, height: 60, alignment: .center)
+                        }
+                        .frame(height: 60)
+                        .frame(maxWidth: .infinity, alignment: .center)
                     }
                 }
                 Spacer()
@@ -150,7 +154,9 @@ struct MergeSettingsView: View {
                                 .font(.footnote)
                                 .foregroundColor(.gray)
                                 .padding(.top, 0.3)
-                        }.frame(width: 100, height: 60, alignment: .trailing)
+                        }
+                        .frame(height: 60)
+                        .frame(maxWidth: .infinity, alignment: .trailing)
                         Spacer()
                         Spacer()
                     }
