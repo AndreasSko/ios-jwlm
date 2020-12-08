@@ -162,6 +162,7 @@ struct Onboarding4: View {
             Text("onboarding.4.first")
                 .font(.title2).bold()
             Text("onboarding.4.second")
+                .padding(.bottom, 5)
 
             VStack {
                 VStack {
@@ -207,10 +208,15 @@ struct Onboarding4: View {
             .padding([.horizontal, .bottom])
 
             HStack {
-                Text("🎉")
+                Text("🤨")
                 Text("onboarding.4.third")
             }
-            .padding(.top, 20)
+            .padding(.bottom, 5)
+
+            HStack {
+                Text("🎉")
+                Text("onboarding.4.fourth")
+            }
 
             Spacer()
         }
