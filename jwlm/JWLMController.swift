@@ -6,6 +6,8 @@
 //  Copyright © 2020 Andreas Skorczyk. All rights reserved.
 //
 
+// swiftlint:disable identifier_name
+
 import Foundation
 import Gomobile
 
@@ -68,9 +70,11 @@ class JWLMController: ObservableObject {
         _ = url.startAccessingSecurityScopedResource()
         try dbWrapper.importJWLBackup(url.path, side: side.rawValue)
         url.stopAccessingSecurityScopedResource()
+        cleanUpInbox()
     }
 
     func exportBackup() throws -> String {
+        cleanUpMergedFiles()
         if !self.dbWrapper.dbIsLoaded("mergeSide") {
             throw MergeError.notInitialized(message: "There is no merged backup yet")
         }
@@ -82,6 +86,41 @@ class JWLMController: ObservableObject {
         try dbWrapper.exportMerged(path)
 
         return path!
+    }
+
+    // cleanUpMergedFiles removes all files starting with `merged` from the documentDirectory,
+    // as they are the result of older merges
+    func cleanUpMergedFiles() {
+        let fm = FileManager.default
+        do {
+            let dir = fm.urls(for: .documentDirectory, in: .userDomainMask).first
+            let files = try fm.contentsOfDirectory(at: dir!.absoluteURL,
+                                                   includingPropertiesForKeys: [.isRegularFileKey])
+            for file in files {
+                if file.lastPathComponent.hasPrefix("merged") {
+                    try fm.removeItem(at: file)
+                    print("Cleaning up \(file.absoluteString)")
+                }
+            }
+        } catch {
+            print("Error while trying to clean up old files")
+        }
+    }
+
+    // cleanUpInbox removes all files inside the inbox
+    func cleanUpInbox() {
+        let fm = FileManager.default
+        do {
+            let dir = fm.urls(for: .documentDirectory, in: .userDomainMask).first?.appendingPathComponent("Inbox")
+            let files = try fm.contentsOfDirectory(at: dir!.absoluteURL,
+                                                   includingPropertiesForKeys: [.isRegularFileKey])
+            for file in files {
+                try fm.removeItem(at: file)
+                print("Cleaning up \(file.absoluteString)")
+            }
+        } catch {
+            print("Error while trying to clean up inbox")
+        }
     }
 
     func merge(reset: Bool = true, progress: MergeProgress) throws {
