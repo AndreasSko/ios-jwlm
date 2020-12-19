@@ -6,8 +6,6 @@
 //  Copyright © 2020 Andreas Skorczyk. All rights reserved.
 //
 
-// swiftlint:disable identifier_name
-
 import Foundation
 import Gomobile
 
