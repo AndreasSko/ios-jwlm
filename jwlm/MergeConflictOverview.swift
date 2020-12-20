@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Gomobile
 
 struct MergeConflictOverview: View {
     var mrt: ModelRelatedTuple?
@@ -13,15 +14,17 @@ struct MergeConflictOverview: View {
     var body: some View {
         VStack {
             let related = mrt?.related
+            let publication = lookupPublicationFor(related?.location)
+
             switch mrt?.model {
             case .bookmark(let bookmark):
-                BookmarkOverview(bookmark: bookmark, related: related)
+                BookmarkOverview(bookmark: bookmark, related: related, publication: publication)
             case .userMarkBlockRange(let umbr):
-                UserMarkBlockRangeOverview(umbr: umbr, related: related)
+                UserMarkBlockRangeOverview(umbr: umbr, related: related, publication: publication)
             case .note(let note):
-                NoteOverview(note: note, related: related)
+                NoteOverview(note: note, related: related, publication: publication)
             default:
-                Text("Error! Can not generate preview")
+                Text("An error occurred")
             }
         }
     }
@@ -30,13 +33,33 @@ struct MergeConflictOverview: View {
 struct BookmarkOverview: View {
     var bookmark: Bookmark
     var related: Related?
+    var publication: Publication?
 
     var body: some View {
         VStack(alignment: .custom) {
-            if related?.publicationLocation?.keySymbol.valid ?? false {
+            if publication != nil {
+                HStack {
+                    Text("Publication:").bold()
+                    Text(publication?.shortTitle ?? "")
+                        .frame(width: UIScreen.main.bounds.size.width-138, alignment: .leading)
+                        .alignmentGuide(.custom) { $0[.leading] }
+                }
+                .padding(.bottom, 0.5)
+
+                if publication?.issueTitle != "" {
+                    HStack {
+                        Text("Issue:").bold()
+                        Text(publication?.issueTitle ?? "")
+                            .frame(width: UIScreen.main.bounds.size.width-138, alignment: .leading)
+                            .alignmentGuide(.custom) { $0[.leading] }
+                    }
+                    .padding(.bottom, 0.5)
+                }
+            } else if related?.publicationLocation?.keySymbol.valid ?? false {
                 HStack {
                     Text("Publication:").bold()
                     Text(related?.publicationLocation?.keySymbol.string ?? "")
+                        .frame(width: UIScreen.main.bounds.size.width-138, alignment: .leading)
                         .alignmentGuide(.custom) { $0[.leading] }
                 }
                 .padding(.bottom, 0.5)
@@ -50,6 +73,7 @@ struct BookmarkOverview: View {
                         .foregroundColor(bookmarkColors[bookmark.slot])
 
                 }
+                .frame(width: UIScreen.main.bounds.size.width-138, alignment: .leading)
                 .alignmentGuide(.custom) { $0[.leading] }
             }
         }
@@ -72,49 +96,46 @@ struct BookmarkOverview: View {
 struct NoteOverview: View {
     var note: Note
     var related: Related?
+    var publication: Publication?
 
     var body: some View {
         VStack(alignment: .custom) {
-            if related?.location?.title.valid ?? false {
+
+            if publication != nil {
                 HStack {
-                    Text("Location Title:").bold()
-                    Text("\(related?.location?.title.string ?? "")")
+                    Text("Publication:").bold()
+                    Text(publication?.shortTitle ?? "")
+                        .frame(width: UIScreen.main.bounds.size.width-138, alignment: .leading)
                         .alignmentGuide(.custom) { $0[.leading] }
                 }
                 .padding(.bottom, 0.5)
+
+                if publication?.issueTitle != "" {
+                    HStack {
+                        Text("Issue:").bold()
+                        Text(publication?.issueTitle ?? "")
+                            .frame(width: UIScreen.main.bounds.size.width-138, alignment: .leading)
+                            .alignmentGuide(.custom) { $0[.leading] }
+                    }
+                    .padding(.bottom, 0.5)
+                }
             }
 
-            if related?.location?.keySymbol.valid ?? false {
+            if publication == nil && related?.location?.keySymbol.valid ?? false {
                 HStack {
                     Text("Publication:").bold()
                     Text("\(related?.location?.keySymbol.string ?? "")")
+                        .frame(width: UIScreen.main.bounds.size.width-138, alignment: .leading)
                         .alignmentGuide(.custom) { $0[.leading] }
                 }
                 .padding(.bottom, 0.5)
             }
 
-            if related?.location?.bookNumber.valid ?? false {
-                HStack {
-                    Text("Book number:").bold()
-                    Text("\(related?.location?.bookNumber.int32 ?? -1)")
-                        .alignmentGuide(.custom) { $0[.leading] }
-                }
-                .padding(.bottom, 0.5)
-            }
-
-            if related?.location?.chapterNumber.valid ?? false {
-                HStack {
-                    Text("Chapter number:").bold()
-                    Text("\(related?.location?.chapterNumber.int32 ?? -1)")
-                        .alignmentGuide(.custom) { $0[.leading] }
-                }
-                .padding(.bottom, 0.5)
-            }
-
-            if related?.location?.documentId.valid ?? false {
+            if publication == nil && related?.location?.documentId.valid ?? false {
                 HStack {
                     Text("Document ID:").bold()
                     Text(String(related?.location?.documentId.int32 ?? -1))
+                        .frame(width: UIScreen.main.bounds.size.width-138, alignment: .leading)
                         .alignmentGuide(.custom) { $0[.leading] }
                 }
                 .padding(.bottom, 0.5)
@@ -124,6 +145,37 @@ struct NoteOverview: View {
                 HStack {
                     Text("Track:").bold()
                     Text("\(related?.location?.track.int32 ?? -1)")
+                        .frame(width: UIScreen.main.bounds.size.width-138, alignment: .leading)
+                        .alignmentGuide(.custom) { $0[.leading] }
+                }
+                .padding(.bottom, 0.5)
+            }
+
+            if related?.location?.title.valid ?? false {
+                HStack {
+                    Text("Location Title:").bold()
+                    Text("\(related?.location?.title.string ?? "")")
+                        .frame(width: UIScreen.main.bounds.size.width-138, alignment: .leading)
+                        .alignmentGuide(.custom) { $0[.leading] }
+                }
+                .padding(.bottom, 0.5)
+            }
+
+            if related?.location?.bookNumber.valid ?? false {
+                HStack {
+                    Text("Book number:").bold()
+                    Text("\(related?.location?.bookNumber.int32 ?? -1)")
+                        .frame(width: UIScreen.main.bounds.size.width-138, alignment: .leading)
+                        .alignmentGuide(.custom) { $0[.leading] }
+                }
+                .padding(.bottom, 0.5)
+            }
+
+            if related?.location?.chapterNumber.valid ?? false {
+                HStack {
+                    Text("Chapter number:").bold()
+                    Text("\(related?.location?.chapterNumber.int32 ?? -1)")
+                        .frame(width: UIScreen.main.bounds.size.width-138, alignment: .leading)
                         .alignmentGuide(.custom) { $0[.leading] }
                 }
                 .padding(.bottom, 0.5)
@@ -135,49 +187,46 @@ struct NoteOverview: View {
 struct UserMarkBlockRangeOverview: View {
     var umbr: UserMarkBlockRange
     var related: Related?
+    var publication: Publication?
 
     var body: some View {
         VStack(alignment: .custom) {
-            if related?.location?.title.valid ?? false {
+
+            if publication != nil {
                 HStack {
-                    Text("Title:").bold()
-                    Text("\(related?.location?.title.string ?? "")")
+                    Text("Publication:").bold()
+                    Text(publication?.shortTitle ?? "")
+                        .frame(width: UIScreen.main.bounds.size.width-138, alignment: .leading)
                         .alignmentGuide(.custom) { $0[.leading] }
                 }
                 .padding(.bottom, 0.5)
+
+                if publication?.issueTitle != "" {
+                    HStack {
+                        Text("Issue:").bold()
+                        Text(publication?.issueTitle ?? "")
+                            .frame(width: UIScreen.main.bounds.size.width-138, alignment: .leading)
+                            .alignmentGuide(.custom) { $0[.leading] }
+                    }
+                    .padding(.bottom, 0.5)
+                }
             }
 
-            if related?.location?.keySymbol.valid ?? false {
+            if publication == nil && related?.location?.keySymbol.valid ?? false {
                 HStack {
                     Text("Publication:").bold()
                     Text("\(related?.location?.keySymbol.string ?? "")")
+                        .frame(width: UIScreen.main.bounds.size.width-138, alignment: .leading)
                         .alignmentGuide(.custom) { $0[.leading] }
                 }
                 .padding(.bottom, 0.5)
             }
 
-            if related?.location?.bookNumber.valid ?? false {
-                HStack {
-                    Text("Book number:").bold()
-                    Text("\(related?.location?.bookNumber.int32 ?? -1)")
-                        .alignmentGuide(.custom) { $0[.leading] }
-                }
-                .padding(.bottom, 0.5)
-            }
-
-            if related?.location?.chapterNumber.valid ?? false {
-                HStack {
-                    Text("Chapter number:").bold()
-                    Text("\(related?.location?.chapterNumber.int32 ?? -1)")
-                        .alignmentGuide(.custom) { $0[.leading] }
-                }
-                .padding(.bottom, 0.5)
-            }
-
-            if related?.location?.documentId.valid ?? false {
+            if publication == nil && related?.location?.documentId.valid ?? false {
                 HStack {
                     Text("Document ID:").bold()
                     Text(String(related?.location?.documentId.int32 ?? -1))
+                        .frame(width: UIScreen.main.bounds.size.width-138, alignment: .leading)
                         .alignmentGuide(.custom) { $0[.leading] }
                 }
                 .padding(.bottom, 0.5)
@@ -187,10 +236,42 @@ struct UserMarkBlockRangeOverview: View {
                 HStack {
                     Text("Track:").bold()
                     Text("\(related?.location?.track.int32 ?? -1)")
+                        .frame(width: UIScreen.main.bounds.size.width-138, alignment: .leading)
                         .alignmentGuide(.custom) { $0[.leading] }
                 }
                 .padding(.bottom, 0.5)
             }
+
+            if related?.location?.title.valid ?? false {
+                HStack {
+                    Text("Title:").bold()
+                    Text("\(related?.location?.title.string ?? "")")
+                        .frame(width: UIScreen.main.bounds.size.width-138, alignment: .leading)
+                        .alignmentGuide(.custom) { $0[.leading] }
+                }
+                .padding(.bottom, 0.5)
+            }
+
+            if related?.location?.bookNumber.valid ?? false {
+                HStack {
+                    Text("Book number:").bold()
+                    Text("\(related?.location?.bookNumber.int32 ?? -1)")
+                        .frame(width: UIScreen.main.bounds.size.width-138, alignment: .leading)
+                        .alignmentGuide(.custom) { $0[.leading] }
+                }
+                .padding(.bottom, 0.5)
+            }
+
+            if related?.location?.chapterNumber.valid ?? false {
+                HStack {
+                    Text("Chapter number:").bold()
+                    Text("\(related?.location?.chapterNumber.int32 ?? -1)")
+                        .frame(width: UIScreen.main.bounds.size.width-138, alignment: .leading)
+                        .alignmentGuide(.custom) { $0[.leading] }
+                }
+                .padding(.bottom, 0.5)
+            }
+
         }
     }
 }
