@@ -31,10 +31,9 @@
 
 // MergeConflictOverview
 "Publication:" = "Publikation:";
-"Book number:" = "Buch Nummer:"; //?
-"Chapter number:" = "Kapitel:"; //??
+"Book ID:" = "Buch ID:"; //?
+"Chapter:" = "Kapitel:"; //??
 "Slot" = "Slot"; //??
-"Location Title:" = "Location Titel:";
 "Issue:" = "Ausgabe:";
 
 // MergeConflictDetailsView

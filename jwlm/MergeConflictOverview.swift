@@ -153,7 +153,7 @@ struct NoteOverview: View {
 
             if related?.location?.title.valid ?? false {
                 HStack {
-                    Text("Location Title:").bold()
+                    Text("Title:").bold()
                     Text("\(related?.location?.title.string ?? "")")
                         .frame(width: UIScreen.main.bounds.size.width-138, alignment: .leading)
                         .alignmentGuide(.custom) { $0[.leading] }
@@ -163,7 +163,7 @@ struct NoteOverview: View {
 
             if related?.location?.bookNumber.valid ?? false {
                 HStack {
-                    Text("Book number:").bold()
+                    Text("Book ID:").bold()
                     Text("\(related?.location?.bookNumber.int32 ?? -1)")
                         .frame(width: UIScreen.main.bounds.size.width-138, alignment: .leading)
                         .alignmentGuide(.custom) { $0[.leading] }
@@ -173,7 +173,7 @@ struct NoteOverview: View {
 
             if related?.location?.chapterNumber.valid ?? false {
                 HStack {
-                    Text("Chapter number:").bold()
+                    Text("Chapter:").bold()
                     Text("\(related?.location?.chapterNumber.int32 ?? -1)")
                         .frame(width: UIScreen.main.bounds.size.width-138, alignment: .leading)
                         .alignmentGuide(.custom) { $0[.leading] }
@@ -254,7 +254,7 @@ struct UserMarkBlockRangeOverview: View {
 
             if related?.location?.bookNumber.valid ?? false {
                 HStack {
-                    Text("Book number:").bold()
+                    Text("Book ID:").bold()
                     Text("\(related?.location?.bookNumber.int32 ?? -1)")
                         .frame(width: UIScreen.main.bounds.size.width-138, alignment: .leading)
                         .alignmentGuide(.custom) { $0[.leading] }
@@ -264,7 +264,7 @@ struct UserMarkBlockRangeOverview: View {
 
             if related?.location?.chapterNumber.valid ?? false {
                 HStack {
-                    Text("Chapter number:").bold()
+                    Text("Chapter:").bold()
                     Text("\(related?.location?.chapterNumber.int32 ?? -1)")
                         .frame(width: UIScreen.main.bounds.size.width-138, alignment: .leading)
                         .alignmentGuide(.custom) { $0[.leading] }
