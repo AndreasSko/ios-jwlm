@@ -46,3 +46,9 @@ To figure out where the marking is located, look at the additional information: 
 
 "help.conflict.notes.title" = "Note conflict";
 "help.conflict.notes.text" = "A note collides if it exists on both sides (so it must have been synced at least once) and it differers in the title or content. It generally makes sense to choose the note with the newest date. The upper one belongs to the right backup, the lower one to the left.";
+
+// Settings
+"settings.catalogDB.quickInfo" = "Download the Publication Catalog to see more detailed information when merging.";
+"settings.catalogDB.downloadSize" = "Downloading the catalog takes about 50MB.";
+"settings.catalogDB.explainer" = "It's a database that contains information about all the publications of the last years. With it's help you are able to get more detailed information (like the title of a publication) when solving a merge conflicts. But you can also use the app without downloading it.";
+"settings.catalogDB.disclaimer" = "The catalog is downloaded from app.jw-cdn.org, which is operated by Watchtower Bible and Tract Society of New York, Inc. You may want to consider their Privacy Policy if you are not sure what data might be processed when you initialize the download.";

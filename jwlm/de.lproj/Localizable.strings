@@ -31,10 +31,10 @@
 
 // MergeConflictOverview
 "Publication:" = "Publikation:";
-"Book number:" = "Buch Nummer:"; //?
-"Chapter number:" = "Kapitel:"; //??
+"Book ID:" = "Buch ID:"; //?
+"Chapter:" = "Kapitel:"; //??
 "Slot" = "Slot"; //??
-"Location Title:" = "Location Titel:";
+"Issue:" = "Ausgabe:";
 
 // MergeConflictDetailsView
 "Title:" = "Titel:";
@@ -108,3 +108,22 @@ Um herauszufinden, zu welcher Publikation eine Markierung gehört, kannst du dic
 "Open Issue on GitHub" = "Issue auf GitHub erstellen";
 "Review Privacy Policy" = "Datenschutz-Bestimmungen";
 "Visit project on GitHub" = "Project auf GitHub besuchen";
+"Manage Publication Catalog" = "Publikations Katalog verwalten";
+
+"Publication Catalog" = "Publikations Katalog";
+"Size:" = "Größe:";
+"Up to date" = "Aktuell";
+"Outdated" = "Veraltet";
+"Not downloaded" = "Nicht heruntergeladen";
+"Downloading..." = "Lädt...";
+"What is a Publication Catalog?" = "Was ist ein Publikations Katalog?";
+
+"settings.catalogDB.quickInfo" = "Lade den Publikations Katalog herunter, um beim Mergen detailliertere Infos zu erhalten.";
+"settings.catalogDB.downloadSize" = "Beim Download werden ungefähr 50MB geladen.";
+"settings.catalogDB.explainer" = "Es ist eine Datenbank, die Daten über alle Publikationen der letzten Jahre enthält. Dadurch kannst du zusätzliche Informationen bei Merge Konflikten erhalten, die dir helfen können, einen Konflikt besser zu verstehen. Sie ist aber nicht zwingend nötig.";
+"settings.catalogDB.disclaimer" = "Der Katalog wird von app.jw-cdn.org heruntergeladen. Diese Seite wird von der \"Watchtower Bible and Tract Society of New York, Inc\" betrieben. Wenn du dir nicht sicher bist, wie deine Daten, die beim Download entstehen, genutzt werden, lese bitte die Datenschutzerklärung durch.";
+"Privacy Policy on jw.org" = "Datenschutzerklärung auf jw.org";
+
+// Notifications
+"New version of the Publication Catalog is available." = "Neue Version des Publikations Katalogs verfügbar.";
+"You can download it in the settings." = "Du kannst ihn in den Einstellungen herunterladen.";

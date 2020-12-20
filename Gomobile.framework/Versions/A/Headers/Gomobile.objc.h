@@ -13,9 +13,12 @@
 
 @class GomobileDatabaseStats;
 @class GomobileDatabaseWrapper;
+@class GomobileDownloadManager;
+@class GomobileDownloadProgress;
 @class GomobileMergeConflict;
 @class GomobileMergeConflictError;
 @class GomobileMergeConflictsWrapper;
+@class GomobilePublicationLookup;
 
 /**
  * DatabaseStats represents the rough number of entries
@@ -96,6 +99,48 @@ function calls. Should be called after ImportJWLBackup.
 @end
 
 /**
+ * DownloadManager keeps all the information of a running download, enabling it
+to check progress and also cancel the download if necessary
+ */
+@interface GomobileDownloadManager : NSObject <goSeqRefInterface> {
+}
+@property(strong, readonly) _Nonnull id _ref;
+
+- (nonnull instancetype)initWithRef:(_Nonnull id)ref;
+- (nonnull instancetype)init;
+@property (nonatomic) GomobileDownloadProgress* _Nullable progress;
+/**
+ * CancelDownload cancels a running download
+ */
+- (void)cancelDownload;
+/**
+ * DownloadSuccessful indicates if the download has been successful
+ */
+- (BOOL)downloadSuccessful;
+/**
+ * Error returns possible errors of a download as a string
+ */
+- (NSString* _Nonnull)error;
+@end
+
+/**
+ * DownloadProgress represents the progress of a running download
+ */
+@interface GomobileDownloadProgress : NSObject <goSeqRefInterface> {
+}
+@property(strong, readonly) _Nonnull id _ref;
+
+- (nonnull instancetype)initWithRef:(_Nonnull id)ref;
+- (nonnull instancetype)init;
+@property (nonatomic) int64_t size;
+@property (nonatomic) int64_t bytesComplete;
+@property (nonatomic) double bytesPerSecond;
+@property (nonatomic) double progress;
+@property (nonatomic) BOOL done;
+@property (nonatomic) BOOL canceled;
+@end
+
+/**
  * MergeConflict represents two Models that collide. It is equvalent
 to merger.MergeConflict, but represents the Models as strings
 to make it compatible with Gomobile.
@@ -151,5 +196,50 @@ are no left, it returns an error
  */
 - (BOOL)solveConflict:(NSString* _Nullable)key side:(NSString* _Nullable)side error:(NSError* _Nullable* _Nullable)error;
 @end
+
+/**
+ * PublicationLookup represents a lookup for a publication.
+It directly maps to publication.Lookup
+ */
+@interface GomobilePublicationLookup : NSObject <goSeqRefInterface> {
+}
+@property(strong, readonly) _Nonnull id _ref;
+
+- (nonnull instancetype)initWithRef:(_Nonnull id)ref;
+- (nonnull instancetype)init;
+@property (nonatomic) long documentID;
+@property (nonatomic) NSString* _Nonnull keySymbol;
+@property (nonatomic) long issueTagNumber;
+@property (nonatomic) long mepsLanguage;
+@end
+
+/**
+ * CatalogExists checks if catalog.db exists at path
+ */
+FOUNDATION_EXPORT BOOL GomobileCatalogExists(NSString* _Nullable path);
+
+/**
+ * CatalogNeedsUpdate checks if catalog.db located at path is still up-to-date.
+For now it just makes sure that it is younger than one month.
+If it can't find a file at path, it returns true
+ */
+FOUNDATION_EXPORT BOOL GomobileCatalogNeedsUpdate(NSString* _Nullable path);
+
+/**
+ * CatalogSize returns the size of the catalog.db at path
+ */
+FOUNDATION_EXPORT int64_t GomobileCatalogSize(NSString* _Nullable path);
+
+/**
+ * DownloadCatalog downloads the newest catalog.db and saves it at dst. The
+returned DownloadManager allows to keep track and manage the running download
+ */
+FOUNDATION_EXPORT GomobileDownloadManager* _Nullable GomobileDownloadCatalog(NSString* _Nullable dst);
+
+/**
+ * LookupPublication looks up a publication from catalogDB located at dbPath
+and returns a JSON string representing the Publication
+ */
+FOUNDATION_EXPORT NSString* _Nonnull GomobileLookupPublication(NSString* _Nullable dbPath, GomobilePublicationLookup* _Nullable query);
 
 #endif
