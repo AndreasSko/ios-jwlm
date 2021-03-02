@@ -53,6 +53,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		F40A979725EE40B1008EE4BA /* pt-PT */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-PT"; path = "pt-PT.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		F420DF9B255B34E800CEB66B /* jwlm.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = jwlm.entitlements; sourceTree = "<group>"; };
 		F42649AD257E469100644CA6 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		F433F8F02573C11B00258C29 /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
@@ -305,6 +306,7 @@
 				en,
 				de,
 				Base,
+				"pt-PT",
 			);
 			mainGroup = F43574AA2533411800EC55D4;
 			packageReferences = (
@@ -432,6 +434,7 @@
 			children = (
 				F48F44D3255EC4DC0050C564 /* en */,
 				F48F44D8255EC5090050C564 /* de */,
+				F40A979725EE40B1008EE4BA /* pt-PT */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";
