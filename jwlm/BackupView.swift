@@ -23,6 +23,7 @@ struct BackupView: View {
     @State private var dbStats: GomobileDatabaseStats = GomobileDatabaseStats()
 
     var body: some View {
+        let screenWidth = UIScreen.main.bounds.size.width
         VStack {
             ZStack {
                 VStack {
@@ -89,6 +90,9 @@ struct BackupView: View {
                         }
                         .padding(.vertical)
                         .padding(.bottom, -10)
+                        .if(screenWidth <= 380) { view in
+                            view.font(.callout)
+                        }
 
                         Image(systemName: "checkmark.circle")
                         .font(.title)
