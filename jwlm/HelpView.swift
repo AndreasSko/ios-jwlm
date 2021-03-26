@@ -11,6 +11,21 @@ struct HelpView: View {
     @Binding var isPresented: Bool
     var title: String?
     var helpText: String?
+    var additionalViews: [AnyView]?
+
+    init(isPresented: Binding<Bool>, title: String, helpText: String) {
+        self._isPresented = isPresented
+        self.title = title
+        self.helpText = helpText
+    }
+
+    init(isPresented: Binding<Bool>, title: String, helpText: String,
+         additionalViews: [AnyView]) {
+        self._isPresented = isPresented
+        self.title = title
+        self.helpText = helpText
+        self.additionalViews = additionalViews
+    }
 
     var body: some View {
         VStack(alignment: .leading) {
@@ -20,7 +35,6 @@ struct HelpView: View {
                     isPresented.toggle()
                 }
             }
-            .padding(.horizontal)
             .padding(.top)
 
             Divider()
@@ -29,10 +43,16 @@ struct HelpView: View {
                 Text(title ?? "").font(.title3).padding(.bottom)
                 Text(helpText ?? "")
             }
-            .padding()
+
+            if additionalViews?.isEmpty == false {
+                ForEach(0..<additionalViews!.count) { index in
+                    additionalViews![index]
+                }
+            }
 
             Spacer()
         }
+        .padding(.horizontal)
 
     }
 }
@@ -42,6 +62,7 @@ struct HelpPopupView_Previews: PreviewProvider {
         HelpView(
             isPresented: .constant(true),
             title: "A title",
-            helpText: "This is a help text..")
+            helpText: "This is a help text..",
+            additionalViews: [AnyView(MergeSettingsLegendHelp())])
     }
 }
