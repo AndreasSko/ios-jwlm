@@ -17,12 +17,8 @@ struct MergeConflictDetailsView: View {
             switch selectConflict().model {
             case .bookmark(let bookmark):
                 BookmarkDetail(bookmark: bookmark)
-                    .frame(maxWidth: .infinity)
-                    .padding()
             case .userMarkBlockRange(let umbr):
                 UserMarkBlockRangeDetail(umbr: umbr)
-                    .frame(maxWidth: .infinity)
-                    .padding()
             case .note(let note):
                 NoteDetail(note: note)
                     .frame(maxWidth: .infinity)
@@ -31,6 +27,8 @@ struct MergeConflictDetailsView: View {
                 Text("Error! Can not generate preview")
             }
         }
+        .frame(maxWidth: .infinity)
+        .padding()
         .background(Color.white)
         .cornerRadius(10)
         .overlay(
