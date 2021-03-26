@@ -13,6 +13,7 @@ struct MergeSettingsView: View {
     @State private var bookmarkSolverIcon = "minus.circle"
     @State private var markingSolverIcon = "minus.circle"
     @State private var noteSolverIcon = "minus.circle"
+    @State private var inputFieldSolverIcon = "minus.circle"
     @State private var helpOpened = false
 
     var body: some View {
@@ -31,7 +32,8 @@ struct MergeSettingsView: View {
                              title: NSLocalizedString("help.conflictAutoresolution.title",
                                                       comment: "Title for conflictAutoresolution help text"),
                              helpText: NSLocalizedString("help.conflictAutoresolution.text",
-                                                      comment: "Help text for conflictAutoresolution"))
+                                                      comment: "Help text for conflictAutoresolution"),
+                             additionalViews: [AnyView(MergeSettingsLegendHelp())])
                 }
             }
             .padding(.top, 10.0)
@@ -151,6 +153,44 @@ struct MergeSettingsView: View {
                         VStack {
                             Image(systemName: "note.text")
                             Image(systemName: noteSolverIcon)
+                                .font(.footnote)
+                                .foregroundColor(.gray)
+                                .padding(.top, 0.3)
+                        }
+                        .frame(height: 60)
+                        .frame(maxWidth: .infinity, alignment: .trailing)
+                        Spacer()
+                        Spacer()
+                    }
+                }
+                Spacer()
+                VStack {
+                    Menu {
+                        Button(action: {
+                            jwlmController.settings.inputFieldResolver = ConflictSolver.disabled
+                            inputFieldSolverIcon = confSolverToIcon(solver: jwlmController.settings.inputFieldResolver)
+                        }, label: {
+                            Text("Manual")
+                            Image(systemName: "minus.circle")
+                        })
+                        Button(action: {
+                            jwlmController.settings.inputFieldResolver = ConflictSolver.chooseLeft
+                            inputFieldSolverIcon = confSolverToIcon(solver: jwlmController.settings.inputFieldResolver)
+                        }, label: {
+                            Text("Left")
+                            Image(systemName: "arrow.left")
+                        })
+                        Button(action: {
+                            jwlmController.settings.inputFieldResolver = ConflictSolver.chooseRight
+                            inputFieldSolverIcon = confSolverToIcon(solver: jwlmController.settings.inputFieldResolver)
+                        }, label: {
+                            Text("Right")
+                            Image(systemName: "arrow.right")
+                        })
+                    } label: {
+                        VStack {
+                            Image(systemName: "textbox")
+                            Image(systemName: inputFieldSolverIcon)
                                 .font(.footnote)
                                 .foregroundColor(.gray)
                                 .padding(.top, 0.3)

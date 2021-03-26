@@ -93,6 +93,11 @@ Am einfachsten ist es, ein Issue auf GitHub zu erstellen oder mir eine Email zu 
 // Help
 "help.conflictAutoresolution.title" = "Was bedeutet automatische Konfliktlösung?";
 "help.conflictAutoresolution.text" = "Es kann vorkommen, dass beim Mergen zwei Einträge kollidieren. Anstatt jedes mal gefragt zu werden, wie weitergemacht werden soll, kannst Du einstellen, dass für eine Kategorie immer die gleiche Seite verwendet wird. Bei Notizen besteht zusätzlich die Möglichkeit, immer die neueste auszuwählen. Das kann praktisch sein, wenn du dir sicher bist, dass du bei Konflikten immer die gleiche Seite verwenden möchtest. Am sichersten bist du - gerade wenn du zum ersten mal zwei Backups mergt - allerdings immer, wenn du die Einstellung bei „Manuell“ belässt und für jeden Fall einzeln entscheidest, welcher Eintrag im Backup enthalten sein soll.";
+"Legend:" = "Legende:";
+"Bookmarks" = "Lesezeichen";
+"Markings" = "Markierungen";
+"Notes" = "Notizen";
+"Input fields" = "Eingabefelder";
 
 "help.conflict.bookmarks.title" = "Lesezeichen-Konflikt";
 "help.conflict.bookmarks.text" = "Lesezeichen gelten pro Publikation (z.B. eine Wachtturm-Ausgabe oder Bibelübersetzung) und können an zehn verschiedenen Stellen - den sogenannten „Slots“ - platziert werden. Eine Kollision entsteht dann, wenn zwei Lesezeichen in der selben Publikation auf der gleichen Position liegen. Wähle das Lesezeichen aus, das im gemergten Backup enthalten sein soll. Das obere gehört zum linken Backup, das untere zum rechten.\n\n
