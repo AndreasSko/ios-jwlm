@@ -78,8 +78,17 @@ struct BackupView: View {
                                     .font(.callout)
                                     .alignmentGuide(.custom) { $0[.leading] }
                             }
+
+                            HStack {
+                                Text("Input fields:").bold()
+                                    .padding(.trailing, -7)
+                                Text(String(dbStats.inputField))
+                                    .font(.callout)
+                                    .alignmentGuide(.custom) { $0[.leading] }
+                            }
                         }
                         .padding(.vertical)
+                        .padding(.bottom, -10)
 
                         Image(systemName: "checkmark.circle")
                         .font(.title)
