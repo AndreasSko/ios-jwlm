@@ -23,6 +23,8 @@ struct MergeConflictOverview: View {
                 UserMarkBlockRangeOverview(umbr: umbr, related: related, publication: publication)
             case .note(let note):
                 NoteOverview(note: note, related: related, publication: publication)
+            case .inputField(let inputField):
+                InputFieldOverview(inputField: inputField, related: related, publication: publication)
             default:
                 Text("An error occurred")
             }
@@ -186,6 +188,98 @@ struct NoteOverview: View {
 
 struct UserMarkBlockRangeOverview: View {
     var umbr: UserMarkBlockRange
+    var related: Related?
+    var publication: Publication?
+
+    var body: some View {
+        VStack(alignment: .custom) {
+
+            if publication != nil {
+                HStack {
+                    Text("Publication:").bold()
+                    Text(publication?.shortTitle ?? "")
+                        .frame(width: UIScreen.main.bounds.size.width-138, alignment: .leading)
+                        .alignmentGuide(.custom) { $0[.leading] }
+                }
+                .padding(.bottom, 0.5)
+
+                if publication?.issueTitle != "" {
+                    HStack {
+                        Text("Issue:").bold()
+                        Text(publication?.issueTitle ?? "")
+                            .frame(width: UIScreen.main.bounds.size.width-138, alignment: .leading)
+                            .alignmentGuide(.custom) { $0[.leading] }
+                    }
+                    .padding(.bottom, 0.5)
+                }
+            }
+
+            if publication == nil && related?.location?.keySymbol.valid ?? false {
+                HStack {
+                    Text("Publication:").bold()
+                    Text("\(related?.location?.keySymbol.string ?? "")")
+                        .frame(width: UIScreen.main.bounds.size.width-138, alignment: .leading)
+                        .alignmentGuide(.custom) { $0[.leading] }
+                }
+                .padding(.bottom, 0.5)
+            }
+
+            if publication == nil && related?.location?.documentId.valid ?? false {
+                HStack {
+                    Text("Document ID:").bold()
+                    Text(String(related?.location?.documentId.int32 ?? -1))
+                        .frame(width: UIScreen.main.bounds.size.width-138, alignment: .leading)
+                        .alignmentGuide(.custom) { $0[.leading] }
+                }
+                .padding(.bottom, 0.5)
+            }
+
+            if related?.location?.track.valid ?? false {
+                HStack {
+                    Text("Track:").bold()
+                    Text("\(related?.location?.track.int32 ?? -1)")
+                        .frame(width: UIScreen.main.bounds.size.width-138, alignment: .leading)
+                        .alignmentGuide(.custom) { $0[.leading] }
+                }
+                .padding(.bottom, 0.5)
+            }
+
+            if related?.location?.title.valid ?? false {
+                HStack {
+                    Text("Title:").bold()
+                    Text("\(related?.location?.title.string ?? "")")
+                        .frame(width: UIScreen.main.bounds.size.width-138, alignment: .leading)
+                        .alignmentGuide(.custom) { $0[.leading] }
+                }
+                .padding(.bottom, 0.5)
+            }
+
+            if related?.location?.bookNumber.valid ?? false {
+                HStack {
+                    Text("Book ID:").bold()
+                    Text("\(related?.location?.bookNumber.int32 ?? -1)")
+                        .frame(width: UIScreen.main.bounds.size.width-138, alignment: .leading)
+                        .alignmentGuide(.custom) { $0[.leading] }
+                }
+                .padding(.bottom, 0.5)
+            }
+
+            if related?.location?.chapterNumber.valid ?? false {
+                HStack {
+                    Text("Chapter:").bold()
+                    Text("\(related?.location?.chapterNumber.int32 ?? -1)")
+                        .frame(width: UIScreen.main.bounds.size.width-138, alignment: .leading)
+                        .alignmentGuide(.custom) { $0[.leading] }
+                }
+                .padding(.bottom, 0.5)
+            }
+
+        }
+    }
+}
+
+struct InputFieldOverview: View {
+    var inputField: InputField
     var related: Related?
     var publication: Publication?
 

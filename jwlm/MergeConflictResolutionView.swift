@@ -133,6 +133,8 @@ struct MergeConflictResolutionView: View {
             return "markings"
         case .note:
             return "notes"
+        case .inputField:
+            return "input fields"
         default:
             return "error"
         }

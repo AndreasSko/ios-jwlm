@@ -43,6 +43,7 @@
 "Paragraph:" = "Absatz:";
 "Content:" = "Inhalt:";
 "Last Modified:" = "Zuletzt geändert:";
+"Value:" = "Wert:";
 
 
 // MergeConflictResolutionView
@@ -51,6 +52,7 @@
 "bookmarks" = "Lesezeichen";
 "markings" = "Markierungen";
 "notes" = "Notizen";
+"input fields" = "Eingabefeldern";
 
 // ExportView
 "Export" = "Exportieren";
@@ -101,6 +103,9 @@ Um herauszufinden, zu welcher Publikation eine Markierung gehört, kannst du dic
 
 "help.conflict.notes.title" = "Notizen-Konflikt";
 "help.conflict.notes.text" = "Eine Notiz kollidiert, wenn sie auf beiden Seiten existiert (sie muss in der Vergangenheit also bereits mindestens einmal synchronisiert worden sein) und sie sich im Titel oder Inhalt unterscheidet. Im Allgemeinen macht es Sinn, die neuere Notiz zu wählen. Die obere gehört zum linken Backup, die untere zum rechten.";
+
+"help.conflict.input fields.title" = "Eingabefelder-Konflikt";
+"help.conflict.input fields.text" = "Eingabefelder (sog. 'InputFields') werden in interaktiven Publikationen verwendet, in denen du eigene Notizen erstellen oder Punkte abhaken kannst. Ein Beispiel wäre z.B. die 'Glücklich – für immer' Broschüre.";
 
 // Settings
 "Settings" = "Einstellungen";
