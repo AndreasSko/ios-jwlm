@@ -10,6 +10,7 @@ import Foundation
 struct Related: Decodable {
     let blockRange: [BlockRange]?
     let bookmark: Bookmark?
+    let inputField: InputField?
     let location: Location?
     let publicationLocation: Location?
     let note: Note?
@@ -33,6 +34,9 @@ enum Model: Decodable {
         case "Bookmark":
             let mdl = try Bookmark(from: decoder)
             self = .bookmark(mdl)
+        case "InputField":
+            let mdl = try InputField(from: decoder)
+            self = .inputField(mdl)
         case "Location":
             let mdl = try Location(from: decoder)
             self = .location(mdl)
@@ -58,6 +62,7 @@ enum Model: Decodable {
 
     case blockRange(BlockRange)
     case bookmark(Bookmark)
+    case inputField(InputField)
     case location(Location)
     case note(Note)
     case tag(Tag)
@@ -84,6 +89,12 @@ struct Bookmark: Decodable {
     let snippet: NullString
     let blockType: Int
     let blockIdentifier: NullInt32
+}
+
+struct InputField: Decodable {
+    let locationId: Int
+    let textTag: String
+    let value: String
 }
 
 struct Location: Decodable {
