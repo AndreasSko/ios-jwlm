@@ -23,6 +23,7 @@ struct BackupView: View {
     @State private var dbStats: GomobileDatabaseStats = GomobileDatabaseStats()
 
     var body: some View {
+        let screenWidth = UIScreen.main.bounds.size.width
         VStack {
             ZStack {
                 VStack {
@@ -78,8 +79,20 @@ struct BackupView: View {
                                     .font(.callout)
                                     .alignmentGuide(.custom) { $0[.leading] }
                             }
+
+                            HStack {
+                                Text("Input fields:").bold()
+                                    .padding(.trailing, -7)
+                                Text(String(dbStats.inputField))
+                                    .font(.callout)
+                                    .alignmentGuide(.custom) { $0[.leading] }
+                            }
                         }
                         .padding(.vertical)
+                        .padding(.bottom, -10)
+                        .if(screenWidth <= 380) { view in
+                            view.font(.callout)
+                        }
 
                         Image(systemName: "checkmark.circle")
                         .font(.title)

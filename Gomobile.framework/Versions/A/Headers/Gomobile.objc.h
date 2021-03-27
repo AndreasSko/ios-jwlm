@@ -33,6 +33,7 @@ of the slices.
 - (nonnull instancetype)init;
 @property (nonatomic) long blockRange;
 @property (nonatomic) long bookmark;
+@property (nonatomic) long inputField;
 @property (nonatomic) long location;
 @property (nonatomic) long note;
 @property (nonatomic) long tag;
@@ -72,6 +73,10 @@ function calls. Should be called after ImportJWLBackup.
  * MergeBookmarks merges bookmarks
  */
 - (BOOL)mergeBookmarks:(NSString* _Nullable)conflictSolver mcw:(GomobileMergeConflictsWrapper* _Nullable)mcw error:(NSError* _Nullable* _Nullable)error;
+/**
+ * MergeInputField merges inputFields
+ */
+- (BOOL)mergeInputFields:(NSString* _Nullable)conflictSolver mcw:(GomobileMergeConflictsWrapper* _Nullable)mcw error:(NSError* _Nullable* _Nullable)error;
 /**
  * MergeLocations merges locations
  */

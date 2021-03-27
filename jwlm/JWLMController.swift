@@ -36,6 +36,7 @@ struct MergeSettings {
     var bookmarkResolver: ConflictSolver
     var markingResolver: ConflictSolver
     var noteResolver: ConflictSolver
+    var inputFieldResolver: ConflictSolver
 }
 
 class MergeProgress: ObservableObject {
@@ -61,7 +62,10 @@ class JWLMController: ObservableObject {
         self.dbWrapper = GomobileDatabaseWrapper()
         self.mergeConflicts = GomobileMergeConflictsWrapper()
         self.mergeConflicts.initDBWrapper(dbWrapper)
-        self.settings = MergeSettings(bookmarkResolver: .disabled, markingResolver: .disabled, noteResolver: .disabled)
+        self.settings = MergeSettings(bookmarkResolver: .disabled,
+                                      markingResolver: .disabled,
+                                      noteResolver: .disabled,
+                                      inputFieldResolver: .disabled)
     }
 
     func importBackup(url: URL, side: MergeSide) throws {
@@ -134,27 +138,31 @@ class JWLMController: ObservableObject {
         dbWrapper.init_()
 
         do {
-            progress.percent = 16
+            progress.percent = 14
             progress.status = "Merging Locations"
             try dbWrapper.mergeLocations()
 
-            progress.percent = 32
+            progress.percent = 28
             progress.status = "Merging Bookmarks"
             try dbWrapper.mergeBookmarks(self.settings.bookmarkResolver.rawValue, mcw: self.mergeConflicts)
 
-            progress.percent = 48
+            progress.percent = 42
+            progress.status = "Merging InputFields"
+            try dbWrapper.mergeInputFields(self.settings.inputFieldResolver.rawValue, mcw: self.mergeConflicts)
+
+            progress.percent = 56
             progress.status = "Merging Tags"
             try dbWrapper.mergeTags()
 
-            progress.percent = 64
+            progress.percent = 70
             progress.status = "Merging Markings"
             try dbWrapper.mergeUserMarkAndBlockRange(self.settings.markingResolver.rawValue, mcw: self.mergeConflicts)
 
-            progress.percent = 80
+            progress.percent = 84
             progress.status = "Merging Notes"
             try dbWrapper.mergeNotes(self.settings.noteResolver.rawValue, mcw: self.mergeConflicts)
 
-            progress.percent = 96
+            progress.percent = 98
             progress.status = "Merging TagMaps"
             try dbWrapper.mergeTagMaps()
 

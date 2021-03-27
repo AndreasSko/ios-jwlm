@@ -15,6 +15,7 @@
 "Import" = "Importieren";
 "Error while importing backup" = "Beim Importieren ist ein Fehler aufgetreten";
 "Bookmarks:" = "Lesezeichen:";
+"Input fields:" = "Eingabefelder:";
 "Notes:" = "Notizen:";
 "Markings:" = "Markierungen:";
 
@@ -43,6 +44,7 @@
 "Paragraph:" = "Absatz:";
 "Content:" = "Inhalt:";
 "Last Modified:" = "Zuletzt geändert:";
+"Value:" = "Wert:";
 
 
 // MergeConflictResolutionView
@@ -51,6 +53,7 @@
 "bookmarks" = "Lesezeichen";
 "markings" = "Markierungen";
 "notes" = "Notizen";
+"input fields" = "Eingabefeldern";
 
 // ExportView
 "Export" = "Exportieren";
@@ -90,6 +93,11 @@ Am einfachsten ist es, ein Issue auf GitHub zu erstellen oder mir eine Email zu 
 // Help
 "help.conflictAutoresolution.title" = "Was bedeutet automatische Konfliktlösung?";
 "help.conflictAutoresolution.text" = "Es kann vorkommen, dass beim Mergen zwei Einträge kollidieren. Anstatt jedes mal gefragt zu werden, wie weitergemacht werden soll, kannst Du einstellen, dass für eine Kategorie immer die gleiche Seite verwendet wird. Bei Notizen besteht zusätzlich die Möglichkeit, immer die neueste auszuwählen. Das kann praktisch sein, wenn du dir sicher bist, dass du bei Konflikten immer die gleiche Seite verwenden möchtest. Am sichersten bist du - gerade wenn du zum ersten mal zwei Backups mergt - allerdings immer, wenn du die Einstellung bei „Manuell“ belässt und für jeden Fall einzeln entscheidest, welcher Eintrag im Backup enthalten sein soll.";
+"Legend:" = "Legende:";
+"Bookmarks" = "Lesezeichen";
+"Markings" = "Markierungen";
+"Notes" = "Notizen";
+"Input fields" = "Eingabefelder";
 
 "help.conflict.bookmarks.title" = "Lesezeichen-Konflikt";
 "help.conflict.bookmarks.text" = "Lesezeichen gelten pro Publikation (z.B. eine Wachtturm-Ausgabe oder Bibelübersetzung) und können an zehn verschiedenen Stellen - den sogenannten „Slots“ - platziert werden. Eine Kollision entsteht dann, wenn zwei Lesezeichen in der selben Publikation auf der gleichen Position liegen. Wähle das Lesezeichen aus, das im gemergten Backup enthalten sein soll. Das obere gehört zum linken Backup, das untere zum rechten.\n\n
@@ -101,6 +109,9 @@ Um herauszufinden, zu welcher Publikation eine Markierung gehört, kannst du dic
 
 "help.conflict.notes.title" = "Notizen-Konflikt";
 "help.conflict.notes.text" = "Eine Notiz kollidiert, wenn sie auf beiden Seiten existiert (sie muss in der Vergangenheit also bereits mindestens einmal synchronisiert worden sein) und sie sich im Titel oder Inhalt unterscheidet. Im Allgemeinen macht es Sinn, die neuere Notiz zu wählen. Die obere gehört zum linken Backup, die untere zum rechten.";
+
+"help.conflict.input fields.title" = "Eingabefelder-Konflikt";
+"help.conflict.input fields.text" = "Eingabefelder (sog. 'InputFields') werden in interaktiven Publikationen verwendet, in denen du eigene Notizen erstellen oder Punkte abhaken kannst. Ein Beispiel wäre z.B. die 'Glücklich – für immer' Broschüre.";
 
 // Settings
 "Settings" = "Einstellungen";

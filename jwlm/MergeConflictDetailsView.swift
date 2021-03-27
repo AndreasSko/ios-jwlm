@@ -17,20 +17,18 @@ struct MergeConflictDetailsView: View {
             switch selectConflict().model {
             case .bookmark(let bookmark):
                 BookmarkDetail(bookmark: bookmark)
-                    .frame(maxWidth: .infinity)
-                    .padding()
             case .userMarkBlockRange(let umbr):
                 UserMarkBlockRangeDetail(umbr: umbr)
-                    .frame(maxWidth: .infinity)
-                    .padding()
             case .note(let note):
                 NoteDetail(note: note)
-                    .frame(maxWidth: .infinity)
-                    .padding()
+            case .inputField(let inputfield):
+                InputFieldDetail(inputField: inputfield)
             default:
                 Text("Error! Can not generate preview")
             }
         }
+        .frame(maxWidth: .infinity)
+        .padding()
         .background(Color.white)
         .cornerRadius(10)
         .overlay(
@@ -159,6 +157,30 @@ struct UserMarkBlockRangeDetail: View {
         5: Color(red: 1.00, green: 0.73, blue: 0.46),
         6: Color(red: 0.68, green: 0.52, blue: 1.00)
     ]
+}
+
+struct InputFieldDetail: View {
+    var inputField: InputField
+
+    var body: some View {
+        HStack {
+            VStack(alignment: .leading) {
+                KeyValue(key: "TextTag:", value: inputField.textTag)
+
+                Text("Value:").bold()
+                switch inputField.value {
+                case "0":
+                    Image(systemName: "square")
+                case "1":
+                    Image(systemName: "checkmark.square")
+                default:
+                    Text(inputField.value)
+                        .padding(.bottom, 0.5)
+                }
+            }
+            Spacer()
+        }
+    }
 }
 
 struct KeyValue: View {

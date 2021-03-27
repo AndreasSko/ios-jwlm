@@ -47,6 +47,9 @@ To figure out where the marking is located, look at the additional information: 
 "help.conflict.notes.title" = "Note conflict";
 "help.conflict.notes.text" = "A note collides if it exists on both sides (so it must have been synced at least once) and it differers in the title or content. It generally makes sense to choose the note with the newest date. The upper one belongs to the right backup, the lower one to the left.";
 
+"help.conflict.input fields.title" = "Input field conflict";
+"help.conflict.input fields.text" = "Input fields are used in interactive publications where you can enter custom notes, tick boxes, etc. An example would be the 'Enjoy Life Forever!' brochure.";
+
 // Settings
 "settings.catalogDB.quickInfo" = "Download the Publication Catalog to see more detailed information when merging.";
 "settings.catalogDB.downloadSize" = "Downloading the catalog takes about 50MB.";
