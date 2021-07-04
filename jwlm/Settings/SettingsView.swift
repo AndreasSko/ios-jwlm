@@ -25,6 +25,12 @@ struct SettingsView: View {
                         Text("Manage Publication Catalog")
                     }
 
+                    NavigationLink(destination: MarkingPreviewSettingsView(),
+                                   tag: "markingPreview",
+                                   selection: $selection) {
+                        Text("Marking Previews")
+                    }
+
                     Button(action: {
                         UserDefaults.standard.removeObject(forKey: "needsOnboarding")
                     }, label: {

@@ -27,6 +27,7 @@
 		F44BF830253376B10057B980 /* MergeSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F44BF82F253376B10057B980 /* MergeSettingsView.swift */; };
 		F44BF838253476110057B980 /* ExportView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F44BF837253476110057B980 /* ExportView.swift */; };
 		F44BF8512534D5070057B980 /* MergeConflictResolutionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F44BF8502534D5070057B980 /* MergeConflictResolutionView.swift */; };
+		F46052ED26920CF7003600A2 /* MarkingPreviewSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F46052EC26920CF7003600A2 /* MarkingPreviewSettingsView.swift */; };
 		F476B840260A2274009F0265 /* MergeSettingsLegendHelp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F476B83F260A2274009F0265 /* MergeSettingsLegendHelp.swift */; };
 		F48F44B6255E808B0050C564 /* HelpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F48F44B5255E808B0050C564 /* HelpView.swift */; };
 		F48F44D2255EC4DC0050C564 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = F48F44D4255EC4DC0050C564 /* Localizable.strings */; };
@@ -80,6 +81,7 @@
 		F44BF82F253376B10057B980 /* MergeSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MergeSettingsView.swift; sourceTree = "<group>"; };
 		F44BF837253476110057B980 /* ExportView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExportView.swift; sourceTree = "<group>"; };
 		F44BF8502534D5070057B980 /* MergeConflictResolutionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MergeConflictResolutionView.swift; sourceTree = "<group>"; };
+		F46052EC26920CF7003600A2 /* MarkingPreviewSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarkingPreviewSettingsView.swift; sourceTree = "<group>"; };
 		F476B83F260A2274009F0265 /* MergeSettingsLegendHelp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MergeSettingsLegendHelp.swift; sourceTree = "<group>"; };
 		F48F44B5255E808B0050C564 /* HelpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpView.swift; sourceTree = "<group>"; };
 		F48F44D3255EC4DC0050C564 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -215,6 +217,7 @@
 			children = (
 				F42649AD257E469100644CA6 /* SettingsView.swift */,
 				F4B8AEA625867E0B008DF433 /* CatalogDBSettingsView.swift */,
+				F46052EC26920CF7003600A2 /* MarkingPreviewSettingsView.swift */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -394,6 +397,7 @@
 				F44BF838253476110057B980 /* ExportView.swift in Sources */,
 				F44BF8512534D5070057B980 /* MergeConflictResolutionView.swift in Sources */,
 				F4B8AECE258A83C3008DF433 /* NotificationView.swift in Sources */,
+				F46052ED26920CF7003600A2 /* MarkingPreviewSettingsView.swift in Sources */,
 				F447E5BD255A7BC000C3DA35 /* MergeConflictOverview.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
