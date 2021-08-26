@@ -10,8 +10,10 @@ import Gomobile
 
 let catalogDBPath = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first?
                     .appendingPathComponent("catalog.db")
+let publicationDir = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first?
+                    .appendingPathComponent("publications")
 
-struct Publication: Decodable {
+struct Publication: Codable {
     let id: Int
     let publicationRootKeyId: Int
     let mepsLanguageId: Int
@@ -57,4 +59,19 @@ func lookupPublication(_ query: GomobilePublicationLookup) -> Publication? {
     } catch {
         return nil
     }
+}
+
+func publicationDownloaded(_ publication: Publication) -> Bool {
+    return getPublicationPath(publication) != ""
+}
+
+func getPublicationPath(_ publication: Publication) -> String {
+    var jsonString: String
+    do {
+        let jsonData = try JSONEncoder().encode(publication)
+        jsonString = String(data: jsonData, encoding: .utf8) ?? ""
+    } catch {
+        return ""
+    }
+    return Gomobile.GomobileGetPublicationPath(jsonString, publicationDir?.absoluteString)
 }

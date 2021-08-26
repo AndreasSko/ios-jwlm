@@ -187,6 +187,10 @@ actual conflicts to make it compatible with Gomobile.
 - (nonnull instancetype)init;
 @property (nonatomic) GomobileDatabaseWrapper* _Nullable dbWrapper;
 /**
+ * GetSnippet fetches the snippet related to a mergeConflict
+ */
+- (NSString* _Nonnull)getSnippet:(NSString* _Nullable)catalogDir publDir:(NSString* _Nullable)publDir conflictKey:(NSString* _Nullable)conflictKey error:(NSError* _Nullable* _Nullable)error;
+/**
  * InitDBWrapper initializes the DatabaseWrapper for the MergeConflictsWrapper
 so the DB is accessible for pretty printing.
  */
@@ -240,6 +244,18 @@ FOUNDATION_EXPORT int64_t GomobileCatalogSize(NSString* _Nullable path);
 returned DownloadManager allows to keep track and manage the running download
  */
 FOUNDATION_EXPORT GomobileDownloadManager* _Nullable GomobileDownloadCatalog(NSString* _Nullable dst);
+
+/**
+ * DownloadPublication downloads the publication (given in JSON format) and saves it at dst. The
+returned DownloadManager allows to keep track and manage the running download
+ */
+FOUNDATION_EXPORT GomobileDownloadManager* _Nullable GomobileDownloadPublication(NSString* _Nullable publJSON, NSString* _Nullable dst);
+
+/**
+ * GetPublicationPath generates the filename of the publication (given in JSON format)
+and checks if it exists in the publDir. If it doesn't, an empty string is returned
+ */
+FOUNDATION_EXPORT NSString* _Nonnull GomobileGetPublicationPath(NSString* _Nullable publJSON, NSString* _Nullable publDir);
 
 /**
  * LookupPublication looks up a publication from catalogDB located at dbPath
