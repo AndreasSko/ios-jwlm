@@ -1,0 +1,129 @@
+/*
+ Localizable.strings
+ jwlm
+
+ Translated by Humberto Almeida on 21 Jan 2021
+
+ */
+// General
+"Cancel" = "Cancelar";
+"Continue" = "Prosseguir";
+"Done" = "Concluído";
+
+// BackupView
+"Select Backup" = "Selecionar cópia de segurança";
+"Import" = "Importar";
+"Error while importing backup" = "Problemas com a importação";
+"Bookmarks:" = "Etiquetas:";
+"Notes:" = "Notas:";
+"Markings:" = "Marcadores:";
+
+// MergeView
+"Merge" = "Combinar";
+//"Merging bookmarks.." = "Merge "
+
+// MergeSettingsView
+"Conflict Autoresolution" = "Solução automática em caso de conflito";
+"Manual" = "Manual";
+"Left" = "Esquerda";
+"Right" = "Direita";
+"Newest" = "Recente";
+
+// MergeConflictOverview
+"Publication:" = "Publicação:";
+"Book ID:" = "ID do livro:"; //?
+"Chapter:" = "Capítulo:"; //??
+"Slot" = "Slot"; //??
+"Issue:" = "Edição:";
+
+// MergeConflictDetailsView
+"Title:" = "Título:";
+"Snippet:" = "Trecho:";
+"Color:" = "Cor:";
+"Paragraph:" = "Parágrafo:";
+"Content:" = "Conteúdo:";
+"Last Modified:" = "Última modificação:";
+
+
+// MergeConflictResolutionView
+"Conflict while merging" = "Conflito durante a mesclagem";
+"Which one should be included?" = "Qual dos registros deseja manter?";
+"bookmarks" = "etiquetas";
+"markings" = "marcações";
+"notes" = "notas";
+
+// ExportView
+"Export" = "Exportação";
+"Error while exporting" = "Problemas com a exportação";
+
+// Onboarding
+"onboarding.1" = "Com o JWLM pode mesclar duas bibliotecas JW";
+"onboarding.1.trademark" = "(JW Library é uma marca registada da Watch Tower Bible and Tract Society of Pennsylvania.)";
+
+"onboarding.2.first" = "Seleccione as duas cópias de segurança";
+"Pro Tips:" = "Dica:";
+"onboarding.2.proTip.first" = "Usa o AirDrop para transferires cópias de segurança entre aparelhos -Apple";
+"onboarding.2.proTip.second" = "Com a ajuda da função Compartilhamento podes enviar cópias de segurança que se encontram no dispositivo diretamente para o JWLM";
+"onboarding.2.proTip.third" = "Também podes usar o iCloud, Dropbox etc. para importares cópias de segurança de outros dispositivos";
+
+"onboarding.3.first" = "Dicide, se conflitos entre as cópias de segurança devam ser resolvidos automáticamente";
+"onboarding.3.second" = "Mais tarde serão dadas mais informações. Por enquanto faz a importação.";
+"onboarding.3.third" = "..e inicia o processo por tocar em";
+
+"onboarding.4.first" = "JWLM verifica se os dados colidem";
+"onboarding.4.second" = "Se existir conflitos, simplesmente escolhe o lado que desejas manter.";
+"onboarding.4.third" = "Na primeira mesclagem podem surgir vários conflitos. Mas nas próximas vezes será mais rápido e com menos conflitos.";
+"onboarding.4.fourth" = "Depois de finalizada a mesclagem, podes exportar o resultado.";
+
+"onboarding.5.first" = "Vamos ao que interessa?";
+"onboarding.5.second" = "A aplicação ainda está em desenvolvimento. Por isso é aconselhado - como sempre - manter uma cópia de segurança no seu original.
+
+Se encontraste um erro ou tenhas alguma sugestã de aprimoramento, não hesites em me contactar 😊
+A maneira mais fácil de o fazer é criar um Issue no GitHub ou enviar-me um e-mail: jwlm@andreas-sk.de";
+"onboarding.5.third" = "Esta aplicação é Open Source.";
+"onboarding.5.startButton" = "Ora vamos lá!";
+
+"By the way:" = "A propósito:";
+"Exodus" = "Êxodo";
+"Skip Tutorial" = "Pular a explicação";
+
+// Help
+"help.conflictAutoresolution.title" = "O que significa a resolução automática de conflitos?";
+"help.conflictAutoresolution.text" = "Pode acontecer que durante a mesclagem surjam conflitos de dados entre as duas cópias de segurança. Em vez de manualmente decidir como continuar, pode definir qual das cópias (ou lado) será sempre usado para uma categoria. Para notas, também tem a opção de seleccionar sempre a mais recente. Isto pode ser útil se tiver a certeza de que quer usar sempre o mesma lado (direito/esquerdo) em caso de conflitos. Contudo, a forma mais segura - especialmente quando for mesclar duas cópias de segurança pela primeira vez - é deixar a definição em „manual“ e decidir individualmente para cada caso qual a entrada (lado) que deve ser usada na mesclagem final.";
+
+"help.conflict.bookmarks.title" = "Conflitos de etiquetas";
+"help.conflict.bookmarks.text" = "Os marcadores aplicam-se por publicação (por exemplo, a uma edição da Sentinela ou a uma tradução da Bíblia) e podem ser colocados em dez locais diferentes - os chamados „slots“. Um conflito ocorre quando dois marcadores na mesma publicação se encontram na mesma posição. Seleccione o marcador que deverá ser incluído na mesclagem final. O que aparece por cima pretende à cópia de segurança do lado esquerdo, e o de baixo à da direita.\n\n
+Para descobrires a que publicação pertence uma etiqueta, podes utilizar as seguintes informações como guia: „Número do livro“ e „Capítulo“ indicam geralmente um livro bíblico, enquanto „DocumentID“ pertence a uma edição da Sentinela ou a uma outra publicação.";
+
+"help.conflict.markings.title" = "Conflitos de marcações";
+"help.conflict.markings.text" = "As camrcações colidem quando se sobrepõem pelo menos num ponto. Uma marcação é definida por um assim chamado „Identifier“, um „StartToken“ e um „EndToken“. Os „Identifier“ podem ser entendidos como parágrafos num sentido alargado: nos livros bíblicos são geralmente os números dos versículos, noutras publicações as legendas também são consideradas „Identifier“. O „StartToken“ e „EndToken“ descrevem o início e o fim de um marcador, respectivamente; as palavras e sinais de pontuação contam como „Token“: Assim, a frase „Vocês são as minhas testemunhas,“ consiste em 6 „Tokens“: cinco palavras e uma vírgula. Note-se que as marcações podem passar por vários parágrafos. Selecciona a marcação a ser incluído na mesclagem final. A parte superior pertence à cópia da esquerda, e a parte inferior à cópia da direita.\n\n
+Para descobrires a que publicação pertence uma marcação, podes utilizar as seguintes informações como guia: „Número do livro“ e „Capítulo“ indicam geralmente um livro bíblico, enquanto „DocumentID“ pertence a uma edição da Sentinela ou a uma outra publicação.";
+
+"help.conflict.notes.title" = "Conflitos de notas";
+"help.conflict.notes.text" = "Uma nota (ou anotação) colide se existir de ambos os lados (por isso deve ter sido sincronizada pelo menos uma vez no passado) e difere no título ou conteúdo. Em geral, faz sentido selecionar a nota mais recente. A parte superior pertence à cópia do lado esquerdo, e a inferior à cópia do lado direito.";
+
+// Settings
+"Settings" = "Configuração";
+"Show Tutorial again" = "Mostrar novamente o tutorial";
+"Open Issue on GitHub" = "Criar um „Issue“ no GitHub ";
+"Review Privacy Policy" = "Política de Privacidade";
+"Visit project on GitHub" = "Visitar projecto no GitHub";
+"Manage Publication Catalog" = "Gerir catálogo de publicações";
+
+"Publication Catalog" = "Catálogo de Publicações";
+"Size:" = "Tamanho:";
+"Up to date" = "Actualizado";
+"Outdated" = "Desactualizado";
+"Not downloaded" = "Não foi transferido";
+"Downloading..." = "Transferindo...";
+"What is a Publication Catalog?" = "O que é um catálogo de publicações?";
+
+"settings.catalogDB.quickInfo" = "Baixar o catálogo da publicação para obter informações mais detalhadas durante a mesclagem.";
+"settings.catalogDB.downloadSize" = "Serão transferidos uns 50MB de dados.";
+"settings.catalogDB.explainer" = "É uma base de dados que contém informações sobre todas as publicações dos últimos anos. Isto pode ser de ajuda adicional (especificando melhor o conflito) quando surgirem divergências durante a mesclagem. Mas não é obrigatório.";
+"settings.catalogDB.disclaimer" = "O catálogo é baixado a partir do site app.jw-cdn.org. Este site é operado pela \"Watchtower Bible and Tract Society of New York, Inc\". Se não tiveres a certeza de como os teus dados, que são transferidos durante o download, são utilizados, faz o favor de ler a política de privacidade.";
+"Privacy Policy on jw.org" = "Política de privacidade no JW.ORG";
+
+// Notifications
+"New version of the Publication Catalog is available." = "Está disponível uma nova versão do catálogo de publicações.";
+"You can download it in the settings." = "Podes descarregá-lo nas configurações.";
