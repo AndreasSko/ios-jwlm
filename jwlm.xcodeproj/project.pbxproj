@@ -3,10 +3,11 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F402E1D827789A020083C4EB /* Gomobile.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = F402E1D727789A020083C4EB /* Gomobile.xcframework */; };
 		F420DFC2255C0C6900CEB66B /* BackupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F43574EF253341CB00EC55D4 /* BackupView.swift */; };
 		F42649AE257E469100644CA6 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F42649AD257E469100644CA6 /* SettingsView.swift */; };
 		F433F8F12573C11B00258C29 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F433F8F02573C11B00258C29 /* OnboardingView.swift */; };
@@ -16,7 +17,6 @@
 		F43574BE2533411B00EC55D4 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F43574BD2533411B00EC55D4 /* Preview Assets.xcassets */; };
 		F43574C92533411B00EC55D4 /* JwlmTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F43574C82533411B00EC55D4 /* JwlmTests.swift */; };
 		F43574D42533411B00EC55D4 /* JwlmUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F43574D32533411B00EC55D4 /* JwlmUITests.swift */; };
-		F43574E92533418300EC55D4 /* Gomobile.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F43574E82533418300EC55D4 /* Gomobile.framework */; };
 		F43574F0253341CB00EC55D4 /* BackupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F43574EF253341CB00EC55D4 /* BackupView.swift */; };
 		F43B4A1E253346DD005BF9E8 /* JWLMController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F43B4A1D253346DC005BF9E8 /* JWLMController.swift */; };
 		F441B1502549AE4900B0409B /* MergeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F441B14F2549AE4900B0409B /* MergeView.swift */; };
@@ -54,6 +54,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		F402E1D727789A020083C4EB /* Gomobile.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = Gomobile.xcframework; sourceTree = "<group>"; };
 		F420DF9B255B34E800CEB66B /* jwlm.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = jwlm.entitlements; sourceTree = "<group>"; };
 		F42649AD257E469100644CA6 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		F433F8F02573C11B00258C29 /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
@@ -69,7 +70,6 @@
 		F43574CF2533411B00EC55D4 /* jwlmUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = jwlmUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F43574D32533411B00EC55D4 /* JwlmUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JwlmUITests.swift; sourceTree = "<group>"; };
 		F43574D52533411B00EC55D4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		F43574E82533418300EC55D4 /* Gomobile.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Gomobile.framework; sourceTree = "<group>"; };
 		F43574EF253341CB00EC55D4 /* BackupView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BackupView.swift; sourceTree = "<group>"; };
 		F43B4A1D253346DC005BF9E8 /* JWLMController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JWLMController.swift; sourceTree = "<group>"; };
 		F441B14F2549AE4900B0409B /* MergeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MergeView.swift; sourceTree = "<group>"; };
@@ -95,7 +95,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F43574E92533418300EC55D4 /* Gomobile.framework in Frameworks */,
+				F402E1D827789A020083C4EB /* Gomobile.xcframework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -197,7 +197,7 @@
 		F43574E72533418300EC55D4 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				F43574E82533418300EC55D4 /* Gomobile.framework */,
+				F402E1D727789A020083C4EB /* Gomobile.xcframework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -568,7 +568,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = jwlm/jwlm.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"jwlm/Preview Content\"";
 				DEVELOPMENT_TEAM = 9YFM7J3EH3;
 				ENABLE_PREVIEWS = YES;
@@ -582,7 +582,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 0.4.3;
+				MARKETING_VERSION = 0.4.4;
 				PRODUCT_BUNDLE_IDENTIFIER = "de.andreas-sk.jwlm";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -597,7 +597,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = jwlm/jwlm.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"jwlm/Preview Content\"";
 				DEVELOPMENT_TEAM = 9YFM7J3EH3;
 				ENABLE_PREVIEWS = YES;
@@ -611,7 +611,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 0.4.3;
+				MARKETING_VERSION = 0.4.4;
 				PRODUCT_BUNDLE_IDENTIFIER = "de.andreas-sk.jwlm";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
