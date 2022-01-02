@@ -51,6 +51,19 @@ enum MergeError: Error {
     case error(message: String)
 }
 
+extension MergeError: LocalizedError {
+    public var errorDescription: String? {
+        switch self {
+        case .notInitialized(let message):
+            return message
+        case .error(let message):
+            return message
+        default:
+            return ""
+        }
+    }
+}
+
 class JWLMController: ObservableObject {
     var dbWrapper: GomobileDatabaseWrapper
     var mergeConflicts: GomobileMergeConflictsWrapper

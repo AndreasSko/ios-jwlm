@@ -12,8 +12,8 @@ struct ExportView: View {
 
     @State private var isExporting: Bool = false
     @State private var exportedURL: URL!
-    @State private var showAlert: Bool = false
-    @State private var alertMessage: String = ""
+    @State private var showError: Bool = false
+    @State private var errorMessage: String = ""
 
     var body: some View {
         VStack {
@@ -23,15 +23,13 @@ struct ExportView: View {
                     exportedURL = NSURL.fileURL(withPath: path)
                     isExporting.toggle()
                 } catch {
-                    alertMessage = error.localizedDescription
-                    showAlert = true
+                    errorMessage = error.localizedDescription
+                    showError = true
                 }
             }
         }
-        .alert(isPresented: $showAlert) {
-            Alert(title: Text("Error while exporting"),
-                  message: Text(self.alertMessage),
-                  dismissButton: .default(Text("Ok")))
+        .sheet(isPresented: $showError) {
+            ErrorView(error: $errorMessage)
         }
         .sheet(isPresented: $isExporting, content: {
             ShareView(url: self.$exportedURL)

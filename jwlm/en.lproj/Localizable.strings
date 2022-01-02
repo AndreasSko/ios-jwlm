@@ -55,3 +55,8 @@ To figure out where the marking is located, look at the additional information: 
 "settings.catalogDB.downloadSize" = "Downloading the catalog takes about 50MB.";
 "settings.catalogDB.explainer" = "It's a database that contains information about all the publications of the last years. With it's help you are able to get more detailed information (like the title of a publication) when solving a merge conflicts. But you can also use the app without downloading it.";
 "settings.catalogDB.disclaimer" = "The catalog is downloaded from app.jw-cdn.org, which is operated by Watchtower Bible and Tract Society of New York, Inc. You may want to consider their Privacy Policy if you are not sure what data might be processed when you initialize the download.";
+
+// ErrorView
+"errorView.reportError" = "Looks like you found a bug 😅. Could you help me to fix it?
+I would really appreciate it if you could send me a bug report with the error below at jwlm@andreas-sk.de. Usually, it's beneficial for me to have a look at the actual backups you tried to merge. So if you feel confident with it, please feel free to provide them with the bug report - of course, I'm only looking at the specific issue and leave the rest of the data untouched.
+Thank you so much for your help! 😊";

@@ -16,8 +16,8 @@ struct MergeView: View {
 
     @State private var isMerging: Bool = false
     @ObservedObject private var mergeProgress: MergeProgress = MergeProgress()
-    @State private var showAlert: Bool = false
-    @State private var alertMessage: String = ""
+    @State private var showError: Bool = false
+    @State private var errorMessage: String = ""
     @State private var showMergeConflictSheet: Bool = false
     @State private var cancelMerge: Bool = false
 
@@ -40,10 +40,8 @@ struct MergeView: View {
             }
             .font(.title2)
             .padding()
-            .alert(isPresented: $showAlert) {
-                Alert(title: Text("Error while merging"),
-                      message: Text(self.alertMessage),
-                      dismissButton: .default(Text("Ok")))
+            .sheet(isPresented: $showError) {
+                ErrorView(error: $errorMessage)
             }
             .fullScreenCover(isPresented: $showMergeConflictSheet, onDismiss: {
                 if cancelMerge {
@@ -81,8 +79,8 @@ struct MergeView: View {
 
             return false
         } catch {
-            alertMessage = error.localizedDescription
-            showAlert = true
+            errorMessage = error.localizedDescription
+            showError = true
             return false
         }
         return true

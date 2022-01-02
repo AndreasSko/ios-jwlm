@@ -139,3 +139,12 @@ Um herauszufinden, zu welcher Publikation eine Markierung gehört, kannst du dic
 // Notifications
 "New version of the Publication Catalog is available." = "Neue Version des Publikations Katalogs verfügbar.";
 "You can download it in the settings." = "Du kannst ihn in den Einstellungen herunterladen.";
+
+// ErrorView
+"😕 Something went wrong.." = "😕 Da lief was schief..";
+"errorView.reportError" = "Scheint so, als hättest du einen Fehler gefunden. Könntest du mir helfen, ihn zu beheben?
+Ich würde mich freuen, wenn du mir einen Fehlerbericht mit dem unten stehenden Fehler an jwlm@andreas-sk.de schicken könntest. Häufig ist es für mich ganz hilfreich, wenn ich auch einen kurzen Blick in die Backups haben kann. Falls du dich damit wohl fühlst, kannst du die Backups gerne in der Email mitschicken - natürlich schaue ich mir nur das Problem an und lasse den Rest der Daten in Ruhe.
+Vielen Dank für deine Hilfe! 😊";
+"The following error was returned:" = "Folgender Fehler wurde zurückgegeben:";
+"Copy" = "Kopieren";
+"Copied" = "Kopiert";

@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		F402E1D827789A020083C4EB /* Gomobile.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = F402E1D727789A020083C4EB /* Gomobile.xcframework */; };
+		F402E1DC277DB4C70083C4EB /* ErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F402E1DB277DB4C70083C4EB /* ErrorView.swift */; };
 		F420DFC2255C0C6900CEB66B /* BackupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F43574EF253341CB00EC55D4 /* BackupView.swift */; };
 		F42649AE257E469100644CA6 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F42649AD257E469100644CA6 /* SettingsView.swift */; };
 		F433F8F12573C11B00258C29 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F433F8F02573C11B00258C29 /* OnboardingView.swift */; };
@@ -55,6 +56,7 @@
 
 /* Begin PBXFileReference section */
 		F402E1D727789A020083C4EB /* Gomobile.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = Gomobile.xcframework; sourceTree = "<group>"; };
+		F402E1DB277DB4C70083C4EB /* ErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorView.swift; sourceTree = "<group>"; };
 		F420DF9B255B34E800CEB66B /* jwlm.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = jwlm.entitlements; sourceTree = "<group>"; };
 		F42649AD257E469100644CA6 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		F433F8F02573C11B00258C29 /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
@@ -157,6 +159,7 @@
 				F447E5BC255A7BC000C3DA35 /* MergeConflictOverview.swift */,
 				F441B1612549CEB100B0409B /* MergeConflictDetailsView.swift */,
 				F48F44B5255E808B0050C564 /* HelpView.swift */,
+				F402E1DB277DB4C70083C4EB /* ErrorView.swift */,
 				F43B4A1D253346DC005BF9E8 /* JWLMController.swift */,
 				F4B8AEAE25867E7B008DF433 /* PublicationController.swift */,
 				F43574BA2533411B00EC55D4 /* Assets.xcassets */,
@@ -379,6 +382,7 @@
 				F476B840260A2274009F0265 /* MergeSettingsLegendHelp.swift in Sources */,
 				F48F44B6255E808B0050C564 /* HelpView.swift in Sources */,
 				F447E5AF255997BA00C3DA35 /* Models.swift in Sources */,
+				F402E1DC277DB4C70083C4EB /* ErrorView.swift in Sources */,
 				F48F4526256073460050C564 /* If.swift in Sources */,
 				F433F8F12573C11B00258C29 /* OnboardingView.swift in Sources */,
 				F43574B92533411900EC55D4 /* ContentView.swift in Sources */,
@@ -582,7 +586,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 0.4.4;
+				MARKETING_VERSION = 0.4.5;
 				PRODUCT_BUNDLE_IDENTIFIER = "de.andreas-sk.jwlm";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -611,7 +615,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 0.4.4;
+				MARKETING_VERSION = 0.4.5;
 				PRODUCT_BUNDLE_IDENTIFIER = "de.andreas-sk.jwlm";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
