@@ -15,8 +15,8 @@ struct MergeConflictResolutionView: View {
     @State private var conflict: MergeConflict
     @State private var selectedSide: MergeSide?
     @State private var helpOpened = false
-    @State private var showAlert: Bool = false
-    @State private var alertMessage: String = ""
+    @State private var showError: Bool = false
+    @State private var errorMessage: String = ""
 
     init (jwlmController: JWLMController, cancelMerge: Binding<Bool>) {
         self.jwlmController = jwlmController
@@ -108,8 +108,8 @@ struct MergeConflictResolutionView: View {
                     } catch MergeError.noConflicts {
                         presentationMode.wrappedValue.dismiss()
                     } catch {
-                        alertMessage = error.localizedDescription
-                        showAlert.toggle()
+                        errorMessage = error.localizedDescription
+                        showError.toggle()
                     }
                 }, label: {
                     Text("Continue")
@@ -117,10 +117,8 @@ struct MergeConflictResolutionView: View {
                 )
             )
         }
-        .alert(isPresented: $showAlert) {
-            Alert(title: Text("Error"),
-                  message: Text(self.alertMessage),
-                  dismissButton: .default(Text("Ok")))
+        .sheet(isPresented: $showError) {
+            ErrorView(error: $errorMessage)
         }
     }
 

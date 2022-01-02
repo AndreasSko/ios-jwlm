@@ -18,8 +18,8 @@ struct BackupView: View {
     @Binding var doneMerging: Bool
 
     @State private var isImporting: Bool = false
-    @State private var showAlert: Bool = false
-    @State private var alertMessage: String = ""
+    @State private var showError: Bool = false
+    @State private var errorMessage: String = ""
     @State private var dbStats: GomobileDatabaseStats = GomobileDatabaseStats()
 
     var body: some View {
@@ -133,10 +133,8 @@ struct BackupView: View {
         .onTapGesture {
             wasPressed()
         }
-        .alert(isPresented: $showAlert) {
-            Alert(title: Text("Error while importing backup"),
-                  message: Text(self.alertMessage),
-                  dismissButton: .default(Text("Ok")))
+        .sheet(isPresented: $showError) {
+            ErrorView(error: $errorMessage)
         }
         .fileImporter(isPresented: $isImporting,
                       allowedContentTypes: [.jwlibrary]) { (result) in
@@ -144,8 +142,8 @@ struct BackupView: View {
                 let url = try result.get()
                 importBackup(url: url)
             } catch {
-                alertMessage = error.localizedDescription
-                showAlert = true
+                errorMessage = error.localizedDescription
+                showError = true
             }
         }
     }
@@ -166,8 +164,8 @@ struct BackupView: View {
             fileSelected = true
             dbStats = jwlmController.dbWrapper.stats(side.rawValue)!
         } catch {
-            alertMessage = error.localizedDescription
-            showAlert = true
+            errorMessage = error.localizedDescription
+            showError = true
         }
     }
 }
