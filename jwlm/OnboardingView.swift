@@ -62,8 +62,6 @@ struct Onboarding1: View {
                 Spacer()
             }
             Spacer()
-            Text("onboarding.1.trademark").font(.caption)
-                .padding(.bottom, 40)
         }
         .padding()
     }
