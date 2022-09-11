@@ -22,7 +22,7 @@ struct ContentView: View {
     var body: some View {
         VStack {
             HStack(alignment: .top) {
-                Text("JW Library Merger")
+                Text("Library Merger")
                     .font(.title)
                     .fontWeight(.bold)
                     .multilineTextAlignment(.leading)

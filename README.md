@@ -1,6 +1,6 @@
-# JWLM - Easily merge JW Library backups in iOS
+# Library Merger - Easily merge JW Library backups in iOS
 
-JWLM is an iOS app that allows you to merge two JW Library backups. It wraps the
+Library Merger is an iOS app that allows you to merge two JW Library backups. It wraps the
 merge logic of [go-jwlm](https://github.com/AndreasSko/go-jwlm) (the CLI
 version) into an easy to use app. 
 
