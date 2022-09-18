@@ -60,20 +60,20 @@
 "Error while exporting" = "Beim exportieren ist ein Fehler aufgetreten";
 
 // Onboarding
-"onboarding.1" = "Mit JWLM kannst du zwei JW-Libraries zusammenführen";
+"onboarding.1" = "Mit dem Library Merger kannst du zwei JW-Libraries zusammenführen";
 "onboarding.1.trademark" = "(JW Library ist eine eingetragene Marke der Watch Tower Bible and Tract Society of Pennsylvania.)";
 
 "onboarding.2.first" = "Wähle die beiden Backups aus";
 "Pro Tips:" = "Tipp:";
 "onboarding.2.proTip.first" = "Nutze AirDrop um Backups zwischen -Geräten zu senden";
-"onboarding.2.proTip.second" = "Mithile der Teilen-Funktion kannst du lokale Backups direkt an JWLM senden";
+"onboarding.2.proTip.second" = "Mithile der Teilen-Funktion kannst du lokale Backups direkt an den Library Merger senden";
 "onboarding.2.proTip.third" = "Du kannst auch iCloud, Dropbox etc. nutzen, um Backups von anderen Geräten zu importieren";
 
 "onboarding.3.first" = "Entscheide, ob Konflikte automatisch gelöst werden sollen";
 "onboarding.3.second" = "Darüber kannst du später mehr erfahren. Ignoriere es einfach fürs Erste.";
 "onboarding.3.third" = "..und leg los durch klicken von";
 
-"onboarding.4.first" = "JWLM prüft, ob Einträge kollidieren";
+"onboarding.4.first" = "Der Library Merger prüft, ob Einträge kollidieren";
 "onboarding.4.second" = "Sollte es Konflikte geben, wähle einfach die Seite aus, die du behalten möchtest.";
 "onboarding.4.third" = "Beim ersten Merge kann es einige Konflikte geben. Aber keine Angst: Die nächsten Male sollten dann recht schnell gehen.";
 "onboarding.4.fourth" = "Nachdem alles erledigt ist, kann du das gemergte Backup exportieren.";
@@ -118,7 +118,7 @@ Um herauszufinden, zu welcher Publikation eine Markierung gehört, kannst du dic
 "Show Tutorial again" = "Tutorial nochmal anzeigen";
 "Open Issue on GitHub" = "Issue auf GitHub erstellen";
 "Review Privacy Policy" = "Datenschutz-Bestimmungen";
-"Can I Support JWLM?" = "Kann ich JWLM unterstützen?";
+"Can I Support this App?" = "Kann ich diese App unterstützen?";
 "Visit project on GitHub" = "Project auf GitHub besuchen";
 "Manage Publication Catalog" = "Publikations Katalog verwalten";
 

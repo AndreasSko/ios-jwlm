@@ -7,19 +7,19 @@
 */
 
 // Onboarding
-"onboarding.1" = "JWLM allows you to merge two JW-Library backups into one";
+"onboarding.1" = "Library Merger allows you to merge two JW-Library backups into one";
 "onboarding.1.trademark" = "(JW Library is a registered trademark of Watch Tower Bible and Tract Society of Pennsylvania.)";
 
 "onboarding.2.first" = "Select both backups";
 "onboarding.2.proTip.first" = "Use AirDrop to send backups between  devices";
-"onboarding.2.proTip.second" = "The share function allows you to send backups from your local library directly to JWLM";
+"onboarding.2.proTip.second" = "The share function allows you to send backups from your local library directly to Library Merger";
 "onboarding.2.proTip.third" = "You can also use iCloud, Dropbox, etc. to import backups from other devices";
 
 "onboarding.3.first" = "Decide if conflicts should be solved automatically";
 "onboarding.3.second" = "You can learn more about that later and skip it for now.";
 "onboarding.3.third" = "..and start merging be pressing";
 
-"onboarding.4.first" = "JWLM checks for conflicting entries";
+"onboarding.4.first" = "Library Merger checks for conflicting entries";
 "onboarding.4.second" = "If a conflict happens, simply select the side that should be included.";
 "onboarding.4.third" = "The first time, there might be a lot of conflicts. But don’t worry: All further ones should be pretty quick.";
 "onboarding.4.fourth" = "When everything is finished, you can export the merged backup.";
@@ -53,7 +53,7 @@ To figure out where the marking is located, look at the additional information: 
 // Settings
 "settings.catalogDB.quickInfo" = "Download the Publication Catalog to see more detailed information when merging.";
 "settings.catalogDB.downloadSize" = "Downloading the catalog takes about 50MB.";
-"settings.catalogDB.explainer" = "It's a database that contains information about all the publications of the last years. With it's help you are able to get more detailed information (like the title of a publication) when solving a merge conflicts. But you can also use the app without downloading it.";
+"settings.catalogDB.explainer" = "It's a database that contains information about all the publications of the last years. With its help you are able to get more detailed information (like the title of a publication) when solving a merge conflicts. But you can also use the app without downloading it.";
 "settings.catalogDB.disclaimer" = "The catalog is downloaded from app.jw-cdn.org, which is operated by Watchtower Bible and Tract Society of New York, Inc. You may want to consider their Privacy Policy if you are not sure what data might be processed when you initialize the download.";
 
 // ErrorView
