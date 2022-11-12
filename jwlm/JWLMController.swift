@@ -42,6 +42,19 @@ struct MergeSettings {
 class MergeProgress: ObservableObject {
     @Published var status: String = ""
     @Published var percent: Float = 0
+enum GeneralError: Error {
+    case timeout(message: String)
+}
+
+extension GeneralError: LocalizedError {
+    public var errorDescription: String? {
+        switch self {
+        case .timeout(let message):
+            return message
+        default:
+            return ""
+        }
+    }
 }
 
 enum MergeError: Error {
@@ -83,12 +96,36 @@ class JWLMController: ObservableObject {
 
     func importBackup(url: URL, side: MergeSide) throws {
         _ = url.startAccessingSecurityScopedResource()
+        defer { url.stopAccessingSecurityScopedResource() }
+
+        try downloadFileIfNecessary(url: url)
+
         try dbWrapper.importJWLBackup(url.path, side: side.rawValue)
         url.stopAccessingSecurityScopedResource()
         cleanUpInbox()
     }
 
-    func exportBackup() throws -> String {
+    func downloadFileIfNecessary(url: URL) throws {
+        let fileManager = FileManager.default
+        if fileManager.fileExists(atPath: url.path) {
+            return
+        }
+
+        try fileManager.startDownloadingUbiquitousItem(at: url)
+
+        var wait = 0
+        while true {
+            if wait > 60 {
+                throw GeneralError.timeout(message: "Failed to download \(url.lastPathComponent). "
+                                           + "Timeout after \(wait) seconds.")
+            }
+            if fileManager.fileExists(atPath: url.path) {
+                return
+            }
+            sleep(1)
+            wait += 1
+        }
+    }
         cleanUpMergedFiles()
         if !self.dbWrapper.dbIsLoaded("mergeSide") {
             throw MergeError.notInitialized(message: "There is no merged backup yet")
