@@ -11,6 +11,7 @@ struct ExportView: View {
     @ObservedObject var jwlmController: JWLMController
 
     @State private var isExporting: Bool = false
+    @State private var isSharing: Bool = false
     @State private var exportedURL: URL!
     @State private var showError: Bool = false
     @State private var errorMessage: String = ""
@@ -18,20 +19,28 @@ struct ExportView: View {
     var body: some View {
         VStack {
             Button("Export") {
-                do {
-                    let path = try jwlmController.exportBackup()
-                    exportedURL = NSURL.fileURL(withPath: path)
-                    isExporting.toggle()
-                } catch {
-                    errorMessage = error.localizedDescription
-                    showError = true
+                Task {
+                    isExporting = true
+                    do {
+                        let path = try await jwlmController.exportBackup()
+                        isExporting = false
+                        exportedURL = NSURL.fileURL(withPath: path)
+                        isSharing.toggle()
+                    } catch {
+                        isExporting = false
+                        errorMessage = error.localizedDescription
+                        showError = true
+                    }
                 }
+            }
+            if isExporting {
+                ProgressView()
             }
         }
         .sheet(isPresented: $showError) {
             ErrorView(error: $errorMessage)
         }
-        .sheet(isPresented: $isExporting, content: {
+        .sheet(isPresented: $isSharing, content: {
             ShareView(url: self.$exportedURL)
         })
     }

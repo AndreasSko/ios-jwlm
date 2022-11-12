@@ -17,6 +17,7 @@ struct BackupView: View {
     @Binding var fileSelected: Bool
     @Binding var doneMerging: Bool
 
+    @State private var isSelectingFile: Bool = false
     @State private var isImporting: Bool = false
     @State private var showError: Bool = false
     @State private var errorMessage: String = ""
@@ -27,14 +28,18 @@ struct BackupView: View {
         VStack {
             ZStack {
                 VStack {
-                    if !fileSelected {
+                    if isImporting {
+                        ProgressView()
+                    } else if !fileSelected {
                         Button(action: {
-                            wasPressed()
+                            Task {
+                                await wasPressed()
+                            }
                         }, label: {
                             Image(systemName: "square.and.arrow.down")
                         })
-                            .font(.title)
-                            .padding()
+                        .font(.title)
+                        .padding()
                         Text("Select Backup")
                             .foregroundColor(.black)
                     } else {
@@ -107,7 +112,9 @@ struct BackupView: View {
                 if sharedUrl != nil {
                     VStack {
                         Button(action: {
-                            wasPressed()
+                            Task {
+                                await wasPressed()
+                            }
                         }, label: {
                             Image(systemName: "plus.circle")
                         })
@@ -131,36 +138,43 @@ struct BackupView: View {
         .shadow(color: Color.gray.opacity(0.2), radius: 20)
         .contentShape(Rectangle())
         .onTapGesture {
-            wasPressed()
+            Task {
+                await wasPressed()
+            }
         }
         .sheet(isPresented: $showError) {
             ErrorView(error: $errorMessage)
         }
-        .fileImporter(isPresented: $isImporting,
+        .fileImporter(isPresented: $isSelectingFile,
                       allowedContentTypes: [.jwlibrary]) { (result) in
-            do {
-                let url = try result.get()
-                importBackup(url: url)
-            } catch {
-                errorMessage = error.localizedDescription
-                showError = true
+            Task {
+                isImporting.toggle()
+                do {
+                    let url = try result.get()
+                    await importBackup(url: url)
+                } catch {
+                    isImporting = false
+                    errorMessage = error.localizedDescription
+                    showError = true
+                }
+                isImporting = false
             }
         }
     }
 
-    func wasPressed() {
+    func wasPressed() async {
         doneMerging = false
         if sharedUrl != nil {
-            importBackup(url: sharedUrl!)
+            await importBackup(url: sharedUrl!)
             sharedUrl = nil
         } else {
-            isImporting.toggle()
+            isSelectingFile.toggle()
         }
     }
 
-    func importBackup(url: URL) {
+    func importBackup(url: URL) async {
         do {
-            try jwlmController.importBackup(url: url, side: side)
+            try await jwlmController.importBackup(url: url, side: side)
             fileSelected = true
             dbStats = jwlmController.dbWrapper.stats(side.rawValue)!
         } catch {
@@ -175,7 +189,7 @@ struct JWLBackupView_Previews: PreviewProvider {
         let jwlmController = JWLMController()
         BackupView(side: MergeSide.leftSide, jwlmController: jwlmController,
                    sharedUrl: .constant(nil),
-                   fileSelected: .constant(true),
+                   fileSelected: .constant(false),
                    doneMerging: .constant(false))
     }
 }

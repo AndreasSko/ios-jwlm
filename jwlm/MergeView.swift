@@ -25,14 +25,17 @@ struct MergeView: View {
         VStack {
             HStack {
                 Button(action: {
-                    cancelMerge = false
-                    isMerging = true
-                    mergeProgress.percent = 1
-                    mergeProgress.status = "Merging.."
+                    Task {
+                        doneMerging = false
+                        cancelMerge = false
+                        isMerging = true
+                        mergeProgress.percent = 1
+                        mergeProgress.status = "Merging.."
 
-                    doneMerging = merge()
-                    isMerging = false
-                    mergeProgress.percent = 0
+                        doneMerging = await merge()
+                        isMerging = false
+                    }
+
                 }, label: {
                     Text("Merge")
                 })
@@ -44,20 +47,23 @@ struct MergeView: View {
                 ErrorView(error: $errorMessage)
             }
             .fullScreenCover(isPresented: $showMergeConflictSheet, onDismiss: {
-                if cancelMerge {
-                    doneMerging = false
-                    isMerging = false
-                    mergeProgress.percent = 0
-                } else {
-                    doneMerging = merge(reset: false)
+                Task {
+                    if cancelMerge {
+                        doneMerging = false
+                        isMerging = false
+                        mergeProgress.percent = 0
+                    } else {
+                        doneMerging = await merge(reset: false)
+                    }
                 }
             }, content: {
                 MergeConflictResolutionView(jwlmController: jwlmController, cancelMerge: $cancelMerge)
             })
 
-            if mergeProgress.percent > 0 && mergeProgress.percent < 100 {
+            if !doneMerging && mergeProgress.percent > 0 && mergeProgress.percent < 100 {
                 ProgressView(mergeProgress.status, value: mergeProgress.percent, total: 100)
                     .padding()
+                    .animation(.easeInOut(duration: 10))
             }
 
             if doneMerging {
@@ -69,9 +75,9 @@ struct MergeView: View {
         }
     }
 
-    func merge(reset: Bool = true) -> Bool {
+    func merge(reset: Bool = true) async -> Bool {
         do {
-            try jwlmController.merge(reset: reset, progress: mergeProgress)
+            try await jwlmController.merge(reset: reset, progress: mergeProgress)
         } catch MergeError.mergeConflict {
             DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
                 showMergeConflictSheet.toggle()
