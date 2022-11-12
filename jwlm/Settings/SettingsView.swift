@@ -42,7 +42,8 @@ struct SettingsView: View {
 
                 Section {
                     Link("Can I Support this App?",
-                         destination: URL(string: "https://github.com/AndreasSko/ios-jwlm/wiki/Can-I-Support-the-Library-Merger%3F")!)
+                         destination: URL(string: "https://github.com/AndreasSko/ios-jwlm"
+                                          + "/wiki/Can-I-Support-the-Library-Merger%3F")!)
 
                     Link("Open Issue on GitHub",
                          destination: URL(string: "https://github.com/AndreasSko/ios-jwlm/issues/new/choose")!)
