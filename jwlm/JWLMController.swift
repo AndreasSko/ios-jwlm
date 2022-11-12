@@ -42,6 +42,14 @@ struct MergeSettings {
 class MergeProgress: ObservableObject {
     @Published var status: String = ""
     @Published var percent: Float = 0
+
+    @MainActor
+    func update(status: String, percent: Float) {
+        self.status = status
+        self.percent = percent
+    }
+}
+
 enum GeneralError: Error {
     case timeout(message: String)
 }
@@ -94,7 +102,7 @@ class JWLMController: ObservableObject {
                                       inputFieldResolver: .disabled)
     }
 
-    func importBackup(url: URL, side: MergeSide) throws {
+    func importBackup(url: URL, side: MergeSide) async throws {
         _ = url.startAccessingSecurityScopedResource()
         defer { url.stopAccessingSecurityScopedResource() }
 
@@ -126,6 +134,8 @@ class JWLMController: ObservableObject {
             wait += 1
         }
     }
+
+    func exportBackup() async throws -> String {
         cleanUpMergedFiles()
         if !self.dbWrapper.dbIsLoaded("mergeSide") {
             throw MergeError.notInitialized(message: "There is no merged backup yet")
@@ -175,7 +185,7 @@ class JWLMController: ObservableObject {
         }
     }
 
-    func merge(reset: Bool = true, progress: MergeProgress) throws {
+    func merge(reset: Bool = true, progress: MergeProgress) async throws {
         if !self.dbWrapper.dbIsLoaded(MergeSide.leftSide.rawValue)
            || !self.dbWrapper.dbIsLoaded(MergeSide.rightSide.rawValue) {
             throw MergeError.notInitialized(message: "At least one backup has not been imported yet")
@@ -188,36 +198,28 @@ class JWLMController: ObservableObject {
         dbWrapper.init_()
 
         do {
-            progress.percent = 14
-            progress.status = "Merging Locations"
+            await progress.update(status: "Merging Locations", percent: 14)
             try dbWrapper.mergeLocations()
 
-            progress.percent = 28
-            progress.status = "Merging Bookmarks"
+            await progress.update(status: "Merging Bookmarks", percent: 28)
             try dbWrapper.mergeBookmarks(self.settings.bookmarkResolver.rawValue, mcw: self.mergeConflicts)
 
-            progress.percent = 42
-            progress.status = "Merging InputFields"
+            await progress.update(status: "Merging InputFields", percent: 42)
             try dbWrapper.mergeInputFields(self.settings.inputFieldResolver.rawValue, mcw: self.mergeConflicts)
 
-            progress.percent = 56
-            progress.status = "Merging Tags"
+            await progress.update(status: "Merging Tags", percent: 56)
             try dbWrapper.mergeTags()
 
-            progress.percent = 70
-            progress.status = "Merging Markings"
+            await progress.update(status: "Merging Markings", percent: 70)
             try dbWrapper.mergeUserMarkAndBlockRange(self.settings.markingResolver.rawValue, mcw: self.mergeConflicts)
 
-            progress.percent = 84
-            progress.status = "Merging Notes"
+            await progress.update(status: "Merging Notes", percent: 84)
             try dbWrapper.mergeNotes(self.settings.noteResolver.rawValue, mcw: self.mergeConflicts)
 
-            progress.percent = 98
-            progress.status = "Merging TagMaps"
+            await progress.update(status: "Merging TagMaps", percent: 98)
             try dbWrapper.mergeTagMaps()
 
-            progress.percent = 100
-            progress.status = "Done"
+            await progress.update(status: "Done", percent: 100)
         } catch {
             if error.localizedDescription.starts(with: "There were conflicts while trying to merge") {
                 throw MergeError.mergeConflict
