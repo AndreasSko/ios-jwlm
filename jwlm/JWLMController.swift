@@ -168,11 +168,9 @@ class JWLMController: ObservableObject {
             let dir = fm.urls(for: .documentDirectory, in: .userDomainMask).first
             let files = try fm.contentsOfDirectory(at: dir!.absoluteURL,
                                                    includingPropertiesForKeys: [.isRegularFileKey])
-            for file in files {
-                if file.lastPathComponent.hasPrefix("merged") {
-                    try fm.removeItem(at: file)
-                    print("Cleaning up \(file.absoluteString)")
-                }
+            for file in files where file.lastPathComponent.hasPrefix("merged") {
+                try fm.removeItem(at: file)
+                print("Cleaning up \(file.absoluteString)")
             }
         } catch {
             SentrySDK.capture(error: error)
