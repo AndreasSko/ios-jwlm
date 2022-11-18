@@ -25,6 +25,12 @@ struct SettingsView: View {
                         Text("Manage Publication Catalog")
                     }
 
+                    NavigationLink(destination: SentrySettingsView(),
+                                   tag: "sentry",
+                                   selection: $selection) {
+                        Text("Share Error Reports")
+                    }
+
                     Button(action: {
                         UserDefaults.standard.removeObject(forKey: "needsOnboarding")
                     }, label: {

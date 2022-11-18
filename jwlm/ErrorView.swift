@@ -10,7 +10,10 @@ import SwiftUI
 struct ErrorView: View {
     @Binding var error: String
 
+    @AppStorage("enableSentry") private var enableSentry: Bool = false
+
     @State private var errorCopied: Bool = false
+    @State private var openSentrySettings: Bool = false
 
     var body: some View {
         VStack(alignment: .leading) {
@@ -45,7 +48,26 @@ struct ErrorView: View {
                 .clipShape(Capsule())
             }
             Spacer()
-        }.padding()
+            Text("errorView.sentryHint")
+            HStack {
+                Toggle(isOn: $enableSentry) {
+                    Text("Share error reports and statistics")
+                }
+                .onChange(of: enableSentry) { _ in
+                    setupSentry(enableSentry: enableSentry)
+                }
+            }
+            Button {
+                openSentrySettings.toggle()
+            } label: {
+                Text("Learn more")
+            }
+
+        }
+        .padding()
+        .sheet(isPresented: $openSentrySettings, content: {
+            SettingsView(selection: "sentry")
+        })
     }
 
     func copyError() {

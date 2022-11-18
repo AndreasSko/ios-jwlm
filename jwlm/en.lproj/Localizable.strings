@@ -56,7 +56,10 @@ To figure out where the marking is located, look at the additional information: 
 "settings.catalogDB.explainer" = "It's a database that contains information about all the publications of the last years. With its help you are able to get more detailed information (like the title of a publication) when solving a merge conflicts. But you can also use the app without downloading it.";
 "settings.catalogDB.disclaimer" = "The catalog is downloaded from app.jw-cdn.org, which is operated by Watchtower Bible and Tract Society of New York, Inc. You may want to consider their Privacy Policy if you are not sure what data might be processed when you initialize the download.";
 
+"settings.sentry.explanation" = "You can enable to automatically send a bug report to me, the developer of the Library Merger, in case you encounter an issue. This helps to surface problems that others might face as well. For this, a third-party service called \"Sentry.io\" is used. The data collected does not contain personally identifiable information, but rather information like your operating system and the error message you received. None of your backups will be sent, however an error report might contain snippets like a marking or a note that was processed when you encountered the bug. The data is only used to improve the app.\nThe automatic report is disabled by default. If you feel confident sharing a bug report with me, you can enable it with the following toggle.";
+
 // ErrorView
 "errorView.reportError" = "Looks like you found a bug 😅. Could you help me to fix it?
 I would really appreciate it if you could send me a bug report with the error below at jwlm@andreas-sk.de. Usually, it's beneficial for me to have a look at the actual backups you tried to merge. So if you feel confident with it, please feel free to provide them with the bug report - of course, I'm only looking at the specific issue and leave the rest of the data untouched.
 Thank you so much for your help! 😊";
+"errorView.sentryHint" = "You can also decide to automatically send error reports:";
