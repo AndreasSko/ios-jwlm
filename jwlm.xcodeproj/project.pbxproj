@@ -35,6 +35,8 @@
 		F4B8AEA725867E0B008DF433 /* CatalogDBSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4B8AEA625867E0B008DF433 /* CatalogDBSettingsView.swift */; };
 		F4B8AEAF25867E7B008DF433 /* PublicationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4B8AEAE25867E7B008DF433 /* PublicationController.swift */; };
 		F4B8AECE258A83C3008DF433 /* NotificationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4B8AECD258A83C3008DF433 /* NotificationView.swift */; };
+		F4BC51242920377B002E0711 /* Sentry in Frameworks */ = {isa = PBXBuildFile; productRef = F4BC51232920377B002E0711 /* Sentry */; };
+		F4BC5126292124ED002E0711 /* SentrySettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4BC5125292124ED002E0711 /* SentrySettingsView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -90,6 +92,7 @@
 		F4B8AEA625867E0B008DF433 /* CatalogDBSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatalogDBSettingsView.swift; sourceTree = "<group>"; };
 		F4B8AEAE25867E7B008DF433 /* PublicationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublicationController.swift; sourceTree = "<group>"; };
 		F4B8AECD258A83C3008DF433 /* NotificationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationView.swift; sourceTree = "<group>"; };
+		F4BC5125292124ED002E0711 /* SentrySettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SentrySettingsView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,6 +101,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F402E1D827789A020083C4EB /* Gomobile.xcframework in Frameworks */,
+				F4BC51242920377B002E0711 /* Sentry in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -218,6 +222,7 @@
 			children = (
 				F42649AD257E469100644CA6 /* SettingsView.swift */,
 				F4B8AEA625867E0B008DF433 /* CatalogDBSettingsView.swift */,
+				F4BC5125292124ED002E0711 /* SentrySettingsView.swift */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -240,6 +245,7 @@
 			);
 			name = jwlm;
 			packageProductDependencies = (
+				F4BC51232920377B002E0711 /* Sentry */,
 			);
 			productName = jwlm;
 			productReference = F43574B32533411900EC55D4 /* jwlm.app */;
@@ -314,6 +320,7 @@
 			);
 			mainGroup = F43574AA2533411800EC55D4;
 			packageReferences = (
+				F491EE162920356D00ADD716 /* XCRemoteSwiftPackageReference "sentry-cocoa" */,
 			);
 			productRefGroup = F43574B42533411900EC55D4 /* Products */;
 			projectDirPath = "";
@@ -382,6 +389,7 @@
 				F476B840260A2274009F0265 /* MergeSettingsLegendHelp.swift in Sources */,
 				F48F44B6255E808B0050C564 /* HelpView.swift in Sources */,
 				F447E5AF255997BA00C3DA35 /* Models.swift in Sources */,
+				F4BC5126292124ED002E0711 /* SentrySettingsView.swift in Sources */,
 				F402E1DC277DB4C70083C4EB /* ErrorView.swift in Sources */,
 				F48F4526256073460050C564 /* If.swift in Sources */,
 				F433F8F12573C11B00258C29 /* OnboardingView.swift in Sources */,
@@ -572,7 +580,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = jwlm/jwlm.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_ASSET_PATHS = "\"jwlm/Preview Content\"";
 				DEVELOPMENT_TEAM = 9YFM7J3EH3;
 				ENABLE_PREVIEWS = YES;
@@ -586,7 +594,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 0.6.0;
+				MARKETING_VERSION = 0.6.1;
 				PRODUCT_BUNDLE_IDENTIFIER = "de.andreas-sk.jwlm";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -601,7 +609,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = jwlm/jwlm.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_ASSET_PATHS = "\"jwlm/Preview Content\"";
 				DEVELOPMENT_TEAM = 9YFM7J3EH3;
 				ENABLE_PREVIEWS = YES;
@@ -615,7 +623,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 0.6.0;
+				MARKETING_VERSION = 0.6.1;
 				PRODUCT_BUNDLE_IDENTIFIER = "de.andreas-sk.jwlm";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -747,6 +755,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		F491EE162920356D00ADD716 /* XCRemoteSwiftPackageReference "sentry-cocoa" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/getsentry/sentry-cocoa.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 7.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		F4BC51232920377B002E0711 /* Sentry */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F491EE162920356D00ADD716 /* XCRemoteSwiftPackageReference "sentry-cocoa" */;
+			productName = Sentry;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = F43574AB2533411900EC55D4 /* Project object */;
 }

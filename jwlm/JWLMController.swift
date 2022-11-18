@@ -8,6 +8,7 @@
 
 import Foundation
 import Gomobile
+import Sentry
 
 enum MergeSide: String {
     case leftSide
@@ -51,16 +52,15 @@ class MergeProgress: ObservableObject {
 }
 
 enum GeneralError: Error {
+    case general(message: String)
     case timeout(message: String)
 }
 
 extension GeneralError: LocalizedError {
     public var errorDescription: String? {
         switch self {
-        case .timeout(let message):
+        case .timeout(let message), .general(let message):
             return message
-        default:
-            return ""
         }
     }
 }
@@ -103,14 +103,19 @@ class JWLMController: ObservableObject {
     }
 
     func importBackup(url: URL, side: MergeSide) async throws {
-        _ = url.startAccessingSecurityScopedResource()
-        defer { url.stopAccessingSecurityScopedResource() }
+        do {
+            _ = url.startAccessingSecurityScopedResource()
+            defer { url.stopAccessingSecurityScopedResource() }
 
-        try downloadFileIfNecessary(url: url)
+            try downloadFileIfNecessary(url: url)
 
-        try dbWrapper.importJWLBackup(url.path, side: side.rawValue)
-        url.stopAccessingSecurityScopedResource()
-        cleanUpInbox()
+            try dbWrapper.importJWLBackup(url.path, side: side.rawValue)
+            url.stopAccessingSecurityScopedResource()
+            cleanUpInbox()
+        } catch {
+            SentrySDK.capture(error: error)
+            throw error
+        }
     }
 
     func downloadFileIfNecessary(url: URL) throws {
@@ -136,18 +141,23 @@ class JWLMController: ObservableObject {
     }
 
     func exportBackup() async throws -> String {
-        cleanUpMergedFiles()
-        if !self.dbWrapper.dbIsLoaded("mergeSide") {
-            throw MergeError.notInitialized(message: "There is no merged backup yet")
+        do {
+            cleanUpMergedFiles()
+            if !self.dbWrapper.dbIsLoaded("mergeSide") {
+                throw MergeError.notInitialized(message: "There is no merged backup yet")
+            }
+
+            let dir = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first
+            let filename = "merged" + String(Int(NSDate().timeIntervalSince1970)) + ".jwlibrary"
+            let path = dir?.appendingPathComponent(filename).path
+
+            try dbWrapper.exportMerged(path)
+
+            return path!
+        } catch {
+            SentrySDK.capture(error: error)
+            throw error
         }
-
-        let dir = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first
-        let filename = "merged" + String(Int(NSDate().timeIntervalSince1970)) + ".jwlibrary"
-        let path = dir?.appendingPathComponent(filename).path
-
-        try dbWrapper.exportMerged(path)
-
-        return path!
     }
 
     // cleanUpMergedFiles removes all files starting with `merged` from the documentDirectory,
@@ -158,13 +168,12 @@ class JWLMController: ObservableObject {
             let dir = fm.urls(for: .documentDirectory, in: .userDomainMask).first
             let files = try fm.contentsOfDirectory(at: dir!.absoluteURL,
                                                    includingPropertiesForKeys: [.isRegularFileKey])
-            for file in files {
-                if file.lastPathComponent.hasPrefix("merged") {
-                    try fm.removeItem(at: file)
-                    print("Cleaning up \(file.absoluteString)")
-                }
+            for file in files where file.lastPathComponent.hasPrefix("merged") {
+                try fm.removeItem(at: file)
+                print("Cleaning up \(file.absoluteString)")
             }
         } catch {
+            SentrySDK.capture(error: error)
             print("Error while trying to clean up old files")
         }
     }
@@ -181,6 +190,7 @@ class JWLMController: ObservableObject {
                 print("Cleaning up \(file.absoluteString)")
             }
         } catch {
+            SentrySDK.capture(error: error)
             print("Error while trying to clean up inbox")
         }
     }
@@ -224,6 +234,7 @@ class JWLMController: ObservableObject {
             if error.localizedDescription.starts(with: "There were conflicts while trying to merge") {
                 throw MergeError.mergeConflict
             }
+            SentrySDK.capture(error: error)
             throw MergeError.error(message: error.localizedDescription)
         }
     }
@@ -240,6 +251,7 @@ class JWLMController: ObservableObject {
             if error.localizedDescription.starts(with: "There are no unsolved conflicts") {
                 throw MergeError.noConflicts
             }
+            SentrySDK.capture(error: error)
             throw error
         }
     }

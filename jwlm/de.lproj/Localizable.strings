@@ -117,7 +117,7 @@ Um herauszufinden, zu welcher Publikation eine Markierung gehört, kannst du dic
 "Settings" = "Einstellungen";
 "Show Tutorial again" = "Tutorial nochmal anzeigen";
 "Open Issue on GitHub" = "Issue auf GitHub erstellen";
-"Review Privacy Policy" = "Datenschutz-Bestimmungen";
+"Review Privacy Policy" = "Datenschutzerklärung";
 "Can I Support this App?" = "Kann ich diese App unterstützen?";
 "Visit project on GitHub" = "Project auf GitHub besuchen";
 "Manage Publication Catalog" = "Publikations Katalog verwalten";
@@ -136,6 +136,11 @@ Um herauszufinden, zu welcher Publikation eine Markierung gehört, kannst du dic
 "settings.catalogDB.disclaimer" = "Der Katalog wird von app.jw-cdn.org heruntergeladen. Diese Seite wird von der \"Watchtower Bible and Tract Society of New York, Inc\" betrieben. Wenn du dir nicht sicher bist, wie deine Daten, die beim Download entstehen, genutzt werden, lese bitte die Datenschutzerklärung durch.";
 "Privacy Policy on jw.org" = "Datenschutzerklärung auf jw.org";
 
+"Share Error Reports" = "Teile Fehlermeldungen";
+"Share error reports and statistics" = "Teile Fehlermeldungen und Statistiken";
+"settings.sentry.explanation" = "Es ist möglich, im Falle eines Fehlers einen automatischen Bug Report an mich, den Entwickler vom Library Merger zu senden. Das kann dazu beitragen, Probleme zu erkennen, die auch andere betreffen. Um das zu ermöglichen, wird der Dienstleister \"Sentry.io\" genutzt. Die gesammelten Daten enthalten keine persönlich identifizierbare Informationen sondern Dinge wie die Version deines Betriebssystem und die Fehlermeldung, die du erhalten hast. Deine Backups selbst werden nicht übermittelt. Es kann jedoch sein, dass eine Fehlermeldung zufällig einen Ausschnitt einer Markierung oder Notiz enthält, die während des Fehlers gerade verarbeitet wurden. Die Daten werden ausschließlich zur Verbesserung der App genutzt.\nDer automatische Bug Report ist standardmäßig ausgeschaltet. Wenn du dich damit wohl fühlst, Fehlermeldungen mit mir zu teilen, kannst die Option mit dem folgenden Schalter aktivieren.";
+
+
 // Notifications
 "New version of the Publication Catalog is available." = "Neue Version des Publikations Katalogs verfügbar.";
 "You can download it in the settings." = "Du kannst ihn in den Einstellungen herunterladen.";
@@ -145,6 +150,8 @@ Um herauszufinden, zu welcher Publikation eine Markierung gehört, kannst du dic
 "errorView.reportError" = "Scheint so, als hättest du einen Fehler gefunden. Könntest du mir helfen, ihn zu beheben?
 Ich würde mich freuen, wenn du mir einen Fehlerbericht mit dem unten stehenden Fehler an jwlm@andreas-sk.de schicken könntest. Häufig ist es für mich ganz hilfreich, wenn ich auch einen kurzen Blick in die Backups haben kann. Falls du dich damit wohl fühlst, kannst du die Backups gerne in der Email mitschicken - natürlich schaue ich mir nur das Problem an und lasse den Rest der Daten in Ruhe.
 Vielen Dank für deine Hilfe! 😊";
+"errorView.sentryHint" = "Du kannst Bug Reports auch automatisch versenden:";
 "The following error was returned:" = "Folgender Fehler wurde zurückgegeben:";
 "Copy" = "Kopieren";
 "Copied" = "Kopiert";
+"Learn more" = "Mehr erfahren";
