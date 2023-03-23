@@ -47,7 +47,7 @@ func setupSentry(enableSentry: Bool) {
 
         #if DEBUG
         options.beforeSend = { event in
-            print("Sending: \(event)")
+            print("Envoi en cours : \(event)")
             return event
         }
         #endif

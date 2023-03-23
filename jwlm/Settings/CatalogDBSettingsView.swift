@@ -27,10 +27,10 @@ struct CatalogDBSettingsView: View {
                         Text("Status:").bold()
                         if catalogExists {
                             if catalogNeedsUpdate {
-                                Text("Outdated")
+                                Text("Dépassé")
                                     .alignmentGuide(.custom) { $0[.leading] }
                             } else {
-                                Text("Up to date")
+                                Text("À jour")
                                     .alignmentGuide(.custom) { $0[.leading] }
                             }
 
@@ -50,10 +50,10 @@ struct CatalogDBSettingsView: View {
 
                         } else {
                             if isDownloading {
-                                Text("Downloading...")
+                                Text("Téléchargement...")
                                     .alignmentGuide(.custom) { $0[.leading] }
                             } else {
-                                Text("Not downloaded")
+                                Text("Non téléchargé")
                                     .alignmentGuide(.custom) { $0[.leading] }
                             }
 
@@ -70,7 +70,7 @@ struct CatalogDBSettingsView: View {
 
                     if catalogExists {
                         HStack {
-                            Text("Size:").bold()
+                            Text("Taille :").bold()
 
                             let fileSize = ByteCountFormatter
                                 .string(fromByteCount: GomobileCatalogSize(catalogDBPath?.path),
@@ -95,7 +95,7 @@ struct CatalogDBSettingsView: View {
                     HStack {
                         Image(systemName: "exclamationmark.triangle")
                             .foregroundColor(.red)
-                        DisclosureGroup("An error occured") {
+                        DisclosureGroup("Une erreur est survenue") {
                             Text(downloadError)
                         }
                     }
@@ -116,18 +116,18 @@ struct CatalogDBSettingsView: View {
 
             Spacer()
 
-            DisclosureGroup("What is a Publication Catalog?") {
+            DisclosureGroup("Qu'est-ce qu'un catalogue de publication ?") {
                 Text("settings.catalogDB.explainer")
             }
 
-            DisclosureGroup("Disclaimer") {
+            DisclosureGroup("Attention") {
                 Text("settings.catalogDB.disclaimer")
-                Link("Privacy Policy on jw.org", destination: URL(string: "https://www.jw.org/en/privacy-policy/")!)
+                Link("Politique de confidentialité disponible sur jw.org", destination: URL(string: "https://www.jw.org/en/privacy-policy/")!)
             }
 
         }
         .padding()
-        .navigationBarTitle("Publication Catalog")
+        .navigationBarTitle("Catalogue de publication")
         .navigationBarTitleDisplayMode(.inline)
     }
 
@@ -150,7 +150,7 @@ struct CatalogDBSettingsView: View {
                 catalogExists = GomobileCatalogExists(catalogDBPath?.path)
                 catalogNeedsUpdate = GomobileCatalogNeedsUpdate(catalogDBPath?.path)
             } else if !(downloadManager?.progress?.canceled ?? false) {
-                downloadError = downloadManager?.error() ?? "Error while downloading"
+                downloadError = downloadManager?.error() ?? "Erreur pendant le téléchargement"
             }
         }
     }
@@ -164,7 +164,7 @@ struct CatalogDBSettingsView: View {
         do {
             try FileManager.default.removeItem(at: catalogDBPath!)
         } catch {
-            print("No catalog.db to delete")
+            print("Pas de catalog.db a supprimer")
         }
         catalogExists = GomobileCatalogExists(catalogDBPath?.path)
     }

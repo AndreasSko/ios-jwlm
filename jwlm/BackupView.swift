@@ -40,13 +40,13 @@ struct BackupView: View {
                         })
                         .font(.title)
                         .padding()
-                        Text("Select Backup")
+                        Text("Sélectionnez une sauvegarde")
                             .foregroundColor(.black)
                     } else {
                         VStack(alignment: .custom) {
 
                             HStack {
-                                Text("Bookmarks:").bold()
+                                Text("Signet :").bold()
                                     .padding(.trailing, -7)
                                 Text(String(dbStats.bookmark))
                                     .font(.callout)
@@ -54,7 +54,7 @@ struct BackupView: View {
                             }
 
                             HStack {
-                                Text("Notes:").bold()
+                                Text("Notes :").bold()
                                     .padding(.trailing, -7)
                                 Text(String(dbStats.note))
                                     .font(.callout)
@@ -62,7 +62,7 @@ struct BackupView: View {
                             }
 
                             HStack {
-                                Text("Tags:").bold()
+                                Text("Mots clés :").bold()
                                     .padding(.trailing, -7)
                                 Text(String(dbStats.tag))
                                     .font(.callout)
@@ -70,7 +70,7 @@ struct BackupView: View {
                             }
 
                             HStack {
-                                Text("Taggings:").bold()
+                                Text("Marquages :").bold()
                                     .padding(.trailing, -7)
                                 Text(String(dbStats.tagMap))
                                     .font(.callout)
@@ -78,7 +78,7 @@ struct BackupView: View {
                             }
 
                             HStack {
-                                Text("Markings:").bold()
+                                Text("Soulignement :").bold()
                                     .padding(.trailing, -7)
                                 Text(String(dbStats.userMark))
                                     .font(.callout)
@@ -86,7 +86,7 @@ struct BackupView: View {
                             }
 
                             HStack {
-                                Text("Input fields:").bold()
+                                Text("Champs de saisie :").bold()
                                     .padding(.trailing, -7)
                                 Text(String(dbStats.inputField))
                                     .font(.callout)

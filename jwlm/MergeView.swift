@@ -30,14 +30,14 @@ struct MergeView: View {
                         cancelMerge = false
                         isMerging = true
                         mergeProgress.percent = 1
-                        mergeProgress.status = "Merging.."
+                        mergeProgress.status = "Fusion..."
 
                         doneMerging = await merge()
                         isMerging = false
                     }
 
                 }, label: {
-                    Text("Merge")
+                    Text("Fusionner")
                 })
                 .disabled(!enabled)
             }

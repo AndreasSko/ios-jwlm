@@ -19,7 +19,7 @@ struct MergeSettingsView: View {
     var body: some View {
         VStack {
             HStack {
-                Text("Conflict Autoresolution").font(.headline)
+                Text("Résolution automatique des conflits").font(.headline)
                 Spacer()
                 Button(action: {
                     helpOpened.toggle()
@@ -50,21 +50,21 @@ struct MergeSettingsView: View {
                             jwlmController.settings.bookmarkResolver = ConflictSolver.disabled
                             bookmarkSolverIcon = confSolverToIcon(solver: jwlmController.settings.bookmarkResolver)
                         }, label: {
-                            Text("Manual")
+                            Text("Manuel")
                             Image(systemName: "minus.circle")
                         })
                         Button(action: {
                             jwlmController.settings.bookmarkResolver = ConflictSolver.chooseLeft
                             bookmarkSolverIcon = confSolverToIcon(solver: jwlmController.settings.bookmarkResolver)
                         }, label: {
-                            Text("Left")
+                            Text("Gauche")
                             Image(systemName: "arrow.left")
                         })
                         Button(action: {
                             jwlmController.settings.bookmarkResolver = ConflictSolver.chooseRight
                             bookmarkSolverIcon = confSolverToIcon(solver: jwlmController.settings.bookmarkResolver)
                         }, label: {
-                            Text("Right")
+                            Text("Droite")
                             Image(systemName: "arrow.right")
                         })
                     } label: {
@@ -88,21 +88,21 @@ struct MergeSettingsView: View {
                             jwlmController.settings.markingResolver = ConflictSolver.disabled
                             markingSolverIcon = confSolverToIcon(solver: jwlmController.settings.markingResolver)
                         }, label: {
-                            Text("Manual")
+                            Text("Manuel")
                             Image(systemName: "minus.circle")
                         })
                         Button(action: {
                             jwlmController.settings.markingResolver = ConflictSolver.chooseLeft
                             markingSolverIcon = confSolverToIcon(solver: jwlmController.settings.markingResolver)
                         }, label: {
-                            Text("Left")
+                            Text("Gauche")
                             Image(systemName: "arrow.left")
                         })
                         Button(action: {
                             jwlmController.settings.markingResolver = ConflictSolver.chooseRight
                             markingSolverIcon = confSolverToIcon(solver: jwlmController.settings.markingResolver)
                         }, label: {
-                            Text("Right")
+                            Text("Droite")
                             Image(systemName: "arrow.right")
                         })
                     } label: {
@@ -125,28 +125,28 @@ struct MergeSettingsView: View {
                             jwlmController.settings.noteResolver = ConflictSolver.disabled
                             noteSolverIcon = confSolverToIcon(solver: jwlmController.settings.noteResolver)
                         }, label: {
-                            Text("Manual")
+                            Text("Manuel")
                             Image(systemName: "minus.circle")
                         })
                         Button(action: {
                             jwlmController.settings.noteResolver = ConflictSolver.chooseNewest
                             noteSolverIcon = confSolverToIcon(solver: jwlmController.settings.noteResolver)
                         }, label: {
-                            Text("Newest")
+                            Text("Le plus récent")
                             Image(systemName: "sparkles")
                         })
                         Button(action: {
                             jwlmController.settings.noteResolver = ConflictSolver.chooseLeft
                             noteSolverIcon = confSolverToIcon(solver: jwlmController.settings.noteResolver)
                         }, label: {
-                            Text("Left")
+                            Text("Gauche")
                             Image(systemName: "arrow.left")
                         })
                         Button(action: {
                             jwlmController.settings.noteResolver = ConflictSolver.chooseRight
                             noteSolverIcon = confSolverToIcon(solver: jwlmController.settings.noteResolver)
                         }, label: {
-                            Text("Right")
+                            Text("Droite")
                             Image(systemName: "arrow.right")
                         })
                     } label: {
@@ -170,21 +170,21 @@ struct MergeSettingsView: View {
                             jwlmController.settings.inputFieldResolver = ConflictSolver.disabled
                             inputFieldSolverIcon = confSolverToIcon(solver: jwlmController.settings.inputFieldResolver)
                         }, label: {
-                            Text("Manual")
+                            Text("Manuel")
                             Image(systemName: "minus.circle")
                         })
                         Button(action: {
                             jwlmController.settings.inputFieldResolver = ConflictSolver.chooseLeft
                             inputFieldSolverIcon = confSolverToIcon(solver: jwlmController.settings.inputFieldResolver)
                         }, label: {
-                            Text("Left")
+                            Text("Gauche")
                             Image(systemName: "arrow.left")
                         })
                         Button(action: {
                             jwlmController.settings.inputFieldResolver = ConflictSolver.chooseRight
                             inputFieldSolverIcon = confSolverToIcon(solver: jwlmController.settings.inputFieldResolver)
                         }, label: {
-                            Text("Right")
+                            Text("Droite")
                             Image(systemName: "arrow.right")
                         })
                     } label: {

@@ -18,7 +18,7 @@ struct ErrorView: View {
     var body: some View {
         VStack(alignment: .leading) {
             HStack {
-                Text("😕 Something went wrong..")
+                Text("😕 Quelque chose s'est mal passé")
                     .font(.title)
                     .fontWeight(.bold)
                     .multilineTextAlignment(.leading)
@@ -28,7 +28,7 @@ struct ErrorView: View {
             Text("errorView.reportError")
                 .padding(.bottom)
 
-            Text("The following error was returned:")
+            Text("L'erreur suivante a été renvoyée :")
                 .bold()
                 .padding(.bottom, 1)
 
@@ -39,7 +39,7 @@ struct ErrorView: View {
                 }
             HStack {
                 Spacer()
-                Button(errorCopied ? "Copied" : "Copy") {
+                Button(errorCopied ? "Copié" : "Copie") {
                     copyError()
                 }
                 .foregroundColor(Color.white)
@@ -51,7 +51,7 @@ struct ErrorView: View {
             Text("errorView.sentryHint")
             HStack {
                 Toggle(isOn: $enableSentry) {
-                    Text("Share error reports and statistics")
+                    Text("Partager des rapports d'erreurs et des statistiques")
                 }
                 .onChange(of: enableSentry) { _ in
                     setupSentry(enableSentry: enableSentry)
@@ -60,7 +60,7 @@ struct ErrorView: View {
             Button {
                 openSentrySettings.toggle()
             } label: {
-                Text("Learn more")
+                Text("En savoir plus")
             }
 
         }
@@ -79,6 +79,6 @@ struct ErrorView: View {
 struct ErrorView_Previews: PreviewProvider {
     static var previews: some View {
         // swiftlint:disable:next line_length
-        ErrorView(error: .constant("Error while scanning results from SQLite database: sql: Scan error on column index 4, name \"Tagld\": converting NULL to int is unsupported"))
+        ErrorView(error: .constant("Erreur lors de l'analyse des résultats de la base de données SQLite : sql : erreur d'analyse sur l'index de colonne 4, nom \"Tagld\": la conversion de NULL en int n'est pas prise en charge"))
     }
 }

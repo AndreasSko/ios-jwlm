@@ -62,8 +62,8 @@ struct ContentView: View {
 
             VStack {
                 if showCatalogNotification {
-                    NotificationView(text1: "New version of the Publication Catalog is available.",
-                                     text2: "You can download it in the settings.")
+                    NotificationView(text1: "Une nouvelle version du catalogue des publications est disponible.",
+                                     text2: "Vous pouvez la télécharger dans les paramètres.")
                         .onTapGesture {
                             UserDefaults.standard.set(Date(),
                                                       forKey: "lastCatalogNotification")

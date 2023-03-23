@@ -32,7 +32,7 @@ struct OnboardingView: View {
                 Button(action: {
                     needsOnboarding = false
                 }, label: {
-                    Text("Skip Tutorial")
+                    Text("Passer le tutoriel")
                 })
                 .padding(.bottom)
             }
@@ -90,7 +90,7 @@ struct Onboarding2: View {
                     .disabled(true)
             }.padding()
 
-            Text("Pro Tips:")
+            Text("Conseils :")
                 .font(.title2)
                 .padding(.bottom, 0.5)
 
@@ -165,11 +165,11 @@ struct Onboarding4: View {
             VStack {
                 VStack {
                     HStack {
-                        Text("Title:").bold()
+                        Text("Titre :").bold()
                         Spacer()
                     }.padding([.horizontal, .top])
                     HStack {
-                        Text("Exodus") + Text(" 37")
+                        Text("Exode") + Text(" 37")
                         Spacer()
                     }.padding([.horizontal, .bottom])
 
@@ -185,11 +185,11 @@ struct Onboarding4: View {
 
                 VStack {
                     HStack {
-                        Text("Title:").bold()
+                        Text("Titre :").bold()
                         Spacer()
                     }.padding([.horizontal, .top])
                     HStack {
-                        Text("Exodus") + Text(" 33")
+                        Text("Exode") + Text(" 33")
                         Spacer()
                     }.padding([.horizontal, .bottom])
 
@@ -246,7 +246,7 @@ struct Onboarding5: View {
             }
             Spacer()
 
-            Text("By the way:").font(.title3).bold()
+            Text("D'ailleurs :").font(.title3).bold()
             Link("onboarding.5.third",
                  destination: URL(string: "https://github.com/AndreasSko/ios-jwlm")!)
                 .padding(.bottom, 40)

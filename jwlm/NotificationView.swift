@@ -25,9 +25,9 @@ struct NotificationView: View {
         HStack {
             Image(systemName: "info.circle").accentColor(.green)
             VStack(alignment: .leading) {
-                Text(NSLocalizedString(text1, comment: "First notification text"))
+                Text(NSLocalizedString(text1, comment: "Premier texte de notification"))
                 if text2 != nil {
-                    Text(NSLocalizedString(text2!, comment: "Second notification text"))
+                    Text(NSLocalizedString(text2!, comment: "Second texte de notification"))
                 }
             }.font(.footnote)
         }
@@ -47,6 +47,6 @@ struct NotificationView: View {
 
 struct NotificationView_Previews: PreviewProvider {
     static var previews: some View {
-        NotificationView(text1: "First line", text2: "Second line")
+        NotificationView(text1: "Première ligne", text2: "Seconde ligne")
     }
 }

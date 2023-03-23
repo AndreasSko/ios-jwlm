@@ -18,7 +18,7 @@ struct ExportView: View {
 
     var body: some View {
         VStack {
-            Button("Export") {
+            Button("Exporter") {
                 Task {
                     isExporting = true
                     do {

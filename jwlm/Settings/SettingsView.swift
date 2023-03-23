@@ -22,39 +22,39 @@ struct SettingsView: View {
                     NavigationLink(destination: CatalogDBSettingsView(),
                                    tag: "catalog",
                                    selection: $selection) {
-                        Text("Manage Publication Catalog")
+                        Text("Gérer le catalogue des publications")
                     }
 
                     NavigationLink(destination: SentrySettingsView(),
                                    tag: "sentry",
                                    selection: $selection) {
-                        Text("Share Error Reports")
+                        Text("Partager les rapports d'erreurs")
                     }
 
                     Button(action: {
                         UserDefaults.standard.removeObject(forKey: "needsOnboarding")
                     }, label: {
-                        Text("Show Tutorial again")
+                        Text("Afficher à nouveau le tutoriel")
                     })
 
                     #if DEBUG
                     Button(action: {
                         UserDefaults.standard.removeObject(forKey: "lastCatalogNotification")
                     }, label: {
-                        Text("Show Notification again")
+                        Text("Afficher à nouveau la notification")
                     })
                     #endif
                 }
 
                 Section {
-                    Link("Can I Support this App?",
+                    Link("Puis-je supporter cette application ?",
                          destination: URL(string: "https://github.com/AndreasSko/ios-jwlm"
                                           + "/wiki/Can-I-Support-the-Library-Merger%3F")!)
 
-                    Link("Open Issue on GitHub",
+                    Link("Ouvrir une Issue sur GitHub",
                          destination: URL(string: "https://github.com/AndreasSko/ios-jwlm/issues/new/choose")!)
 
-                    Link("Review Privacy Policy",
+                    Link("Consulter la politique de confidentialité",
                          destination: URL(string: "https://github.com/AndreasSko/ios-jwlm/wiki/Privacy-Policy")!)
 
                     Link(destination:
@@ -65,13 +65,13 @@ struct SettingsView: View {
                                     .resizable()
                                     .scaledToFit()
                                     .frame(maxHeight: 25)
-                                Text("Visit project on GitHub")
+                                Text("Visiter le projet sur GitHub")
                             }
                     })
                 }
 
             }
-            .navigationBarTitle("Settings")
+            .navigationBarTitle("Paramètres")
             .navigationBarTitleDisplayMode(.large)
         }
     }

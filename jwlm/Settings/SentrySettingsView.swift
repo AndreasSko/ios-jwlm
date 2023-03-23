@@ -15,7 +15,7 @@ struct SentrySettingsView: View {
             Text("settings.sentry.explanation")
             HStack {
                 Toggle(isOn: $enableSentry) {
-                    Text("Share error reports and statistics")
+                    Text("Partager des rapports d'erreurs et des statistiques")
                 }
                 .onChange(of: enableSentry) { _ in
                     setupSentry(enableSentry: enableSentry)
@@ -24,7 +24,7 @@ struct SentrySettingsView: View {
             Spacer()
         }
         .padding()
-        .navigationBarTitle("Share Error Reports")
+        .navigationBarTitle("Partager les rapports d'erreurs")
         .navigationBarTitleDisplayMode(.inline)
     }
 }

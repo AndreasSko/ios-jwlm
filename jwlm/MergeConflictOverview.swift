@@ -26,7 +26,7 @@ struct MergeConflictOverview: View {
             case .inputField(let inputField):
                 InputFieldOverview(inputField: inputField, related: related, publication: publication)
             default:
-                Text("An error occurred")
+                Text("Une erreur est survenue")
             }
         }
     }
@@ -41,7 +41,7 @@ struct BookmarkOverview: View {
         VStack(alignment: .custom) {
             if publication != nil {
                 HStack {
-                    Text("Publication:").bold()
+                    Text("Publication :").bold()
                     Text(publication?.shortTitle ?? "")
                         .frame(width: UIScreen.main.bounds.size.width-138, alignment: .leading)
                         .alignmentGuide(.custom) { $0[.leading] }
@@ -50,7 +50,7 @@ struct BookmarkOverview: View {
 
                 if publication?.issueTitle != "" {
                     HStack {
-                        Text("Issue:").bold()
+                        Text("Problème :").bold()
                         Text(publication?.issueTitle ?? "")
                             .frame(width: UIScreen.main.bounds.size.width-138, alignment: .leading)
                             .alignmentGuide(.custom) { $0[.leading] }
@@ -59,7 +59,7 @@ struct BookmarkOverview: View {
                 }
             } else if related?.publicationLocation?.keySymbol.valid ?? false {
                 HStack {
-                    Text("Publication:").bold()
+                    Text("Publication :").bold()
                     Text(related?.publicationLocation?.keySymbol.string ?? "")
                         .frame(width: UIScreen.main.bounds.size.width-138, alignment: .leading)
                         .alignmentGuide(.custom) { $0[.leading] }
@@ -68,7 +68,7 @@ struct BookmarkOverview: View {
             }
 
             HStack(alignment: .top) {
-                Text("Slot:").bold()
+                Text("Emplacement :").bold()
                 HStack {
                     Text("\(bookmark.slot)")
                     Image(systemName: "bookmark.fill")
@@ -105,7 +105,7 @@ struct NoteOverview: View {
 
             if publication != nil {
                 HStack {
-                    Text("Publication:").bold()
+                    Text("Publication :").bold()
                     Text(publication?.shortTitle ?? "")
                         .frame(width: UIScreen.main.bounds.size.width-138, alignment: .leading)
                         .alignmentGuide(.custom) { $0[.leading] }
@@ -114,7 +114,7 @@ struct NoteOverview: View {
 
                 if publication?.issueTitle != "" {
                     HStack {
-                        Text("Issue:").bold()
+                        Text("Problème :").bold()
                         Text(publication?.issueTitle ?? "")
                             .frame(width: UIScreen.main.bounds.size.width-138, alignment: .leading)
                             .alignmentGuide(.custom) { $0[.leading] }
@@ -125,7 +125,7 @@ struct NoteOverview: View {
 
             if publication == nil && related?.location?.keySymbol.valid ?? false {
                 HStack {
-                    Text("Publication:").bold()
+                    Text("Publication :").bold()
                     Text("\(related?.location?.keySymbol.string ?? "")")
                         .frame(width: UIScreen.main.bounds.size.width-138, alignment: .leading)
                         .alignmentGuide(.custom) { $0[.leading] }
@@ -135,7 +135,7 @@ struct NoteOverview: View {
 
             if publication == nil && related?.location?.documentId.valid ?? false {
                 HStack {
-                    Text("Document ID:").bold()
+                    Text("Identifiant du document :").bold()
                     Text(String(related?.location?.documentId.int32 ?? -1))
                         .frame(width: UIScreen.main.bounds.size.width-138, alignment: .leading)
                         .alignmentGuide(.custom) { $0[.leading] }
@@ -145,7 +145,7 @@ struct NoteOverview: View {
 
             if related?.location?.track.valid ?? false {
                 HStack {
-                    Text("Track:").bold()
+                    Text("Piste :").bold()
                     Text("\(related?.location?.track.int32 ?? -1)")
                         .frame(width: UIScreen.main.bounds.size.width-138, alignment: .leading)
                         .alignmentGuide(.custom) { $0[.leading] }
@@ -155,7 +155,7 @@ struct NoteOverview: View {
 
             if related?.location?.title.valid ?? false {
                 HStack {
-                    Text("Title:").bold()
+                    Text("Titre :").bold()
                     Text("\(related?.location?.title.string ?? "")")
                         .frame(width: UIScreen.main.bounds.size.width-138, alignment: .leading)
                         .alignmentGuide(.custom) { $0[.leading] }
@@ -165,7 +165,7 @@ struct NoteOverview: View {
 
             if related?.location?.bookNumber.valid ?? false {
                 HStack {
-                    Text("Book ID:").bold()
+                    Text("Identifiant du livre :").bold()
                     Text("\(related?.location?.bookNumber.int32 ?? -1)")
                         .frame(width: UIScreen.main.bounds.size.width-138, alignment: .leading)
                         .alignmentGuide(.custom) { $0[.leading] }
@@ -175,7 +175,7 @@ struct NoteOverview: View {
 
             if related?.location?.chapterNumber.valid ?? false {
                 HStack {
-                    Text("Chapter:").bold()
+                    Text("Chapitre :").bold()
                     Text("\(related?.location?.chapterNumber.int32 ?? -1)")
                         .frame(width: UIScreen.main.bounds.size.width-138, alignment: .leading)
                         .alignmentGuide(.custom) { $0[.leading] }
@@ -196,7 +196,7 @@ struct UserMarkBlockRangeOverview: View {
 
             if publication != nil {
                 HStack {
-                    Text("Publication:").bold()
+                    Text("Publication :").bold()
                     Text(publication?.shortTitle ?? "")
                         .frame(width: UIScreen.main.bounds.size.width-138, alignment: .leading)
                         .alignmentGuide(.custom) { $0[.leading] }
@@ -205,7 +205,7 @@ struct UserMarkBlockRangeOverview: View {
 
                 if publication?.issueTitle != "" {
                     HStack {
-                        Text("Issue:").bold()
+                        Text("Problème :").bold()
                         Text(publication?.issueTitle ?? "")
                             .frame(width: UIScreen.main.bounds.size.width-138, alignment: .leading)
                             .alignmentGuide(.custom) { $0[.leading] }
@@ -216,7 +216,7 @@ struct UserMarkBlockRangeOverview: View {
 
             if publication == nil && related?.location?.keySymbol.valid ?? false {
                 HStack {
-                    Text("Publication:").bold()
+                    Text("Publication :").bold()
                     Text("\(related?.location?.keySymbol.string ?? "")")
                         .frame(width: UIScreen.main.bounds.size.width-138, alignment: .leading)
                         .alignmentGuide(.custom) { $0[.leading] }
@@ -226,7 +226,7 @@ struct UserMarkBlockRangeOverview: View {
 
             if publication == nil && related?.location?.documentId.valid ?? false {
                 HStack {
-                    Text("Document ID:").bold()
+                    Text("Identifiant du document :").bold()
                     Text(String(related?.location?.documentId.int32 ?? -1))
                         .frame(width: UIScreen.main.bounds.size.width-138, alignment: .leading)
                         .alignmentGuide(.custom) { $0[.leading] }
@@ -236,7 +236,7 @@ struct UserMarkBlockRangeOverview: View {
 
             if related?.location?.track.valid ?? false {
                 HStack {
-                    Text("Track:").bold()
+                    Text("Piste :").bold()
                     Text("\(related?.location?.track.int32 ?? -1)")
                         .frame(width: UIScreen.main.bounds.size.width-138, alignment: .leading)
                         .alignmentGuide(.custom) { $0[.leading] }
@@ -246,7 +246,7 @@ struct UserMarkBlockRangeOverview: View {
 
             if related?.location?.title.valid ?? false {
                 HStack {
-                    Text("Title:").bold()
+                    Text("Titre :").bold()
                     Text("\(related?.location?.title.string ?? "")")
                         .frame(width: UIScreen.main.bounds.size.width-138, alignment: .leading)
                         .alignmentGuide(.custom) { $0[.leading] }
@@ -256,7 +256,7 @@ struct UserMarkBlockRangeOverview: View {
 
             if related?.location?.bookNumber.valid ?? false {
                 HStack {
-                    Text("Book ID:").bold()
+                    Text("Identifiant du livre :").bold()
                     Text("\(related?.location?.bookNumber.int32 ?? -1)")
                         .frame(width: UIScreen.main.bounds.size.width-138, alignment: .leading)
                         .alignmentGuide(.custom) { $0[.leading] }
@@ -266,7 +266,7 @@ struct UserMarkBlockRangeOverview: View {
 
             if related?.location?.chapterNumber.valid ?? false {
                 HStack {
-                    Text("Chapter:").bold()
+                    Text("Chapitre :").bold()
                     Text("\(related?.location?.chapterNumber.int32 ?? -1)")
                         .frame(width: UIScreen.main.bounds.size.width-138, alignment: .leading)
                         .alignmentGuide(.custom) { $0[.leading] }
@@ -288,7 +288,7 @@ struct InputFieldOverview: View {
 
             if publication != nil {
                 HStack {
-                    Text("Publication:").bold()
+                    Text("Publication :").bold()
                     Text(publication?.shortTitle ?? "")
                         .frame(width: UIScreen.main.bounds.size.width-138, alignment: .leading)
                         .alignmentGuide(.custom) { $0[.leading] }
@@ -297,7 +297,7 @@ struct InputFieldOverview: View {
 
                 if publication?.issueTitle != "" {
                     HStack {
-                        Text("Issue:").bold()
+                        Text("Problème :").bold()
                         Text(publication?.issueTitle ?? "")
                             .frame(width: UIScreen.main.bounds.size.width-138, alignment: .leading)
                             .alignmentGuide(.custom) { $0[.leading] }
@@ -308,7 +308,7 @@ struct InputFieldOverview: View {
 
             if publication == nil && related?.location?.keySymbol.valid ?? false {
                 HStack {
-                    Text("Publication:").bold()
+                    Text("Publication :").bold()
                     Text("\(related?.location?.keySymbol.string ?? "")")
                         .frame(width: UIScreen.main.bounds.size.width-138, alignment: .leading)
                         .alignmentGuide(.custom) { $0[.leading] }
@@ -318,7 +318,7 @@ struct InputFieldOverview: View {
 
             if publication == nil && related?.location?.documentId.valid ?? false {
                 HStack {
-                    Text("Document ID:").bold()
+                    Text("Identifiant du document :").bold()
                     Text(String(related?.location?.documentId.int32 ?? -1))
                         .frame(width: UIScreen.main.bounds.size.width-138, alignment: .leading)
                         .alignmentGuide(.custom) { $0[.leading] }
@@ -328,7 +328,7 @@ struct InputFieldOverview: View {
 
             if related?.location?.track.valid ?? false {
                 HStack {
-                    Text("Track:").bold()
+                    Text("Piste :").bold()
                     Text("\(related?.location?.track.int32 ?? -1)")
                         .frame(width: UIScreen.main.bounds.size.width-138, alignment: .leading)
                         .alignmentGuide(.custom) { $0[.leading] }
@@ -338,7 +338,7 @@ struct InputFieldOverview: View {
 
             if related?.location?.title.valid ?? false {
                 HStack {
-                    Text("Title:").bold()
+                    Text("Titre :").bold()
                     Text("\(related?.location?.title.string ?? "")")
                         .frame(width: UIScreen.main.bounds.size.width-138, alignment: .leading)
                         .alignmentGuide(.custom) { $0[.leading] }
@@ -348,7 +348,7 @@ struct InputFieldOverview: View {
 
             if related?.location?.bookNumber.valid ?? false {
                 HStack {
-                    Text("Book ID:").bold()
+                    Text("Identifiant du livre :").bold()
                     Text("\(related?.location?.bookNumber.int32 ?? -1)")
                         .frame(width: UIScreen.main.bounds.size.width-138, alignment: .leading)
                         .alignmentGuide(.custom) { $0[.leading] }
@@ -358,7 +358,7 @@ struct InputFieldOverview: View {
 
             if related?.location?.chapterNumber.valid ?? false {
                 HStack {
-                    Text("Chapter:").bold()
+                    Text("Chapitre :").bold()
                     Text("\(related?.location?.chapterNumber.int32 ?? -1)")
                         .frame(width: UIScreen.main.bounds.size.width-138, alignment: .leading)
                         .alignmentGuide(.custom) { $0[.leading] }

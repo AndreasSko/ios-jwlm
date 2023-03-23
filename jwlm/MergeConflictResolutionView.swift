@@ -33,8 +33,8 @@ struct MergeConflictResolutionView: View {
             VStack {
                 VStack(alignment: .leading) {
                     HStack {
-                        Text("Conflict while merging")
-                            + Text(" \(NSLocalizedString(getConflictType(), comment: "Name of the conflict")).").bold()
+                        Text("Conflit lors de la fusion")
+                            + Text(" \(NSLocalizedString(getConflictType(), comment: "Nom du conflit")).").bold()
 
                         Spacer()
 
@@ -51,7 +51,7 @@ struct MergeConflictResolutionView: View {
                                                               comment: "Help text for specific conflict"))
                         }
                     }
-                    Text("Which one should be included?")
+                    Text("Lequel doit être inclus ?")
                 }
                 .padding()
 
@@ -98,7 +98,7 @@ struct MergeConflictResolutionView: View {
                     cancelMerge = true
                     presentationMode.wrappedValue.dismiss()
                 }, label: {
-                    Text("Cancel")
+                    Text("Anuler")
                 })), trailing: (
                 Button(action: {
                     do {
@@ -112,7 +112,7 @@ struct MergeConflictResolutionView: View {
                         showError.toggle()
                     }
                 }, label: {
-                    Text("Continue")
+                    Text("Continuer")
                 }).disabled(selectedSide == nil)
                 )
             )

@@ -129,8 +129,8 @@ class JWLMController: ObservableObject {
         var wait = 0
         while true {
             if wait > 60 {
-                throw GeneralError.timeout(message: "Failed to download \(url.lastPathComponent). "
-                                           + "Timeout after \(wait) seconds.")
+                throw GeneralError.timeout(message: "Echec du téléchargement \(url.lastPathComponent). "
+                                           + "Timeout après \(wait) secondes.")
             }
             if fileManager.fileExists(atPath: url.path) {
                 return
@@ -144,11 +144,11 @@ class JWLMController: ObservableObject {
         do {
             cleanUpMergedFiles()
             if !self.dbWrapper.dbIsLoaded("mergeSide") {
-                throw MergeError.notInitialized(message: "There is no merged backup yet")
+                throw MergeError.notInitialized(message: "Il n'y a pas encore de sauvegarde fusionnée")
             }
 
             let dir = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first
-            let filename = "merged" + String(Int(NSDate().timeIntervalSince1970)) + ".jwlibrary"
+            let filename = "Fusionné" + String(Int(NSDate().timeIntervalSince1970)) + ".jwlibrary"
             let path = dir?.appendingPathComponent(filename).path
 
             try dbWrapper.exportMerged(path)
@@ -168,13 +168,13 @@ class JWLMController: ObservableObject {
             let dir = fm.urls(for: .documentDirectory, in: .userDomainMask).first
             let files = try fm.contentsOfDirectory(at: dir!.absoluteURL,
                                                    includingPropertiesForKeys: [.isRegularFileKey])
-            for file in files where file.lastPathComponent.hasPrefix("merged") {
+            for file in files where file.lastPathComponent.hasPrefix("Fusionné") {
                 try fm.removeItem(at: file)
-                print("Cleaning up \(file.absoluteString)")
+                print("Nettoyer \(file.absoluteString)")
             }
         } catch {
             SentrySDK.capture(error: error)
-            print("Error while trying to clean up old files")
+            print("Erreur lors de la tentative de nettoyage des anciens fichiers")
         }
     }
 
@@ -182,23 +182,23 @@ class JWLMController: ObservableObject {
     func cleanUpInbox() {
         let fm = FileManager.default
         do {
-            let dir = fm.urls(for: .documentDirectory, in: .userDomainMask).first?.appendingPathComponent("Inbox")
+            let dir = fm.urls(for: .documentDirectory, in: .userDomainMask).first?.appendingPathComponent("Boîte de réception")
             let files = try fm.contentsOfDirectory(at: dir!.absoluteURL,
                                                    includingPropertiesForKeys: [.isRegularFileKey])
             for file in files {
                 try fm.removeItem(at: file)
-                print("Cleaning up \(file.absoluteString)")
+                print("Nettoyer \(file.absoluteString)")
             }
         } catch {
             SentrySDK.capture(error: error)
-            print("Error while trying to clean up inbox")
+            print("Erreur lors de la tentative de nettoyage de la boîte de réception")
         }
     }
 
     func merge(reset: Bool = true, progress: MergeProgress) async throws {
         if !self.dbWrapper.dbIsLoaded(MergeSide.leftSide.rawValue)
            || !self.dbWrapper.dbIsLoaded(MergeSide.rightSide.rawValue) {
-            throw MergeError.notInitialized(message: "At least one backup has not been imported yet")
+            throw MergeError.notInitialized(message: "Au moins une sauvegarde n'a pas encore été importée")
         }
         if reset {
             mergeConflicts = GomobileMergeConflictsWrapper()
@@ -208,30 +208,30 @@ class JWLMController: ObservableObject {
         dbWrapper.init_()
 
         do {
-            await progress.update(status: "Merging Locations", percent: 14)
+            await progress.update(status: "Fusionner les emplacements", percent: 14)
             try dbWrapper.mergeLocations()
 
-            await progress.update(status: "Merging Bookmarks", percent: 28)
+            await progress.update(status: "Fusionner les signets", percent: 28)
             try dbWrapper.mergeBookmarks(self.settings.bookmarkResolver.rawValue, mcw: self.mergeConflicts)
 
-            await progress.update(status: "Merging InputFields", percent: 42)
+            await progress.update(status: "Fusionner les champs de saisie", percent: 42)
             try dbWrapper.mergeInputFields(self.settings.inputFieldResolver.rawValue, mcw: self.mergeConflicts)
 
-            await progress.update(status: "Merging Tags", percent: 56)
+            await progress.update(status: "Fusionner les balises", percent: 56)
             try dbWrapper.mergeTags()
 
-            await progress.update(status: "Merging Markings", percent: 70)
+            await progress.update(status: "Fusionner les soulignements", percent: 70)
             try dbWrapper.mergeUserMarkAndBlockRange(self.settings.markingResolver.rawValue, mcw: self.mergeConflicts)
 
-            await progress.update(status: "Merging Notes", percent: 84)
+            await progress.update(status: "Fusionner les notes", percent: 84)
             try dbWrapper.mergeNotes(self.settings.noteResolver.rawValue, mcw: self.mergeConflicts)
 
-            await progress.update(status: "Merging TagMaps", percent: 98)
+            await progress.update(status: "Fusion de TagMaps", percent: 98)
             try dbWrapper.mergeTagMaps()
 
-            await progress.update(status: "Done", percent: 100)
+            await progress.update(status: "Fait", percent: 100)
         } catch {
-            if error.localizedDescription.starts(with: "There were conflicts while trying to merge") {
+            if error.localizedDescription.starts(with: "Il y a eu des conflits en essayant de fusionner") {
                 throw MergeError.mergeConflict
             }
             SentrySDK.capture(error: error)
@@ -248,7 +248,7 @@ class JWLMController: ObservableObject {
                                                  from: conflict.right.data(using: .utf8)!)
             return MergeConflict(key: conflict.key, left: left, right: right)
         } catch {
-            if error.localizedDescription.starts(with: "There are no unsolved conflicts") {
+            if error.localizedDescription.starts(with: "Il n'y a pas de conflits non résolus") {
                 throw MergeError.noConflicts
             }
             SentrySDK.capture(error: error)

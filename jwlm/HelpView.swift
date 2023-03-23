@@ -31,7 +31,7 @@ struct HelpView: View {
         VStack(alignment: .leading) {
             HStack {
                 Spacer()
-                Button("Done") {
+                Button("Fait") {
                     isPresented.toggle()
                 }
             }
@@ -61,8 +61,8 @@ struct HelpPopupView_Previews: PreviewProvider {
     static var previews: some View {
         HelpView(
             isPresented: .constant(true),
-            title: "A title",
-            helpText: "This is a help text..",
+            title: "Un titre",
+            helpText: "Ceci est un titre d'aide...",
             additionalViews: [AnyView(MergeSettingsLegendHelp())])
     }
 }

@@ -10,19 +10,19 @@ import SwiftUI
 struct MergeSettingsLegendHelp: View {
     var body: some View {
         VStack(alignment: .leading) {
-            Text("Legend:")
+            Text("Légendes :")
                 .font(.title2)
                 .padding(.vertical, 5)
 
             VStack(alignment: .custom) {
                 HStack {
                     Image(systemName: "bookmark")
-                    Text("Bookmarks")
+                    Text("Signets")
                         .alignmentGuide(.custom) { $0[.leading] }
                 }
                 HStack {
                     Image(systemName: "pencil.tip")
-                    Text("Markings")
+                    Text("Soulignements")
                         .alignmentGuide(.custom) { $0[.leading] }
                 }
                 HStack {
@@ -32,7 +32,7 @@ struct MergeSettingsLegendHelp: View {
                 }
                 HStack {
                     Image(systemName: "textbox")
-                    Text("Input fields")
+                    Text("Champs de saisie")
                         .alignmentGuide(.custom) { $0[.leading] }
                 }
             }

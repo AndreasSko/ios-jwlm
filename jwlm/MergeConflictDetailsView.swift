@@ -24,7 +24,7 @@ struct MergeConflictDetailsView: View {
             case .inputField(let inputfield):
                 InputFieldDetail(inputField: inputfield)
             default:
-                Text("Error! Can not generate preview")
+                Text("Erreur ! Impossible de générer un aperçu")
             }
         }
         .frame(maxWidth: .infinity)
@@ -59,14 +59,14 @@ struct BookmarkDetail: View {
     var body: some View {
             HStack {
             VStack(alignment: .leading) {
-                KeyValue(key: "Title:", value: bookmark.title)
+                KeyValue(key: "Titre:", value: bookmark.title)
 
                 if bookmark.snippet.valid && bookmark.snippet.string != "" {
                     KeyValue(key: "Snippet:", value: bookmark.snippet.string)
                 }
 
                 if bookmark.blockIdentifier.valid {
-                    KeyValue(key: "Paragraph:",
+                    KeyValue(key: "Paragraphe:",
                              value: String(bookmark.blockIdentifier.int32))
                 }
             }
@@ -82,14 +82,14 @@ struct NoteDetail: View {
         HStack {
             VStack(alignment: .leading) {
                 if note.title.valid {
-                    KeyValue(key: "Title:", value: note.title.string)
+                    KeyValue(key: "Titre:", value: note.title.string)
                 }
 
                 if note.content.valid {
-                    KeyValue(key: "Content:", value: note.content.string)
+                    KeyValue(key: "Contenu:", value: note.content.string)
                 }
 
-                KeyValue(key: "Last Modified:",
+                KeyValue(key: "Dernière modification :",
                          value: formatDate(note.lastModified))
             }
             Spacer()
@@ -115,7 +115,7 @@ struct UserMarkBlockRangeDetail: View {
     var body: some View {
         VStack(alignment: .custom) {
             HStack {
-                Text("Color:").bold()
+                Text("Couleur:").bold()
                 Circle()
                     .fill(markingColors[umbr.userMark.colorIndex] ?? Color(red: 1.00, green: 1, blue: 1))
                     .frame(width: 20, height: 20)
@@ -125,14 +125,14 @@ struct UserMarkBlockRangeDetail: View {
 
             ForEach(umbr.blockRanges, id: \.blockRangeId) { blockRange in
                 HStack {
-                    Text("Identifier:").bold()
+                    Text("Identifiant:").bold()
                     Text("\(blockRange.identifier)").alignmentGuide(.custom) { $0[.leading] }
                 }
                 .padding(.bottom, 0.5)
 
                 if blockRange.startToken.valid {
                     HStack {
-                        Text("Start token:").bold()
+                        Text("Token de début :").bold()
                         Text("\(blockRange.startToken.int32)").alignmentGuide(.custom) { $0[.leading] }
                     }
                     .padding(.bottom, 0.5)
@@ -140,7 +140,7 @@ struct UserMarkBlockRangeDetail: View {
 
                 if blockRange.endToken.valid {
                     HStack {
-                        Text("End token:").bold()
+                        Text("Token de fin:").bold()
                         Text("\(blockRange.endToken.int32)").alignmentGuide(.custom) { $0[.leading] }
                     }
                     .padding(.bottom, 2.0)
