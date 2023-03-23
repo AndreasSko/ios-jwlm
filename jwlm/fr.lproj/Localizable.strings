@@ -25,7 +25,7 @@
 "onboarding.4.fourth" = "Quand tout est fini, vous pouvez exporté la sauvegarde fusionée.";
 
 "onboarding.5.first" = "Prêt ?";
-"onboarding.5.second" = "This app is still in its early stages, so it's always good to keep a backup of your JW Libraries - just in case.
+"onboarding.5.second" = "Cette application en est encore à ses débuts, il est donc toujours bon de conserver une sauvegarde de vos sauvegardes JW - juste au cas où.
 
 Si vous trouvez un bug ou avez une suggestion, sentez vous libre de me contacter 😊 
 La façon la plus simple est d'ouvrir une issue sur GitHub ou m'écrire un mail : jwlm@andreas-sk.de.";
