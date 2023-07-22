@@ -13,6 +13,8 @@ struct BackupView: View {
     var side: MergeSide
     @ObservedObject var jwlmController: JWLMController
 
+    @AppStorage("warnOnPlaylist") private var warnOnPlaylist: Bool = true
+
     @Binding var sharedUrl: URL?
     @Binding var fileSelected: Bool
     @Binding var doneMerging: Bool
@@ -22,6 +24,8 @@ struct BackupView: View {
     @State private var showError: Bool = false
     @State private var errorMessage: String = ""
     @State private var dbStats: GomobileDatabaseStats = GomobileDatabaseStats()
+    @State private var containsPlaylists: Bool = true
+    @State private var showPlaylistWarning: Bool = false
 
     var body: some View {
         let screenWidth = UIScreen.main.bounds.size.width
@@ -99,10 +103,29 @@ struct BackupView: View {
                             view.font(.callout)
                         }
 
-                        Image(systemName: "checkmark.circle")
-                        .font(.title)
-                        .foregroundColor(.green)
-                            .padding(.bottom)
+                        if containsPlaylists {
+                            VStack {
+                                Image(systemName: "exclamationmark.triangle")
+                                    .font(.title)
+                                    .foregroundColor(.orange)
+
+                                Text("Contains playlists")
+                                    .font(.caption)
+                                    .bold()
+                                    .foregroundColor(.orange)
+                                    .padding(.bottom)
+                            }
+                            .onTapGesture {
+                                Task {
+                                    showPlaylistWarning.toggle()
+                                }
+                            }
+                        } else {
+                            Image(systemName: "checkmark.circle")
+                                .font(.title)
+                                .foregroundColor(.green)
+                                .padding(.bottom)
+                        }
                     }
                 }
                 .if(sharedUrl != nil) { view in
@@ -145,6 +168,9 @@ struct BackupView: View {
         .sheet(isPresented: $showError) {
             ErrorView(error: $errorMessage)
         }
+        .sheet(isPresented: $showPlaylistWarning) {
+            PlaylistWarningView()
+        }
         .fileImporter(isPresented: $isSelectingFile,
                       allowedContentTypes: [.jwlibrary]) { (result) in
             Task {
@@ -180,6 +206,11 @@ struct BackupView: View {
         } catch {
             errorMessage = error.localizedDescription
             showError = true
+        }
+
+        containsPlaylists = jwlmController.dbWrapper.dbContainsPlaylists(side.rawValue)
+        if containsPlaylists && warnOnPlaylist {
+            showPlaylistWarning.toggle()
         }
     }
 }

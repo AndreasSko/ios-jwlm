@@ -12,6 +12,7 @@
 		F420DFC2255C0C6900CEB66B /* BackupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F43574EF253341CB00EC55D4 /* BackupView.swift */; };
 		F42649AE257E469100644CA6 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F42649AD257E469100644CA6 /* SettingsView.swift */; };
 		F433F8F12573C11B00258C29 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F433F8F02573C11B00258C29 /* OnboardingView.swift */; };
+		F434746D2A6835AD00CC424E /* PlaylistWarningView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F434746C2A6835AD00CC424E /* PlaylistWarningView.swift */; };
 		F43574B72533411900EC55D4 /* JwlmApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F43574B62533411900EC55D4 /* JwlmApp.swift */; };
 		F43574B92533411900EC55D4 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F43574B82533411900EC55D4 /* ContentView.swift */; };
 		F43574BB2533411B00EC55D4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F43574BA2533411B00EC55D4 /* Assets.xcassets */; };
@@ -62,6 +63,7 @@
 		F420DF9B255B34E800CEB66B /* jwlm.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = jwlm.entitlements; sourceTree = "<group>"; };
 		F42649AD257E469100644CA6 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		F433F8F02573C11B00258C29 /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
+		F434746C2A6835AD00CC424E /* PlaylistWarningView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaylistWarningView.swift; sourceTree = "<group>"; };
 		F43574B32533411900EC55D4 /* jwlm.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = jwlm.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F43574B62533411900EC55D4 /* JwlmApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JwlmApp.swift; sourceTree = "<group>"; };
 		F43574B82533411900EC55D4 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -164,6 +166,7 @@
 				F441B1612549CEB100B0409B /* MergeConflictDetailsView.swift */,
 				F48F44B5255E808B0050C564 /* HelpView.swift */,
 				F402E1DB277DB4C70083C4EB /* ErrorView.swift */,
+				F434746C2A6835AD00CC424E /* PlaylistWarningView.swift */,
 				F43B4A1D253346DC005BF9E8 /* JWLMController.swift */,
 				F4B8AEAE25867E7B008DF433 /* PublicationController.swift */,
 				F43574BA2533411B00EC55D4 /* Assets.xcassets */,
@@ -400,6 +403,7 @@
 				F43574B72533411900EC55D4 /* JwlmApp.swift in Sources */,
 				F42649AE257E469100644CA6 /* SettingsView.swift in Sources */,
 				F4B8AEA725867E0B008DF433 /* CatalogDBSettingsView.swift in Sources */,
+				F434746D2A6835AD00CC424E /* PlaylistWarningView.swift in Sources */,
 				F441B1622549CEB100B0409B /* MergeConflictDetailsView.swift in Sources */,
 				F44BF830253376B10057B980 /* MergeSettingsView.swift in Sources */,
 				F43574F0253341CB00EC55D4 /* BackupView.swift in Sources */,
@@ -594,7 +598,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 0.6.1;
+				MARKETING_VERSION = 0.7.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "de.andreas-sk.jwlm";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -623,7 +627,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 0.6.1;
+				MARKETING_VERSION = 0.7.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "de.andreas-sk.jwlm";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;

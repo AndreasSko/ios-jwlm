@@ -52,6 +52,10 @@ Database structs so they can be used with Gomobile.
 - (nonnull instancetype)initWithRef:(_Nonnull id)ref;
 - (nonnull instancetype)init;
 /**
+ * DBContainsPlaylists indicates if a DB on the given side contains playlists.
+ */
+- (BOOL)dbContainsPlaylists:(NSString* _Nullable)side;
+/**
  * DBIsLoaded indicates if a DB on the given side has been loaded.
  */
 - (BOOL)dbIsLoaded:(NSString* _Nullable)side;
@@ -97,6 +101,11 @@ function calls. Should be called after ImportJWLBackup.
  * MergeUserMarkAndBlockRange merges UserMarks and BlockRanges
  */
 - (BOOL)mergeUserMarkAndBlockRange:(NSString* _Nullable)conflictSolver mcw:(GomobileMergeConflictsWrapper* _Nullable)mcw error:(NSError* _Nullable* _Nullable)error;
+/**
+ * SkipPlaylists allows to skip the check if playlists exist in the database.
+It is meant as a temporary workaround until merging of playlists is implemented.
+ */
+- (void)skipPlaylists:(BOOL)skipPlaylists;
 /**
  * Stats generates a DatabaseStats for the given mergeSide
  */

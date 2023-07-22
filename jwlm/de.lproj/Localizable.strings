@@ -155,3 +155,11 @@ Vielen Dank für deine Hilfe! 😊";
 "Copy" = "Kopieren";
 "Copied" = "Kopiert";
 "Learn more" = "Mehr erfahren";
+
+// PlaylistWarningView
+"Can't merge playlists" = "Playlists können nicht gemergt werden";
+"playlistWarningView.explanation" = "Dein Backup enthält Playlists, die der Library Merger aktuell noch nicht verarbeiten kann.
+Bitte beachte, dass das gemergte Backup diese Playlists nicht enthalten wird. Um sie zu behalten, nutze die Teilen-Funktion in der JW Library, um die Playlists zu exportieren. Nachdem du das gemergte Backup wiederhergestellt hast, kannst du die Playlists dann wieder importieren.
+Ich arbeite aktuell daran, dass auch Playlists bald gemergt werden können. Das Feature sollte in einer der nächsten Versionen verfügbar sein. Vielen Dank für deine Geduld 😊";
+"Warn if backup contains playlist" = "Warne, wenn Backup Playlists enthält";
+"Contains playlists" = "Enthält Playlists";
