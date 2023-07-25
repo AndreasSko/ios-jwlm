@@ -103,6 +103,7 @@ class JWLMController: ObservableObject {
     }
 
     func importBackup(url: URL, side: MergeSide) async throws {
+        self.dbWrapper.skipPlaylists(true)
         do {
             _ = url.startAccessingSecurityScopedResource()
             defer { url.stopAccessingSecurityScopedResource() }
