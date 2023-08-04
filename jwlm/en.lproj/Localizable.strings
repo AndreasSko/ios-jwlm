@@ -66,5 +66,5 @@ Thank you so much for your help! 😊";
 
 // PlaylistWarningView
 "playlistWarningView.explanation" = "The backup contains playlists that the Library Merger is not able to process yet.
-Please note that playlists won't be included the merged backup. If you want to keep them, export your playlists via the Share feature in JW Library first and import them again after you restored the merged backup.
+Please note that playlists won't be included in the merged backup. If you want to keep them, export your playlists via the Share feature in JW Library first and import them again after you restored the merged backup.
 Merging playlists is a feature that I'm currently working on and will be included in a later version of Library Merger. Thank you for your patience 😊";
