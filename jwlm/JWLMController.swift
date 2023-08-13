@@ -187,12 +187,14 @@ class JWLMController: ObservableObject {
             let files = try fm.contentsOfDirectory(at: dir!.absoluteURL,
                                                    includingPropertiesForKeys: [.isRegularFileKey])
             for file in files {
-                try fm.removeItem(at: file)
-                print("Cleaning up \(file.absoluteString)")
+                do {
+                    try fm.removeItem(at: file)
+                } catch {
+                    SentrySDK.capture(message: "failed to remove file at "+file.formatted())
+                }
             }
         } catch {
             SentrySDK.capture(error: error)
-            print("Error while trying to clean up inbox")
         }
     }
 
