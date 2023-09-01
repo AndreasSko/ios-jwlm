@@ -33,6 +33,7 @@
 		F48F44B6255E808B0050C564 /* HelpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F48F44B5255E808B0050C564 /* HelpView.swift */; };
 		F48F44D2255EC4DC0050C564 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = F48F44D4255EC4DC0050C564 /* Localizable.strings */; };
 		F48F4526256073460050C564 /* If.swift in Sources */ = {isa = PBXBuildFile; fileRef = F48F4525256073450050C564 /* If.swift */; };
+		F4B6A4512AA2441500DFC7E1 /* BackupIncompatibleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4B6A4502AA2441500DFC7E1 /* BackupIncompatibleView.swift */; };
 		F4B8AEA725867E0B008DF433 /* CatalogDBSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4B8AEA625867E0B008DF433 /* CatalogDBSettingsView.swift */; };
 		F4B8AEAF25867E7B008DF433 /* PublicationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4B8AEAE25867E7B008DF433 /* PublicationController.swift */; };
 		F4B8AECE258A83C3008DF433 /* NotificationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4B8AECD258A83C3008DF433 /* NotificationView.swift */; };
@@ -91,6 +92,7 @@
 		F48F44D3255EC4DC0050C564 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		F48F44D8255EC5090050C564 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
 		F48F4525256073450050C564 /* If.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = If.swift; sourceTree = "<group>"; };
+		F4B6A4502AA2441500DFC7E1 /* BackupIncompatibleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackupIncompatibleView.swift; sourceTree = "<group>"; };
 		F4B8AEA625867E0B008DF433 /* CatalogDBSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatalogDBSettingsView.swift; sourceTree = "<group>"; };
 		F4B8AEAE25867E7B008DF433 /* PublicationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublicationController.swift; sourceTree = "<group>"; };
 		F4B8AECD258A83C3008DF433 /* NotificationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationView.swift; sourceTree = "<group>"; };
@@ -167,6 +169,7 @@
 				F48F44B5255E808B0050C564 /* HelpView.swift */,
 				F402E1DB277DB4C70083C4EB /* ErrorView.swift */,
 				F434746C2A6835AD00CC424E /* PlaylistWarningView.swift */,
+				F4B6A4502AA2441500DFC7E1 /* BackupIncompatibleView.swift */,
 				F43B4A1D253346DC005BF9E8 /* JWLMController.swift */,
 				F4B8AEAE25867E7B008DF433 /* PublicationController.swift */,
 				F43574BA2533411B00EC55D4 /* Assets.xcassets */,
@@ -395,6 +398,7 @@
 				F4BC5126292124ED002E0711 /* SentrySettingsView.swift in Sources */,
 				F402E1DC277DB4C70083C4EB /* ErrorView.swift in Sources */,
 				F48F4526256073460050C564 /* If.swift in Sources */,
+				F4B6A4512AA2441500DFC7E1 /* BackupIncompatibleView.swift in Sources */,
 				F433F8F12573C11B00258C29 /* OnboardingView.swift in Sources */,
 				F43574B92533411900EC55D4 /* ContentView.swift in Sources */,
 				F441B1502549AE4900B0409B /* MergeView.swift in Sources */,

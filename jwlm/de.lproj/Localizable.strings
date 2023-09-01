@@ -163,3 +163,11 @@ Bitte beachte, dass das gemergte Backup diese Playlists nicht enthalten wird. Um
 Ich arbeite aktuell daran, dass auch Playlists bald gemergt werden können. Das Feature sollte in einer der nächsten Versionen verfügbar sein. Vielen Dank für deine Geduld 😊";
 "Warn if backup contains playlist" = "Warne, wenn Backup Playlists enthält";
 "Contains playlists" = "Enthält Playlists";
+
+// BackupIncompatibleView
+"Backup not compatible" = "Backup inkompatibel";
+"backupIncompatibleView.tooNew" = "Die Backup Version wird noch nicht vom Library Merger unterstützt.
+Stelle sicher, dass du die neueste Version dieser App nutzt. Wenn das schon so ist, warte bitte noch ein paar Tage bis ich die Möglichkeit hatte, die App zu aktualisieren. Vielen Dank für deine Geduld 😊";
+"backupIncompatibleView.tooOld" = "Die Backup Version wird nicht mehr unterstützt.
+Stelle sicher, dass du für den Export des Backups die neueste Version von JW Library nutzt.";
+"backupIncompatibleView.unknown" = "Das Backup wird nicht unterstützt.";
