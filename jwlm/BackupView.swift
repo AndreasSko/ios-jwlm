@@ -166,7 +166,11 @@ struct BackupView: View {
             }
         }
         .sheet(isPresented: $showError) {
-            ErrorView(error: $errorMessage)
+            if errorMessage.lowercased().contains("backup incompatible") {
+                BackupIncompatibleView(error: $errorMessage)
+            } else {
+                ErrorView(error: $errorMessage)
+            }
         }
         .sheet(isPresented: $showPlaylistWarning) {
             PlaylistWarningView()
