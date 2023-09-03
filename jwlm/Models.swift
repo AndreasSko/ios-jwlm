@@ -105,7 +105,7 @@ struct Location: Decodable {
     let track: NullInt32
     let issueTagNumber: Int
     let keySymbol: NullString
-    let mepsLanguage: Int
+    let mepsLanguage: NullInt32
     let locationType: Int
     let title: NullString
 }

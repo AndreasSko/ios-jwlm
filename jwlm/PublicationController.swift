@@ -35,7 +35,7 @@ func generatePublLookup(_ location: Location?) -> GomobilePublicationLookup {
     publQuery.documentID = location?.documentId.int32 ?? 0
     publQuery.keySymbol = location?.keySymbol.string ?? ""
     publQuery.issueTagNumber = location?.issueTagNumber ?? 0
-    publQuery.mepsLanguage = location?.mepsLanguage ?? 0
+    publQuery.mepsLanguage = location?.mepsLanguage.int32 ?? 0
 
     return publQuery
 }
