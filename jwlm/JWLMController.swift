@@ -93,6 +93,7 @@ class JWLMController: ObservableObject {
     private var solvedConflicts = 0
 
     init() {
+        addBreadcrumb("JWLMController.init")
         self.dbWrapper = GomobileDatabaseWrapper()
         self.dbWrapper.tempDir = getTempDir()
         self.mergeConflicts = GomobileMergeConflictsWrapper()
@@ -104,6 +105,7 @@ class JWLMController: ObservableObject {
     }
 
     func importBackup(url: URL, side: MergeSide) async throws {
+        addBreadcrumb("importBackup from \(url.absoluteString) for side \(side.rawValue)")
         self.dbWrapper.skipPlaylists(true)
 
         let accessGranted = url.startAccessingSecurityScopedResource()
@@ -175,6 +177,7 @@ class JWLMController: ObservableObject {
     }
 
     func exportBackup() async throws -> String {
+        addBreadcrumb("exportBackup")
         do {
             cleanUpMergedFiles()
             if !self.dbWrapper.dbIsLoaded("mergeSide") {
@@ -233,6 +236,7 @@ class JWLMController: ObservableObject {
     }
 
     func merge(reset: Bool = true, progress: MergeProgress) async throws {
+        addBreadcrumb("merge")
         if !self.dbWrapper.dbIsLoaded(MergeSide.leftSide.rawValue)
            || !self.dbWrapper.dbIsLoaded(MergeSide.rightSide.rawValue) {
             throw MergeError.notInitialized(message: "At least one backup has not been imported yet")
@@ -277,6 +281,7 @@ class JWLMController: ObservableObject {
     }
 
     func nextConflict() throws -> MergeConflict {
+        addBreadcrumb("nextConflict")
         do {
             let conflict = try self.mergeConflicts.nextConflict()
             let left = try JSONDecoder().decode(ModelRelatedTuple.self,
@@ -300,6 +305,14 @@ func captureError(_ error: Error, userInfo: [String: Any]?) {
                                code: nsError.code,
                                userInfo: userInfo)
     SentrySDK.capture(error: wrappedError)
+}
+
+func addBreadcrumb(_ message: String) {
+    let crumb = Breadcrumb()
+    crumb.level = SentryLevel.info
+    crumb.category = "jwlm-controller"
+    crumb.message = message
+    SentrySDK.addBreadcrumb(crumb)
 }
 
 func getTempDir() -> String {
