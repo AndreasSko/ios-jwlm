@@ -94,6 +94,7 @@ class JWLMController: ObservableObject {
 
     init() {
         self.dbWrapper = GomobileDatabaseWrapper()
+        self.dbWrapper.tempDir = getTempDir()
         self.mergeConflicts = GomobileMergeConflictsWrapper()
         self.mergeConflicts.initDBWrapper(dbWrapper)
         self.settings = MergeSettings(bookmarkResolver: .disabled,
