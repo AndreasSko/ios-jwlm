@@ -104,17 +104,36 @@ class JWLMController: ObservableObject {
 
     func importBackup(url: URL, side: MergeSide) async throws {
         self.dbWrapper.skipPlaylists(true)
+
+        let accessGranted = url.startAccessingSecurityScopedResource()
+        defer { url.stopAccessingSecurityScopedResource() }
+        defer { cleanUpInbox() }
+
         do {
-            _ = url.startAccessingSecurityScopedResource()
-            defer { url.stopAccessingSecurityScopedResource() }
-
             try downloadFileIfNecessary(url: url)
-
-            try dbWrapper.importJWLBackup(url.path, side: side.rawValue)
-            url.stopAccessingSecurityScopedResource()
-            cleanUpInbox()
         } catch {
-            SentrySDK.capture(error: error)
+            captureError(error, userInfo: [
+                "url": url.absoluteString,
+                "accessGranted": accessGranted,
+                "fileExists": FileManager.default.fileExists(atPath: url.path),
+                "isReadable": FileManager.default.isReadableFile(atPath: url.path),
+                "bookmarkDataExists": (try? url.bookmarkData()) != nil
+            ])
+
+            throw error
+        }
+
+        do {
+            try dbWrapper.importJWLBackup(url.path, side: side.rawValue)
+        } catch {
+            captureError(error, userInfo: [
+                "url": url.absoluteString,
+                "accessGranted": accessGranted,
+                "fileExists": FileManager.default.fileExists(atPath: url.path),
+                "isReadable": FileManager.default.isReadableFile(atPath: url.path),
+                "bookmarkDataExists": (try? url.bookmarkData()) != nil
+            ])
+
             throw error
         }
     }
@@ -125,13 +144,26 @@ class JWLMController: ObservableObject {
             return
         }
 
-        try fileManager.startDownloadingUbiquitousItem(at: url)
+        // First, try for iCloud files (ubiquitous items)
+        if fileManager.isUbiquitousItem(at: url) {
+            try fileManager.startDownloadingUbiquitousItem(at: url)
+        } else {
+            // For third-party cloud providers, use NSFileCoordinator
+            var error: NSError?
+            let coordinator = NSFileCoordinator(filePresenter: nil)
+            coordinator.coordinate(readingItemAt: url, options: .withoutChanges, error: &error) { _ in
+            }
+
+            if let error = error {
+                throw error
+            }
+        }
 
         var wait = 0
         while true {
             if wait > 60 {
                 throw GeneralError.timeout(message: "Failed to download \(url.lastPathComponent). "
-                                           + "Timeout after \(wait) seconds.")
+                    + "Timeout after \(wait) seconds. Please try again.")
             }
             if fileManager.fileExists(atPath: url.path) {
                 return
@@ -190,7 +222,7 @@ class JWLMController: ObservableObject {
                 do {
                     try fm.removeItem(at: file)
                 } catch {
-                    SentrySDK.capture(message: "failed to remove file at "+file.formatted())
+                    SentrySDK.capture(message: "failed to remove file at "+file.absoluteString)
                 }
             }
         } catch {
@@ -257,5 +289,28 @@ class JWLMController: ObservableObject {
             SentrySDK.capture(error: error)
             throw error
         }
+    }
+}
+
+func captureError(_ error: Error, userInfo: [String: Any]?) {
+    let nsError = error as NSError
+    let wrappedError = NSError(domain: nsError.domain,
+                               code: nsError.code,
+                               userInfo: userInfo)
+    SentrySDK.capture(error: wrappedError)
+}
+
+func getTempDir() -> String {
+    do {
+        let temporaryDirectory = try FileManager.default.url(
+            for: .itemReplacementDirectory,
+            in: .userDomainMask,
+            appropriateFor: nil,
+            create: true
+        )
+
+        return temporaryDirectory.path
+    } catch {
+        return FileManager.default.temporaryDirectory.path
     }
 }
