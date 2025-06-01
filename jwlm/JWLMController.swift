@@ -220,13 +220,14 @@ class JWLMController: ObservableObject {
             let files = try fm.contentsOfDirectory(at: dir!.absoluteURL,
                                                    includingPropertiesForKeys: [.isRegularFileKey])
             for file in files {
-                do {
-                    try fm.removeItem(at: file)
-                } catch {
-                    SentrySDK.capture(message: "failed to remove file at "+file.absoluteString)
-                }
+                try fm.removeItem(at: file)
             }
         } catch {
+            let nsError = error as NSError
+            if nsError.domain == NSCocoaErrorDomain && nsError.code == 260 {
+                // Ignore error code 260 (file doesn't exist) as it's not an actual problem
+                return
+            }
             SentrySDK.capture(error: error)
         }
     }
