@@ -14,17 +14,24 @@ struct MergeConflictDetailsView: View {
 
     var body: some View {
         VStack(alignment: .leading) {
-            switch selectConflict().model {
-            case .bookmark(let bookmark):
-                BookmarkDetail(bookmark: bookmark)
-            case .userMarkBlockRange(let umbr):
-                UserMarkBlockRangeDetail(umbr: umbr)
-            case .note(let note):
-                NoteDetail(note: note)
-            case .inputField(let inputfield):
-                InputFieldDetail(inputField: inputfield)
-            default:
+            if let conflict = conflict,
+               let sideData = side == .leftSide ? conflict.left : conflict.right {
+                switch sideData.model {
+                case .bookmark(let bookmark):
+                    BookmarkDetail(bookmark: bookmark)
+                case .userMarkBlockRange(let umbr):
+                    UserMarkBlockRangeDetail(umbr: umbr)
+                case .note(let note):
+                    NoteDetail(note: note)
+                case .inputField(let inputfield):
+                    InputFieldDetail(inputField: inputfield)
+                default:
+                    Text("Error! Can not generate preview")
+                        .foregroundColor(.red)
+                }
+            } else {
                 Text("Error! Can not generate preview")
+                    .foregroundColor(.red)
             }
         }
         .frame(maxWidth: .infinity)
@@ -37,13 +44,6 @@ struct MergeConflictDetailsView: View {
         )
         .shadow(color: Color.gray.opacity(0.2), radius: 20)
         .contentShape(Rectangle())
-    }
-
-    func selectConflict() -> ModelRelatedTuple {
-        if side == .leftSide {
-            return conflict!.left!
-        }
-        return conflict!.right!
     }
 }
 
